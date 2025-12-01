@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tetelestai Outfit App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="App de combinaciones de outfits TETELESTAI. Encontrá el outfit ideal según prenda, color y ocasión.">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Apple PWA Meta Tags -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TTI Outfits">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+
+<style>
+  :root {
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --accent: #111111;
+    --accent-soft: #d4d4d4;
+    --text-main: #111111;
+    --text-soft: #555555;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "SF Pro Text", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+  }
+  .app {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+  .hero {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .hero-sub {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: var(--text-soft);
+  }
+  .slogan {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    font-weight: 500;
+  }
+  .pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--accent-soft);
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+    color: var(--text-soft);
+  }
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    justify-content: center;
+  }
+  select, input[type="text"] {
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--accent-soft);
+    font-size: 0.85rem;
+    min-width: 135px;
+    outline: none;
+    background: #fff;
+  }
+  input[type="text"] {
+    flex: 1 1 210px;
+  }
+  button {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: none;
+    background: #111;
+    color: #fff;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  button:active {
+    opacity: 0.85;
+  }
+  .tagline {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 12px 13px 14px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .card-top {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--text-soft);
+  }
+  .card-main {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .card-meta {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+  }
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .chip {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--accent-soft);
+    color: var(--text-soft);
+  }
+  .footer {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 0.8rem;
+    color: var(--text-soft);
+  }
+  .cta-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 1px;
+  }
+
+.hero {
+    text-align: center;
+    margin-bottom: 20px;
+    background: #000000;
+    color: #ffffff;
+    padding: 20px 0;
+    border-radius: 12px;
+}
+.hero-title, .hero-sub, .slogan, .pill {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    justify-content: center;
+    background: #e5e5e5 !important;
+    padding: 16px;
+    border-radius: 12px;
+}
+.controls select,
+.controls input[type="text"] {
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+.controls select option {
+    color: #000000 !important;
+}
+
+
+.controls {
+    background: #b3b3b3 !important;
+}
+
+
+  /* Botón de beneficios */
+  .benefits-btn {
+    margin-top: 6px;
+    align-self: flex-start;
+    background: #111111;
+    color: #ffffff;
+    font-size: 0.78rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+  }
+  .benefits-btn:active {
+    opacity: 0.9;
+  }
+
+  /* Pantalla de detalle de beneficios */
+  .detail {
+    position: fixed;
+    inset: 0;
+    background: #f3f3f3;
+    z-index: 100;
+    padding: 20px 16px 32px;
+    overflow-y: auto;
+  }
+  .detail.hidden {
+    display: none;
+  }
+  .detail-card {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+    padding: 18px 16px 24px;
+  }
+  .detail-back {
+    background: transparent;
+    color: #111111;
+    border: 1px solid #d4d4d4;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .detail-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 4px 0 8px;
+  }
+  .detail-summary {
+    font-size: 0.9rem;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  .detail-subtitle {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: #777777;
+    margin: 10px 0 6px;
+  }
+  .detail-list {
+    padding-left: 18px;
+    margin: 0;
+  }
+  .detail-list li {
+    font-size: 0.9rem;
+    color: #444444;
+    margin-bottom: 4px;
+  }
+
+
+/* Welcome screen styles */
+.welcome{min-height:100vh;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;padding:16px 12px;}
+.welcome-card{max-width:640px;width:100%;background:#111;border-radius:20px;padding:32px 24px 36px;box-shadow:0 18px 40px rgba(0,0,0,0.6);text-align:center;}
+.welcome-title{font-size:2.2rem;line-height:1.2;margin:0 0 16px;letter-spacing:0.14em;text-transform:uppercase;text-align:center;}
+.welcome-sub{font-size:1.25rem;color:#f0f0f0;margin-bottom:18px;font-weight:500;}
+.welcome-text{font-size:1.05rem;color:#e0e0e0;margin-bottom:12px;}
+.welcome-contact{margin:8px 0 16px;font-size:0.8rem;color:#c7c7c7;}
+.welcome-contact a{color:#fff;}
+.welcome-cta{width:100%;padding:12px;border-radius:999px;border:none;background:#fff;color:#000;font-weight:600;font-size:1.1rem;cursor:pointer;}
+.welcome-cta:active{opacity:0.9;}
+
+</style>
+</head>
+<body>
+
+  <div id="welcomeScreen" class="welcome">
+    <div class="welcome-card">
+      <h1 class="welcome-title">TETELESTAI INDUMENTARIA</h1>
+      <p class="welcome-sub">
+        Para hombres con propósito, que se visten con valores, respeto y autenticidad en cada elección.
+      </p>
+      <p class="welcome-text">
+        Esta app está pensada para ayudarte a elegir combinaciones equilibradas, prolijas y verdaderamente fáciles de usar. Elegís prenda, color y ocasión, y nosotros te mostramos el outfit ideal.
+      </p>
+      <div class="welcome-contact">
+        <p><strong>Contacto</strong></p>
+        <p>WhatsApp: <a href="https://wa.me/5491157365177" target="_blank">+54 9 11 5736-5177</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank">@tetelestai.indumentaria</a></p>
+            <p>Web: <a href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a></p>
+      </div>
+      <button class="welcome-cta" onclick="entrarApp()">Empezar a armar mi outfit</button>
+    </div>
+  </div>
+
+<div class="app">
+  <header class="hero">
+    <div class="pill">TETELESTAI · Outfit Finder</div>
+    <h1 class="hero-title">App de combinaciones TETELESTAI</h1>
+    <p class="hero-sub">
+      Buscá por prenda, color u ocasión y encontrá combinaciones pensadas en estilo old money.
+    </p>
+    <p class="slogan">
+      Enfócate en lo esencial, nosotros en que te veas bien.
+    </p>
+  </header>
+
+  <div class="controls">
+    <select id="tipoSelect">
+      <option value="todos">Prenda: Todas</option>
+      <option value="Remera">Remeras</option>
+      <option value="Jogger Cargo">Joggers Cargo</option>
+      <option value="Jogger Liso">Joggers Lisos</option>
+      <option value="Bermuda">Bermudas</option>
+    </select>
+
+    <select id="colorSelect">
+      <option value="todos">Color: Todos</option>
+    </select>
+
+    <select id="ocasionSelect">
+      <option value="todas">Ocasión: Todas</option>
+      <option value="Ciudad">Ciudad / Café / After</option>
+      <option value="Urbano">Look Urbano Prolijo</option>
+      <option value="Verano">Verano / Aire libre</option>
+      <option value="Oficina/Facultad">Oficina / Facultad</option>
+    </select>
+
+    <input type="text" id="searchInput" placeholder="Texto libre (ej: negra, beige, cena)...">
+    <button id="applyBtn">Buscar</button>
+  <div class="footer" style="margin-top:10px; text-align:center; font-size:0.8rem; color:#555;">
+    Conseguí estas combinaciones y más en<br>
+    <a class="cta-link" href="https://" target="_blank"></a>
+  </div>
+
+
+    <div style="width:100%; text-align:center; margin-top:8px; display:flex; flex-direction:column; gap:4px;">
+      <a href="https://wa.me/5491157365177" target="_blank" style="text-decoration:none; color:#000; font-size:1rem;">
+        <span style="font-size:1rem; margin-right:4px;">💬</span> <b><u>WhatsApp Tetelestai</u></b>
+      </a>
+      <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank" style="text-decoration:none; color:#000; font-size:1rem;">
+        <span style="font-size:1rem; margin-right:4px;">📸</span> <b><u>Instagram @tetelestai.indumentaria</u></b>
+      </a>
+    </div>
+
+  </div>
+
+  <p class="tagline">
+    Consejo: elegí la prenda (remera, jogger o bermuda) y después refiná por color u ocasión.
+  </p>
+
+  <section id="results" class="grid"></section>
+
+  <footer class="footer">
+    Conseguí estas combinaciones y más en<br>
+    <a class="cta-link" href="https://" target="_blank"></a>
+  </footer>
+  </div>
+
+  <!-- Pantalla de detalle de beneficios -->
+  <div id="detailView" class="detail hidden">
+    <div class="detail-card">
+      <button id="detailBack" class="detail-back">← Volver</button>
+      <div class="detail-title" id="detailTitle"></div>
+      <p class="detail-summary" id="detailSummary"></p>
+      <div class="detail-subtitle">¿Qué te aporta este outfit?</div>
+
+<ul class="detail-list" id="detailList"></ul>
+
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;">
+
+        <!-- Botón Ver prendas (catálogo WhatsApp) -->
+        <a
+          href="https://wa.me/c/5491157365177"
+          target="_blank"
+          style="
+            display: block;
+            text-align: center;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid #111;
+            color: #111;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+          ">
+          Ver prendas →
+        </a>
+        <p style="font-size: 0.75rem; color: #777; text-align:center; margin: 0;">
+          Catálogo completo en WhatsApp
+        </p>
+
+        <!-- Botón Ver prendas en web -->
+        <a
+          href="https://www.tetelestai.com.ar"
+          target="_blank"
+          style="
+            display: block;
+            text-align: center;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid #111;
+            color: #111;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+          ">
+          Ver prendas en web →
+        </a>
+        <p style="font-size: 0.75rem; color: #777; text-align:center; margin: 0;">
+          Sitio oficial
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./service-worker.js').catch(function(e){console.log(e);});
+  });
+}
+
+const combos = [{"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}];
+
+function normalizarOcasion(oc) {
+  const txt = oc.toLowerCase();
+  if (txt.includes("oficina") || txt.includes("facultad")) return "Oficina/Facultad";
+  if (txt.includes("verano") || txt.includes("aire libre")) return "Verano";
+  if (txt.includes("urbano")) return "Urbano";
+  return "Ciudad";
+}
+
+/* --- LÓGICA DE BENEFICIOS --- */
+function beneficioRemera(color) {
+  switch (color) {
+    case "Negra":
+      return "La remera negra estiliza, aporta presencia y suma una formalidad madura sin exagerar.";
+    case "Blanca":
+      return "La remera blanca aporta limpieza visual, contraste y una sensación de frescura prolija.";
+    case "Gris Melange":
+      return "La remera gris melange suma suavidad y textura discreta, ideal para un look relajado pero prolijo.";
+    case "Arena":
+      return "La remera arena aporta calidez y luz, manteniendo un tono sobrio y fácil de combinar.";
+    case "Gris Topo":
+      return "La remera gris topo genera profundidad y un aire más sofisticado, perfecta para un estilo maduro.";
+    case "Verde":
+      return "La remera verde suma un toque de color sobrio, con personalidad pero sin estridencias.";
+    case "Azul":
+      return "La remera azul aporta un punto de color clásico, asociado a calma, confianza y presencia.";
+    case "Borravino":
+      return "La remera borravino aporta carácter y presencia madura, destacando sin volverse llamativa.";
+    default:
+      return "La remera aporta estructura y protagonismo a la parte superior, marcando el estilo del outfit.";
+  }
+}
+
+function beneficioPantalon(tipo, color) {
+  let baseTipo = "";
+  if (tipo === "Jogger Cargo") {
+    baseTipo = "El jogger cargo suma estructura y un aire urbano prolijo, sin perder comodidad.";
+  } else if (tipo === "Jogger Liso") {
+    baseTipo = "El jogger liso mantiene la línea limpia y prolija, ideal para contextos donde querés verte bien sin rigidez.";
+  } else if (tipo === "Bermuda") {
+    baseTipo = "La bermuda relaja el outfit y lo lleva a un clima de verano y aire libre, manteniendo presencia sin exceso.";
+  } else {
+    baseTipo = "La parte inferior acompaña con comodidad y una línea visual prolija.";
+  }
+
+  let matiz = "";
+  switch (color) {
+    case "Beige Claro":
+    case "Beige":
+      matiz = " El tono beige ilumina el conjunto y aporta calidez, equilibrando la parte superior.";
+      break;
+    case "Negro":
+      matiz = " El negro ancla el look, estiliza la pierna y suma un plus de formalidad.";
+      break;
+    case "Gris":
+      matiz = " El gris equilibra el conjunto y baja el contraste, dejando todo más armónico.";
+      break;
+    case "Verde":
+      matiz = " El verde aporta un toque de color sobrio que acompaña sin recargar.";
+      break;
+    default:
+      matiz = "";
+  }
+  return baseTipo + matiz;
+}
+
+function beneficioConjunto(c) {
+  const ocNorm = normalizarOcasion(c.occasion);
+  let base = "";
+  switch (ocNorm) {
+    case "Oficina/Facultad":
+      base = "El conjunto completa un outfit prolijo y maduro, ideal para oficina o facultad sin perder comodidad.";
+      break;
+    case "Urbano":
+      base = "El resultado es un look urbano prolijo, perfecto para café, paseo o encuentros casuales.";
+      break;
+    case "Verano":
+      base = "El outfit acompaña bien el clima de verano y los momentos al aire libre, manteniendo prolijidad y presencia.";
+      break;
+    case "Ciudad":
+    default:
+      base = "El conjunto funciona muy bien en la ciudad, after o salida relajada, con presencia sin exagerar.";
+      break;
+  }
+
+  let tiempo = "";
+  if (c.time_of_day === "día") {
+    tiempo = " Pensado principalmente para el día, con luz y presencia equilibradas.";
+  } else if (c.time_of_day === "noche") {
+    tiempo = " Funciona especialmente bien de noche, aportando profundidad y presencia madura.";
+  } else {
+    tiempo = " Se adapta tanto de día como de noche, sin desentonar en ninguno de los dos contextos.";
+  }
+
+  return base + tiempo;
+}
+
+function resumenConjunto(c) {
+  return `Remera ${c.top_color} con ${c.bottom_type.toLowerCase()} ${c.bottom_color.toLowerCase()} que equilibra color, presencia y comodidad para un look ${normalizarOcasion(c.occasion).toLowerCase()} con identidad madura.`;
+}
+
+/* --- DOM PRINCIPAL --- */
+const tipoSelect = document.getElementById('tipoSelect');
+const colorSelect = document.getElementById('colorSelect');
+const ocasionSelect = document.getElementById('ocasionSelect');
+const searchInput = document.getElementById('searchInput');
+const applyBtn = document.getElementById('applyBtn');
+const results = document.getElementById('results');
+
+/* DOM detalle */
+const detailView = document.getElementById('detailView');
+const detailBack = document.getElementById('detailBack');
+const detailTitle = document.getElementById('detailTitle');
+const detailSummary = document.getElementById('detailSummary');
+const detailList = document.getElementById('detailList');
+
+function poblarColores() {
+  const tipo = tipoSelect.value;
+  const colores = new Set();
+
+  combos.forEach(c => {
+    if (tipo === 'todos') {
+      colores.add(c.top_color);
+      colores.add(c.bottom_color);
+    } else if (tipo === 'Remera') {
+      colores.add(c.top_color);
+    } else if (tipo === c.bottom_type) {
+      colores.add(c.bottom_color);
+    }
+  });
+
+  colorSelect.innerHTML = '<option value="todos">Color: Todos</option>';
+  Array.from(colores).sort().forEach(col => {
+    const opt = document.createElement('option');
+    opt.value = col;
+    opt.textContent = col;
+    colorSelect.appendChild(opt);
+  });
+}
+
+function render() {
+  const tipo = tipoSelect.value;
+  const color = colorSelect.value;
+  const oc = ocasionSelect.value;
+  const search = searchInput.value.toLowerCase();
+
+  results.innerHTML = '';
+
+  const filtrados = combos.filter(c => {
+    if (tipo !== 'todos') {
+      if (tipo === 'Remera' && c.top_type !== 'Remera') return false;
+      if (tipo !== 'Remera' && c.bottom_type !== tipo) return false;
+    }
+    if (color !== 'todos') {
+      if (tipo === 'todos') {
+        if (c.top_color !== color && c.bottom_color !== color) return false;
+      } else if (tipo === 'Remera') {
+        if (c.top_color !== color) return false;
+      } else {
+        if (c.bottom_color !== color) return false;
+      }
+    }
+    const ocNorm = normalizarOcasion(c.occasion);
+    if (oc !== 'todas' && ocNorm !== oc) return false;
+
+    const texto = (c.top_type + ' ' + c.top_color + ' ' + c.bottom_type + ' ' + c.bottom_color + ' ' + c.footwear + ' ' + c.occasion).toLowerCase();
+    if (search && !texto.includes(search)) return false;
+
+    return true;
+  });
+
+  if (!filtrados.length) {
+    results.innerHTML = '<p style="grid-column:1 / -1; text-align:center; font-size:1.1rem; color:#777;">No hay combinaciones para ese filtro. Probá cambiando la prenda, el color u ocasión.</p>';
+    return;
+  }
+
+  filtrados.forEach(c => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    const indexGlobal = combos.indexOf(c);
+    card.innerHTML = `
+      <div class="card-top">${c.top_type} · ${c.bottom_type}</div>
+      <div class="card-main">Remera ${c.top_color} + ${c.bottom_type} ${c.bottom_color}</div>
+      <div class="card-meta"><b>Calzado recomendado:</b> ${c.footwear}</div>
+      <div class="card-meta"><b>Ocasión:</b> ${c.occasion}</div>
+      <div class="card-meta">${c.time_of_day==="día" ? "Ideal para el día" : (c.time_of_day==="noche" ? "Ideal para la noche" : "Se puede usar tanto de día como de noche")}</div>
+      <div class="chip-row">
+        <span class="chip">${c.top_type}</span>
+        <span class="chip">${c.bottom_type}</span>
+        <span class="chip">${c.top_color}</span>
+        <span class="chip">${c.bottom_color}</span>
+      </div>
+      <button class="benefits-btn" data-index="${indexGlobal}">Ver beneficios del outfit</button>
+    `;
+    results.appendChild(card);
+  });
+}
+
+function abrirDetalle(index) {
+  const c = combos[index];
+  if (!c) return;
+  detailTitle.textContent = `Remera ${c.top_color} + ${c.bottom_type} ${c.bottom_color}`;
+  detailSummary.textContent = resumenConjunto(c);
+
+  const topB = beneficioRemera(c.top_color);
+  const bottomB = beneficioPantalon(c.bottom_type, c.bottom_color);
+  const setB = beneficioConjunto(c);
+
+  detailList.innerHTML = `
+    <li><b>Parte superior:</b> ${topB}</li>
+    <li><b>Parte inferior:</b> ${bottomB}</li>
+    <li><b>Outfit completo:</b> ${setB}</li>
+  `;
+
+  detailView.classList.remove('hidden');
+  window.scrollTo(0, 0);
+}
+
+detailBack.addEventListener('click', () => {
+  detailView.classList.add('hidden');
+});
+
+results.addEventListener('click', (e) => {
+  const btn = e.target.closest('.benefits-btn');
+  if (!btn) return;
+  const idx = Number(btn.getAttribute('data-index'));
+  if (!isNaN(idx)) {
+    abrirDetalle(idx);
+  }
+});
+
+tipoSelect.addEventListener('change', () => { poblarColores(); });
+applyBtn.addEventListener('click', render);
+
+poblarColores();
+render();
+</script>
+<script>function entrarApp(){document.getElementById('welcomeScreen').style.display='none';document.querySelector('.app').style.display='block';window.scrollTo(0,0);}</script>
+
+</body>
+</html>
