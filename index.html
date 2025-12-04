@@ -5,20 +5,7 @@
 <title>Tetelestai Outfit App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111111">
-<meta name="description" content="App de combinaciones de outfits TETELESTAI. Encontrá el outfit ideal según prenda, color y ocasión.">
-
-<!-- PWA -->
 <link rel="manifest" href="manifest.json">
-
-<!-- Apple PWA Meta Tags -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="TTI Outfits">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="icons/icon-192.png">
-
 <style>
   :root {
     --bg: #f1f1f1;
@@ -284,9 +271,157 @@
 .welcome-text{font-size:1.05rem;color:#e0e0e0;margin-bottom:12px;}
 .welcome-contact{margin:8px 0 16px;font-size:0.8rem;color:#c7c7c7;}
 .welcome-contact a{color:#fff;}
-.welcome-cta{width:100%;padding:12px;border-radius:999px;border:none;background:#fff;color:#000;font-weight:600;font-size:1.1rem;cursor:pointer;}
+.welcome-cta{width:100%;padding:10px;border-radius:999px;border:none;background:#fff;color:#000;font-weight:600;font-size:0.95rem;cursor:pointer;margin-top:8px;}
+.welcome-cta:first-of-type{margin-top:0;}
 .welcome-cta:active{opacity:0.9;}
 
+
+  .detail-tools{
+    margin-top: 8px;
+    list-style: none;
+    padding-left: 0;
+  }
+  .detail-tool-btn{
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid #111111;
+    background: #f5f3ec;
+    color: #111111;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .talle-screen{
+    padding: 20px 12px 40px;
+  }
+  .talle-card{
+    max-width: 720px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+    padding: 18px 16px 24px;
+  }
+  .talle-title{
+    text-align: center;
+    font-size: 1.35rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 4px 0 10px;
+  }
+  .talle-intro{
+    font-size: 0.95rem;
+    color: #444444;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .talle-steps{
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+  .talle-graphic-link{
+    display: block;
+    margin-bottom: 14px;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: #111111;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+  .talle-form-group{
+    margin-bottom: 10px;
+  }
+  .talle-form-group label{
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+  .talle-input{
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid #d4d4d4;
+    font-size: 0.9rem;
+  }
+  .talle-btn{
+    width: 100%;
+    padding: 10px;
+    border-radius: 999px;
+    border: none;
+    background: #000000;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .talle-error{
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #f4e9e9;
+    color: #7a0000;
+    font-size: 0.86rem;
+  }
+  .talle-result{
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f7f7f7;
+    font-size: 0.9rem;
+  }
+  .talle-result-main{
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .talle-recom{
+    margin-top: 6px;
+  }
+  .talle-note{
+    font-size: 0.8rem;
+    color: #777777;
+    margin-top: 8px;
+  }
+  .talle-cta-label{
+    margin-top: 10px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .talle-cta{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: none;
+    margin-top: 6px;
+    background: #111111;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .welcome-cta-disabled{
+    opacity: 0.45;
+    cursor: default;
+  }
+  .detail-tool-btn + .detail-tool-btn{
+    margin-top: 6px;
+  }
+  .detail-tool-btn-disabled{
+    opacity: 0.45;
+    cursor: default;
+  }
 </style>
 </head>
 <body>
@@ -306,11 +441,15 @@
         <p>Instagram: <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank">@tetelestai.indumentaria</a></p>
             <p>Web: <a href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a></p>
       </div>
-      <button class="welcome-cta" onclick="entrarApp()">Empezar a armar mi outfit</button>
+      <button class="welcome-cta" onclick="entrarApp()">Descubrir mi outfit ideal</button>
+      <button class="welcome-cta" onclick="irATalleRemera()">Calcular mi talle de remera</button>
+      <button class="welcome-cta" type="button" onclick="irATalleJogger()">Calcular mi talle de jogger</button>
+      <button class="welcome-cta welcome-cta-disabled" type="button">Calcular mi talle de bermudas</button>
     </div>
   </div>
 
-<div class="app">
+<div class="app" id="outfitApp" style="display:none;">
+  <button class="detail-back" onclick="volverInicio()">← Volver</button>
   <header class="hero">
     <div class="pill">TETELESTAI · Outfit Finder</div>
     <h1 class="hero-title">App de combinaciones TETELESTAI</h1>
@@ -347,10 +486,10 @@
     <button id="applyBtn">Buscar</button>
   <div class="footer" style="margin-top:10px; text-align:center; font-size:0.8rem; color:#555;">
     Conseguí estas combinaciones y más en<br>
-    <a class="cta-link" href="https://" target="_blank"></a>
+    <a class="cta-link" href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a>
   </div>
 
-
+  
     <div style="width:100%; text-align:center; margin-top:8px; display:flex; flex-direction:column; gap:4px;">
       <a href="https://wa.me/5491157365177" target="_blank" style="text-decoration:none; color:#000; font-size:1rem;">
         <span style="font-size:1rem; margin-right:4px;">💬</span> <b><u>WhatsApp Tetelestai</u></b>
@@ -368,28 +507,160 @@
 
   <section id="results" class="grid"></section>
 
+
   <footer class="footer">
     Conseguí estas combinaciones y más en<br>
-    <a class="cta-link" href="https://" target="_blank"></a>
+    <a class="cta-link" href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a>
   </footer>
   </div>
 
-  <!-- Pantalla de detalle de beneficios -->
+  <!-- Pantalla saber mi talle de remera -->
+  <div id="talleRemeraScreen" class="talle-screen" style="display:none;">
+    <div class="talle-card">
+      <button class="detail-back" onclick="volverInicio()">← Volver</button>
+      
+<div style="background:#000;color:#fff;border-radius:18px;padding:18px 14px;margin-bottom:16px;text-align:center;">
+  <h2 style="margin:0;font-size:1.4rem;letter-spacing:0.08em;">TETELESTAI</h2>
+  <p style="margin-top:8px;font-size:1rem;line-height:1.4;font-weight:500;">
+    Nuestras remeras clásicas tienen un corte exclusivo.<br>
+    No son rectas ni slim fit. Están en un punto intermedio que brinda<br>
+    comodidad, estética y una presencia limpia.
+  </p>
+</div>
+<h2 class="talle-title">Calcular mi talle</h2>
+      
+
+
+      <div class="talle-steps">
+        <p><strong>1.</strong> Usá una remera que ya te quede bien.</p>
+        <p><strong>2.</strong> Medí el <strong>ancho</strong> de axila a axila.</p>
+        <p><strong>3.</strong> Medí el <strong>largo</strong> total de la prenda.</p>
+        <p><strong>4.</strong> Colocá tu ancho abajo y tocá “Calcular mi talle”.</p>
+      </div>
+      <a class="talle-graphic-link" href="https://wa.me/p/25087126790908111/5491157365177" target="_blank">
+        ¿Dudas con los puntos a medir? Hacé click para ver el gráfico.
+      </a>
+      <div class="talle-form-group">
+        <label for="anchoInput">Ancho (cm)</label>
+        <input type="number" id="anchoInput" class="talle-input" placeholder="Ej: 54" min="40" max="80" step="0.1">
+      </div>
+      <div class="talle-form-group">
+        <label for="largoInput">Largo (cm) (opcional)</label>
+        <input type="number" id="largoInput" class="talle-input" placeholder="Ej: 74" min="50" max="100" step="0.1">
+      </div>
+      <button id="btnCalcularTalle" class="talle-btn" type="button">Calcular mi talle de remera</button>
+      <div id="talleError" class="talle-error" style="display:none;">
+        No hay talles disponibles para esas medidas. Probá volver a medir o escribinos y te asesoramos al estilo TETELESTAI.
+      </div>
+      <div id="talleResultado" class="talle-result" style="display:none;">
+        <p class="talle-result-main">
+          Talle sugerido: <strong id="talleSugerido"></strong>
+        </p>
+        <p id="talleTexto"></p>
+        <p id="talleRecom" class="talle-recom"></p>
+        <p class="talle-note">
+          Nuestras remeras son <strong>100% algodón</strong>, por eso pueden reducir levemente (~1 cm) luego del primer lavado.
+        </p>
+        <p class="talle-cta-label">Conseguila en:</p>
+        <a class="talle-cta" href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a>
+        <a class="talle-cta" href="https://wa.me/5491157365177" target="_blank">WhatsApp Tetelestai</a>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Pantalla saber mi talle de jogger -->
+  <div id="talleJoggerScreen" class="talle-screen" style="display:none;">
+    <div class="talle-card">
+      <button class="detail-back" onclick="volverInicio()">← Volver</button>
+
+      <div style="background:#000;color:#fff;border-radius:18px;padding:18px 14px;margin-bottom:16px;text-align:center;">
+        <h2 style="margin:0;font-size:1.4rem;letter-spacing:0.08em;">TETELESTAI</h2>
+        <p style="margin-top:8px;font-size:1rem;line-height:1.4;font-weight:500;">
+          Nuestros joggers lisos y cargos están hechos en gabardina de 12 hilos de alta calidad.<br>
+          Buscamos un calce equilibrado: cómodos, prolijos y con presencia en cualquier contexto.
+        </p>
+      </div>
+
+      <h2 class="talle-title">Calcular mi talle de jogger</h2>
+
+      <div class="talle-steps">
+        <p><strong>1. Cintura</strong><br>
+          Apoyá el jogger sobre una mesa, bien estirado y sin arrugas. Medí la cintura de un extremo al otro,
+          sin estirar el elástico. Nosotros multiplicamos esa medida ×2 para calcular el contorno real.
+          <span style="display:block;font-size:0.75rem;color:#777;margin-top:4px;">
+            ¿No tenés un jogger? Usá un jean que te quede bien y medí la cintura de la misma forma.
+          </span>
+        </p>
+        <p><strong>2. Tiro</strong><br>
+          Con el pantalón apoyado, medí desde la unión de las costuras de la entrepierna hasta el borde superior
+          de la cintura. Esta medida ayuda a chequear que el tiro te resulte cómodo al sentarte y moverte.
+        </p>
+        <p><strong>3. Largo</strong><br>
+          Extendé el jogger completo. Medí desde la parte superior de la cintura hasta la botamanga.
+          Si tiene puño, medí hasta el final del puño.
+        </p>
+      </div>
+
+      <div class="talle-form">
+        <div class="talle-input-group">
+          <label for="cinturaJoggerInput">Cintura (cm en plano)</label>
+          <input type="number" id="cinturaJoggerInput" class="talle-input" placeholder="Ej: 46" min="30" max="80" step="0.1">
+        </div>
+        <div class="talle-input-group">
+          <label for="tiroJoggerInput">Tiro (cm)</label>
+          <input type="number" id="tiroJoggerInput" class="talle-input" placeholder="Ej: 29.5" min="20" max="40" step="0.1">
+        </div>
+        <div class="talle-input-group">
+          <label for="largoJoggerInput">Largo (cm)</label>
+          <input type="number" id="largoJoggerInput" class="talle-input" placeholder="Ej: 102" min="80" max="120" step="0.1">
+        </div>
+
+        <button id="btnCalcularTalleJogger" class="talle-btn" type="button">Calcular mi talle de jogger</button>
+        <button id="btnLimpiarTalleJogger" class="talle-btn" type="button" style="background:#f0f0f0;color:#111;margin-top:6px;">
+          Borrar datos
+        </button>
+        <button type="button" class="talle-btn" style="background:#e0e0e0;color:#111;margin-top:6px;"
+          onclick="window.scrollTo({top:0, behavior:'smooth'})">
+          Volver arriba
+        </button>
+
+        <div id="talleJoggerError" class="talle-error" style="display:none;">
+          No hay talles disponibles para esas medidas. Probá volver a medir o escribinos y te asesoramos al estilo TETELESTAI.
+        </div>
+
+        <div id="talleJoggerResultado" class="talle-result" style="display:none;">
+          <p class="talle-result-main">
+            Talle sugerido: <strong id="talleJoggerSugerido"></strong>
+          </p>
+          <p id="talleJoggerTexto"></p>
+          <p id="talleJoggerRecom" class="talle-recom"></p>
+          <p class="talle-cta-label">Conseguí tu jogger en:</p>
+          <a class="talle-cta" href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a>
+          <a class="talle-cta" href="https://wa.me/5491157365177" target="_blank">WhatsApp Tetelestai</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Pantalla de detalle de beneficios -->
   <div id="detailView" class="detail hidden">
     <div class="detail-card">
       <button id="detailBack" class="detail-back">← Volver</button>
       <div class="detail-title" id="detailTitle"></div>
       <p class="detail-summary" id="detailSummary"></p>
       <div class="detail-subtitle">¿Qué te aporta este outfit?</div>
-
+      
 <ul class="detail-list" id="detailList"></ul>
+
+
 
       <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;">
 
         <!-- Botón Ver prendas (catálogo WhatsApp) -->
-        <a
-          href="https://wa.me/c/5491157365177"
-          target="_blank"
+        <a 
+          href="https://wa.me/c/5491157365177" 
+          target="_blank" 
           style="
             display: block;
             text-align: center;
@@ -408,9 +679,9 @@
         </p>
 
         <!-- Botón Ver prendas en web -->
-        <a
-          href="https://www.tetelestai.com.ar"
-          target="_blank"
+        <a 
+          href="https://www.tetelestai.com.ar" 
+          target="_blank" 
           style="
             display: block;
             text-align: center;
@@ -433,13 +704,31 @@
   </div>
 
 <script>
+function irATalleJogger(){
+  const welcome = document.getElementById('welcomeScreen');
+  const app = document.getElementById('outfitApp');
+  const remera = document.getElementById('talleRemeraScreen');
+  const jogger = document.getElementById('talleJoggerScreen');
+  if (welcome) welcome.style.display = 'none';
+  if (app) app.style.display = 'none';
+  if (remera) remera.style.display = 'none';
+  if (jogger) jogger.style.display = 'block';
+  const dv = document.getElementById('detailView');
+  if (dv){
+    dv.classList.add('hidden');
+    dv.style.display = '';
+  }
+  window.scrollTo(0,0);
+}
+
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('./service-worker.js').catch(function(e){console.log(e);});
   });
 }
 
-const combos = [{"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Blanca", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "día"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Melange", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Arena", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Gris Topo", "bottom_type": "Bermuda", "bottom_color": "Verde", "footwear": "Náuticos color marrón claro, alpargatas crudo o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Verde", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Azul", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Cargo", "bottom_color": "Negro", "footwear": "Zapatillas blancas simples o mocasines color cuero negro mate", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Jogger Liso", "bottom_color": "Negro", "footwear": "Sneakers blancas simples o botines de cuero negro (tipo chukka)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Borravino", "bottom_type": "Bermuda", "bottom_color": "Negro", "footwear": "Náuticos marrón suela beige, alpargatas beige o sandalias de cuero negro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Negro", "time_of_day": "noche"}];
+const combos = [{"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Beige Claro", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro (suela beige)", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Verde", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón claro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Cargo", "bottom_color": "Gris", "footwear": "Zapatillas blancas simples o mocasines color cuero marrón oscuro", "occasion": "Tarde en la ciudad, after office, salida relajada", "footwear_color": "Blanco / Cuero Chocolate", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Liso", "bottom_color": "Beige", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka, suela beige)", "occasion": "Oficina o facultad, reuniones informales", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Jogger Liso", "bottom_color": "Verde", "footwear": "Sneakers blanco crema o botines de cuero marrón claro (tipo chukka)", "occasion": "Look urbano prolijo, café, paseo", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "noche"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Bermuda", "bottom_color": "Beige", "footwear": "Náuticos color suela beige, alpargatas beige o sandalias de cuero marrón claro", "occasion": "Día de verano, aire libre, reunión informal", "footwear_color": "Blanco / Cuero Habano", "time_of_day": "ambos"}, {"top_type": "Remera", "top_color": "Negra", "bottom_type": "Bermuda", "bottom_color":... [truncated]
 
 function normalizarOcasion(oc) {
   const txt = oc.toLowerCase();
@@ -652,9 +941,17 @@ function abrirDetalle(index) {
     <li><b>Parte superior:</b> ${topB}</li>
     <li><b>Parte inferior:</b> ${bottomB}</li>
     <li><b>Outfit completo:</b> ${setB}</li>
+    <li class="detail-tools">
+      <button class="detail-tool-btn" type="button" onclick="irATalleRemera()">Ver mi talle de remera</button>
+      <button class="detail-tool-btn" type="button" onclick="irATalleJogger()">Calcular mi talle de jogger</button>
+      <button class="detail-tool-btn detail-tool-btn-disabled" type="button">Calcular mi talle de bermudas</button>
+    </li>
   `;
 
-  detailView.classList.remove('hidden');
+  if(detailView){
+    detailView.classList.remove('hidden');
+    detailView.style.display = '';
+  }
   window.scrollTo(0, 0);
 }
 
@@ -677,7 +974,191 @@ applyBtn.addEventListener('click', render);
 poblarColores();
 render();
 </script>
-<script>function entrarApp(){document.getElementById('welcomeScreen').style.display='none';document.querySelector('.app').style.display='block';window.scrollTo(0,0);}</script>
+
+<script>
+function mostrarWelcome(){
+  document.getElementById('welcomeScreen').style.display = 'flex';
+  document.getElementById('outfitApp').style.display = 'none';
+  document.getElementById('talleRemeraScreen').style.display = 'none';
+  window.scrollTo(0,0);
+}
+function entrarApp(){
+  document.getElementById('welcomeScreen').style.display = 'none';
+  document.getElementById('outfitApp').style.display = 'block';
+  document.getElementById('talleRemeraScreen').style.display = 'none';
+  window.scrollTo(0,0);
+}
+function irATalleRemera(){
+  var welcome = document.getElementById('welcomeScreen');
+  var app = document.getElementById('outfitApp');
+  var talle = document.getElementById('talleRemeraScreen');
+  if(welcome) welcome.style.display = 'none';
+  if(app) app.style.display = 'none';
+  if(talle) talle.style.display = 'block';
+  var dv = document.getElementById('detailView');
+  if(dv){
+    dv.classList.add('hidden');
+    dv.style.display = '';
+  }
+  window.scrollTo(0,0);
+}
+function volverInicio(){
+  mostrarWelcome();
+}
+
+// Lógica de talle para remeras (M a XXL)
+function sugerirTalleRemera(ancho){
+  if(ancho < 47) return "OUT";
+  if(ancho > 62) return "OUT";
+  if(ancho <= 52.5) return "M";
+  if(ancho <= 55) return "L";
+  if(ancho <= 58) return "XL";
+  return "XXL";
+}
+var ordenTallesRemera = ["M","L","XL","XXL"];
+function vecinoMenosRemera(t){
+  var i = ordenTallesRemera.indexOf(t);
+  return i>0 ? ordenTallesRemera[i-1] : t;
+}
+function vecinoMasRemera(t){
+  var i = ordenTallesRemera.indexOf(t);
+  return i<ordenTallesRemera.length-1 ? ordenTallesRemera[i+1] : t;
+}
+
+(function(){
+  var btn = document.getElementById('btnCalcularTalle');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var ancho = parseFloat(document.getElementById('anchoInput').value);
+    var errorBox = document.getElementById('talleError');
+    var resBox = document.getElementById('talleResultado');
+    errorBox.style.display = 'none';
+    resBox.style.display = 'none';
+    if(isNaN(ancho)){
+      alert('Ingresá el ancho en centímetros.');
+      return;
+    }
+    var t = sugerirTalleRemera(ancho);
+    if(t === "OUT"){
+      errorBox.style.display = 'block';
+      return;
+    }
+    var tMenos = vecinoMenosRemera(t);
+    var tMas = vecinoMasRemera(t);
+    document.getElementById('talleSugerido').innerText = t;
+    document.getElementById('talleTexto').innerText =
+      'Corte medio clásico: comodidad, presencia limpia y un calce prolijo para todos los días.';
+    var recom = '';
+    if(tMenos !== t) recom += 'Si te gusta más entallado: ' + tMenos + '. ';
+    if(tMas !== t)  recom += 'Si preferís más suelto: ' + tMas + '.';
+    document.getElementById('talleRecom').innerText = recom;
+    resBox.style.display = 'block';
+  });
+})();
+
+// --- Lógica de talles para joggers ---
+(function(){
+  const tallesJogger = [
+    { talle: "42", cinturaMin: 86, cinturaMax: 93, tiro: 28.5, largo: 98 },
+    { talle: "44", cinturaMin: 90, cinturaMax: 97, tiro: 29.0, largo: 101 },
+    { talle: "46", cinturaMin: 94, cinturaMax: 101, tiro: 29.5, largo: 102 },
+    { talle: "48", cinturaMin: 98, cinturaMax: 105, tiro: 30.0, largo: 104 },
+    { talle: "50", cinturaMin: 102, cinturaMax: 109, tiro: 30.5, largo: 106 }
+  ];
+
+  const cinturaInput = document.getElementById("cinturaJoggerInput");
+  const tiroInput = document.getElementById("tiroJoggerInput");
+  const largoInput = document.getElementById("largoJoggerInput");
+  const btnCalcular = document.getElementById("btnCalcularTalleJogger");
+  const btnLimpiar = document.getElementById("btnLimpiarTalleJogger");
+  const errorBox = document.getElementById("talleJoggerError");
+  const resultBox = document.getElementById("talleJoggerResultado");
+  const resultMain = document.getElementById("talleJoggerSugerido");
+  const resultTexto = document.getElementById("talleJoggerTexto");
+  const resultRecom = document.getElementById("talleJoggerRecom");
+
+  if(!cinturaInput || !btnCalcular) return;
+
+  function limpiarJogger(){
+    errorBox.style.display = "none";
+    resultBox.style.display = "none";
+    resultMain.textContent = "";
+    resultTexto.textContent = "";
+    resultRecom.textContent = "";
+  }
+
+  btnLimpiar.addEventListener("click", function(){
+    cinturaInput.value = "";
+    tiroInput.value = "";
+    largoInput.value = "";
+    limpiarJogger();
+  });
+
+  btnCalcular.addEventListener("click", function(){
+    limpiarJogger();
+
+    const cStr = (cinturaInput.value || "").replace(",", ".");
+    const cPlano = parseFloat(cStr);
+
+    if (isNaN(cPlano)){
+      errorBox.style.display = "block";
+      errorBox.textContent = "Falta la medida de cintura. Ingresá la cintura medida de lado a lado sobre la mesa.";
+      return;
+    }
+
+    const cinturaTotal = cPlano * 2;
+    const globalMin = tallesJogger[0].cinturaMin;
+    const globalMax = tallesJogger[tallesJogger.length - 1].cinturaMax;
+
+    if (cinturaTotal < globalMin || cinturaTotal > globalMax){
+      errorBox.style.display = "block";
+      errorBox.textContent =
+        "La medida de cintura que cargaste (" + cinturaTotal.toFixed(1) +
+        " cm de contorno) queda fuera de las medidas que trabajamos en este modelo. " +
+        "No pasa nada, escribinos por WhatsApp y te ayudamos a encontrar el calce ideal.";
+      return;
+    }
+
+    // Buscar talle base
+    let talleBase = tallesJogger[0];
+    for (const t of tallesJogger){
+      if (cinturaTotal >= t.cinturaMin && cinturaTotal <= t.cinturaMax){
+        talleBase = t;
+        break;
+      }
+    }
+
+    resultMain.textContent = talleBase.talle;
+
+    const tiroTxt = tiroInput.value ? "Tiro cargado: " + tiroInput.value + " cm. " : "";
+    const largoTxt = largoInput.value ? "Largo cargado: " + largoInput.value + " cm. " : "";
+
+    resultTexto.innerHTML =
+      "Según la medida de cintura que ingresaste (" + cPlano.toFixed(1) +
+      " cm en plano, ≈ " + cinturaTotal.toFixed(1) + " cm de contorno), " +
+      "el talle recomendado para este jogger es el <strong>" + talleBase.talle + "</strong>.<br><br>" +
+      "Buscamos un calce equilibrado: que se vea prolijo, sin ser chupín ni demasiado ancho. " +
+      (tiroTxt || largoTxt ? ("<br><br>" + tiroTxt + largoTxt) : "");
+
+    // Sugerencia de más ajustado / más suelto
+    const idxBase = tallesJogger.findIndex(t => t.talle === talleBase.talle);
+    let recomendacion = "";
+
+    if (idxBase > 0){
+      recomendacion += "Si preferís un calce más ajustado, podrías probar también el talle " +
+        tallesJogger[idxBase - 1].talle + ". ";
+    }
+    if (idxBase < tallesJogger.length - 1){
+      recomendacion += "Si lo querés un poco más suelto, el talle " +
+        tallesJogger[idxBase + 1].talle + " te va a dar más espacio sin perder prolijidad.";
+    }
+
+    resultRecom.textContent = recomendacion;
+    resultBox.style.display = "block";
+  });
+})();
+
+</script>
 
 </body>
 </html>
