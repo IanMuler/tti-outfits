@@ -17,12 +17,12 @@
 
   <div id="welcomeScreen" class="welcome">
     <div class="welcome-card">
-      <h1 class="welcome-title">TETELESTAI INDUMENTARIA</h1>
+      <h1 class="welcome-title">TETELESTAI</h1>
       <p class="welcome-sub">
-        Para hombres con propósito, que se visten con valores, respeto y autenticidad en cada elección.
+        Para hombres con propósito y valores, que eligen vestirse simple, prolijos y con identidad propia todos los días.
       </p>
       <p class="welcome-text">
-        Esta app está pensada para ayudarte a elegir combinaciones equilibradas, prolijas y verdaderamente fáciles de usar. Elegís prenda, color y ocasión, y nosotros te mostramos el outfit ideal.
+        Una herramienta simple para resolver dos cosas: qué ponerte y cómo combinarlo. Vos elegís lo que te representa; nosotros ordenamos el outfit.
       </p>
       <div class="welcome-contact">
         <p><strong>Contacto</strong></p>
@@ -33,7 +33,7 @@
       <button class="welcome-cta" onclick="entrarApp()">Descubrir mi outfit ideal</button>
       <button class="welcome-cta" onclick="irATalleRemera()">Calcular mi talle de remera</button>
       <button class="welcome-cta" type="button" onclick="irATalleJogger()">Calcular mi talle de jogger</button>
-      <button class="welcome-cta welcome-cta-disabled" type="button">Calcular mi talle de bermudas</button>
+      <button class="welcome-cta" type="button" onclick="irATalleBermuda()">Calcular mi talle de bermuda</button>
     </div>
   </div>
 
@@ -41,9 +41,9 @@
   <button class="detail-back" onclick="volverInicio()">← Volver</button>
   <header class="hero">
     <div class="pill">TETELESTAI · Outfit Finder</div>
-    <h1 class="hero-title">App de combinaciones TETELESTAI</h1>
+    <h1 class="hero-title">Outfits TETELESTAI</h1>
     <p class="hero-sub">
-      Buscá por prenda, color u ocasión y encontrá combinaciones pensadas en estilo old money.
+      Elegí prenda, color y ocasión. Nosotros nos ocupamos del outfit.
     </p>
     <p class="slogan">
       Enfocate en lo esencial, nosotros en que te veas bien.
@@ -64,47 +64,47 @@
     </select>
 
     <select id="ocasionSelect">
-      <option value="todas">Ocasión: Todas</option>
-      <option value="Ciudad">Ciudad / Café / After</option>
-      <option value="Urbano">Look Urbano Prolijo</option>
-      <option value="Verano">Verano / Aire libre</option>
-      <option value="Oficina/Facultad">Oficina / Facultad</option>
+      <option value="todas">Todas</option>
+      <option value="dia">Día</option>
+      <option value="noche">Noche</option>
+      <option value="ciudad">Ciudad</option>
+      <option value="airelibre">Aire libre</option>
+      <option value="oficina">Oficina / Facultad</option>
+      <option value="diaynoche">Día y noche</option>
     </select>
 
-    <input type="text" id="searchInput" placeholder="Texto libre (ej: negra, beige, cena)...">
-    <button id="applyBtn">Buscar</button>
+    <input type="text" id="searchInput" placeholder="Ej: verde, finde, cena...">
+    <button id="applyBtn" style="font-weight:600">Ver opciones</button>
 
     <div class="footer" style="margin-top:10px; text-align:center; font-size:0.8rem; color:#555;">
-      Conseguí estas combinaciones y más en<br>
-      <a class="cta-link" href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a>
     </div>
 
     <div style="width:100%; text-align:center; margin-top:8px; display:flex; flex-direction:column; gap:4px;">
-      <a href="https://wa.me/5491157365177" target="_blank" style="text-decoration:none; color:#000; font-size:1rem;">
-        <span style="font-size:1rem; margin-right:4px;">💬</span> <b><u>WhatsApp Tetelestai</u></b>
+      <a href="https://wa.me/5491157365177" target="_blank" style="text-decoration:none; color:#000; font-size:1rem; font-weight:600">
+        <span style="font-size:1rem; margin-right:4px;">💬</span> <b><u>WhatsApp TETELESTAI</u></b>
       </a>
-      <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank" style="text-decoration:none; color:#000; font-size:1rem;">
+      <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank" style="text-decoration:none; color:#000; font-size:1rem; font-weight:600">
         <span style="font-size:1rem; margin-right:4px;">📸</span> <b><u>Instagram @tetelestai.indumentaria</u></b>
       </a>
     </div>
   </div>
 
   <p class="tagline">
-    Consejo: elegí la prenda (remera, jogger o bermuda) y después refiná por color u ocasión.
+    Primero elegís la prenda. Después afinás por color u ocasión.
   </p>
 
   <section id="results" class="grid"></section>
 
   <footer class="footer">
-    Conseguí estas combinaciones y más en<br>
-    <a class="cta-link" href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a>
+    Encontrá estas combinaciones y más en<br>
+    <a class="cta-link" href="https://www.tetelestai.com.ar" style="font-weight:600" target="_blank">www.tetelestai.com.ar</a>
   </footer>
 </div>
 
 <!-- Pantalla saber mi talle de remera -->
 <div id="talleRemeraScreen" class="talle-screen" style="display:none;">
   <div class="talle-card">
-    <button class="detail-back" onclick="volverInicio()">← Volver</button>
+    <button class="detail-back" onclick="volverDesdeTalle()">← Volver</button>
 
     <div style="background:#000;color:#fff;border-radius:18px;padding:18px 14px;margin-bottom:16px;text-align:center;">
       <h2 style="margin:0;font-size:1.4rem;letter-spacing:0.08em;">TETELESTAI</h2>
@@ -114,7 +114,7 @@
         comodidad, estética y una presencia limpia.
       </p>
     </div>
-    <h2 class="talle-title">Calcular mi talle</h2>
+    <h2 class="talle-title">Calcular mi talle de remera</h2>
 
     <div class="talle-steps">
       <p><strong>1.</strong> Usá una remera que ya te quede bien.</p>
@@ -130,12 +130,12 @@
       <input type="number" id="anchoInput" class="talle-input" placeholder="Ej: 54" min="40" max="80" step="0.1">
     </div>
     <div class="talle-form-group">
-      <label for="largoInput">Largo (cm) (opcional)</label>
+      <label for="largoInput">Largo (cm)</label>
       <input type="number" id="largoInput" class="talle-input" placeholder="Ej: 74" min="50" max="100" step="0.1">
     </div>
     <button id="btnCalcularTalle" class="talle-btn" type="button">Calcular mi talle de remera</button>
     <div id="talleError" class="talle-error" style="display:none;">
-      No hay talles disponibles para esas medidas. Probá volver a medir o escribinos y te asesoramos al estilo TETELESTAI.
+      No contamos con un talle ideal para esas medidas. Escribinos y te asesoramos.
     </div>
     <div id="talleResultado" class="talle-result" style="display:none;">
       <p class="talle-result-main">
@@ -146,9 +146,9 @@
       <p class="talle-note">
         Nuestras remeras son <strong>100% algodón</strong>, por eso pueden reducir levemente (~1 cm) luego del primer lavado.
       </p>
-      <p class="talle-cta-label">Conseguila en:</p>
-      <a class="talle-cta" href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a>
-      <a class="talle-cta" href="https://wa.me/5491157365177" target="_blank">WhatsApp Tetelestai</a>
+      <p class="talle-cta-label">Conseguí tu remera en:</p>
+      <a class="talle-cta" href="https://www.tetelestai.com.ar" style="font-weight:600" target="_blank">www.tetelestai.com.ar</a>
+      <a class="talle-cta" href="https://wa.me/5491157365177" style="font-weight:600" target="_blank">WhatsApp TETELESTAI</a>
     </div>
   </div>
 </div>
@@ -156,7 +156,7 @@
 <!-- Pantalla saber mi talle de jogger -->
 <div id="talleJoggerScreen" class="talle-screen" style="display:none;">
   <div class="talle-card">
-    <button class="detail-back" onclick="volverInicio()">← Volver</button>
+    <button class="detail-back" onclick="volverDesdeTalle()">← Volver</button>
 
     <div style="background:#000;color:#fff;border-radius:18px;padding:18px 14px;margin-bottom:16px;text-align:center;">
       <h2 style="margin:0;font-size:1.4rem;letter-spacing:0.08em;">TETELESTAI</h2>
@@ -186,6 +186,10 @@
       </p>
     </div>
 
+    <button class="talle-btn" onclick="window.open('https://wa.me/p/25488386634088462/5491157365177','_blank')" type="button" style="margin-bottom:12px;">
+      Ver gráfico de puntos a medir
+    </button>
+
     <div class="talle-form">
       <div class="talle-input-group">
         <label for="cinturaJoggerInput">Cintura (cm en plano)</label>
@@ -200,17 +204,17 @@
         <input type="number" id="largoJoggerInput" class="talle-input" placeholder="Ej: 102" min="80" max="120" step="0.1">
       </div>
 
-      <button id="btnCalcularTalleJogger" class="talle-btn" type="button">Calcular mi talle de jogger</button>
-      <button id="btnLimpiarTalleJogger" class="talle-btn" type="button" style="background:#f0f0f0;color:#111;margin-top:6px;">
+      <button id="btnCalcularTalleJogger" class="talle-btn" type="button" style="margin-top:8px;margin-bottom:8px;font-weight:600;">Calcular mi talle de jogger</button>
+      <button id="btnLimpiarTalleJogger" class="talle-btn" type="button" style="margin-top:8px;margin-bottom:8px;font-weight:600;">
         Borrar datos
       </button>
-      <button type="button" class="talle-btn" style="background:#e0e0e0;color:#111;margin-top:6px;"
+      <button type="button" class="talle-btn" style="margin-top:8px;margin-bottom:8px;font-weight:600;"
         onclick="window.scrollTo({top:0, behavior:'smooth'})">
         Volver arriba
       </button>
 
       <div id="talleJoggerError" class="talle-error" style="display:none;">
-        No hay talles disponibles para esas medidas. Probá volver a medir o escribinos y te asesoramos al estilo TETELESTAI.
+        No contamos con un talle ideal para esas medidas. Escribinos y te asesoramos.
       </div>
 
       <div id="talleJoggerResultado" class="talle-result" style="display:none;">
@@ -220,8 +224,88 @@
         <p id="talleJoggerTexto"></p>
         <p id="talleJoggerRecom" class="talle-recom"></p>
         <p class="talle-cta-label">Conseguí tu jogger en:</p>
-        <a class="talle-cta" href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a>
-        <a class="talle-cta" href="https://wa.me/5491157365177" target="_blank">WhatsApp Tetelestai</a>
+        <a class="talle-cta" href="https://www.tetelestai.com.ar" style="font-weight:600" target="_blank">www.tetelestai.com.ar</a>
+        <a class="talle-cta" href="https://wa.me/5491157365177" style="font-weight:600" target="_blank">WhatsApp TETELESTAI</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pantalla saber mi talle de bermuda -->
+<div id="talleBermudaScreen" class="talle-screen" style="display:none;">
+  <div class="talle-card">
+    <button class="detail-back" onclick="volverDesdeTalle()">← Volver</button>
+
+    <div style="background:#000;color:#fff;border-radius:18px;padding:18px 14px;margin-bottom:16px;text-align:center;">
+      <h2 style="margin:0;font-size:1.4rem;letter-spacing:0.08em;">TETELESTAI</h2>
+      <p style="margin-top:8px;font-size:1rem;line-height:1.4;font-weight:500;">
+        Nuestras bermudas corte chino están hechas en gabardina premium de 12 hilos, sin elástico,
+        con pasacinto, botón y cierre. Buscamos un calce adulto, prolijo y cómodo para todos los días.
+      </p>
+    </div>
+
+    <h2 class="talle-title">Calcular mi talle de bermuda</h2>
+
+    <div class="talle-steps">
+      <p><strong>1. Cintura</strong><br>
+        Apoyá la bermuda abotonada sobre una superficie plana. Medí la cintura de un extremo al otro (solo el frente), sin estirar la tela.
+        Nosotros multiplicamos esa medida ×2 para calcular el contorno real de cintura.
+        <span style="display:block;font-size:0.75rem;color:#777;margin-top:4px;">
+          A diferencia del jogger, esta cintura es rígida: sin elástico, con pasacinto, botón y cierre. Por eso es clave medirla con calma, sin forzar la tela.
+        </span>
+      </p>
+      <p><strong>2. Tiro</strong><br>
+        Medí desde el borde superior de la cintura hasta el cruce de costuras de la entrepierna (donde se encuentran las costuras del frente y la espalda).
+      </p>
+      <p><strong>3. Largo</strong><br>
+        Medí desde el borde superior de la cintura hasta el final de la botamanga. Esto te ayuda a definir si la querés más arriba de la rodilla, a la altura o un poco más abajo.
+      </p>
+      <p style="font-size:0.8rem;color:#777;">
+        Si querés ir directo al punto, la cintura manda. Tiro y largo sirven para ajustar el calce según cuánto te gusta que quede arriba o abajo de la rodilla.
+      </p>
+    </div>
+
+    <button class="talle-btn" id="guiaBtnBermuda" type="button" style="margin-bottom:12px;">
+      Ver guía rápida de medición
+    </button>
+
+    <div class="talle-form">
+      <div class="talle-input-group">
+        <label for="cinturaBermudaInput">Cintura (cm en plano)</label>
+        <input type="number" id="cinturaBermudaInput" class="talle-input" placeholder="Ej: 44 (referencia talle 44)" min="35" max="65" step="0.5">
+      </div>
+      <div class="talle-input-group">
+        <label for="tiroBermudaInput">Tiro (cm)</label>
+        <input type="number" id="tiroBermudaInput" class="talle-input" placeholder="Ej: 28 (tiro clásico adulto)" min="20" max="40" step="0.5">
+      </div>
+      <div class="talle-input-group">
+        <label for="largoBermudaInput">Largo (cm)</label>
+        <input type="number" id="largoBermudaInput" class="talle-input" placeholder="Ej: 47 (largo estándar TETELESTAI)" min="35" max="70" step="0.5">
+      </div>
+
+      <button id="btnCalcularTalleBermuda" class="talle-btn" type="button" style="margin-top:12px;font-weight:600;">Calcular mi talle de bermuda</button>
+      <button id="btnLimpiarTalleBermuda" class="talle-btn" type="button" style="margin-top:8px;font-weight:600;">
+        Borrar datos
+      </button>
+      <button type="button" class="talle-btn" style="margin-top:8px;font-weight:600;"
+        onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        Volver arriba
+      </button>
+
+      <div id="talleBermudaError" class="talle-error" style="display:none;"></div>
+
+      <div class="talle-result" style="margin-top:14px;">
+        <p class="talle-result-main" id="talleBermudaResultado">Esperando tus medidas</p>
+        <p id="talleBermudaMensaje">
+          Calculamos tu talle en función de la cintura y del calce real de nuestras bermudas.
+        </p>
+        <p class="talle-note" id="talleBermudaDetalle">
+          Nuestras bermudas corte chino están pensadas para un calce limpio y cómodo,
+          sin quedar ni demasiado sueltas ni apretadas.
+        </p>
+        <p class="talle-cta-label">Conseguí tu bermuda en:</p>
+        <a class="talle-cta" href="https://www.tetelestai.com.ar" style="font-weight:600;" target="_blank">www.tetelestai.com.ar</a>
+        <a class="talle-cta" href="https://wa.me/5491157365177" style="font-weight:600;" target="_blank">WhatsApp TETELESTAI</a>
       </div>
     </div>
   </div>
@@ -233,12 +317,11 @@
     <button id="detailBack" class="detail-back">← Volver</button>
     <div class="detail-title" id="detailTitle"></div>
     <p class="detail-summary" id="detailSummary"></p>
-    <div class="detail-subtitle">¿Qué te aporta este outfit?</div>
+    <div class="detail-subtitle">Lo que te ofrece este outfit</div>
 
     <ul class="detail-list" id="detailList"></ul>
 
     <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;">
-      <!-- Botón Ver prendas (catálogo WhatsApp) -->
       <a
         href="https://wa.me/c/5491157365177"
         target="_blank"
@@ -253,13 +336,12 @@
           font-size: 0.9rem;
           font-weight: 600;
         ">
-        Ver prendas →
+        Ver prendas
       </a>
       <p style="font-size: 0.75rem; color: #777; text-align:center; margin: 0;">
-        Catálogo completo en WhatsApp
+        Catálogo en WhatsApp
       </p>
 
-      <!-- Botón Ver prendas en web -->
       <a
         href="https://www.tetelestai.com.ar"
         target="_blank"
@@ -274,10 +356,10 @@
           font-size: 0.9rem;
           font-weight: 600;
         ">
-        Ver prendas en web →
+        Ver prendas en web
       </a>
       <p style="font-size: 0.75rem; color: #777; text-align:center; margin: 0;">
-        Sitio oficial
+        Sitio oficial TETELESTAI
       </p>
     </div>
   </div>

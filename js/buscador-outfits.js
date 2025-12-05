@@ -115,8 +115,27 @@ TTI.buscador.renderizar = function() {
         if (c.bottom_color !== color) return false;
       }
     }
-    var ocNorm = TTI.utils.normalizarOcasion(c.occasion);
-    if (oc !== 'todas' && ocNorm !== oc) return false;
+    // Filtro de ocasión
+    if (oc !== 'todas') {
+      var time = c.time_of_day;
+      var occTxt = c.occasion.toLowerCase();
+
+      // Filtros por momento del día
+      if (oc === 'dia' && !(time === 'día' || time === 'ambos')) return false;
+      if (oc === 'noche' && !(time === 'noche' || time === 'ambos')) return false;
+      if (oc === 'diaynoche' && time !== 'ambos') return false;
+
+      // Filtros por contexto
+      if (oc === 'ciudad') {
+        if (occTxt.indexOf('ciudad') === -1 && occTxt.indexOf('urbano') === -1 && occTxt.indexOf('paseo') === -1 && occTxt.indexOf('after') === -1) return false;
+      }
+      if (oc === 'airelibre') {
+        if (occTxt.indexOf('verano') === -1 && occTxt.indexOf('aire libre') === -1) return false;
+      }
+      if (oc === 'oficina') {
+        if (occTxt.indexOf('oficina') === -1 && occTxt.indexOf('facultad') === -1) return false;
+      }
+    }
     var texto = (c.top_type + ' ' + c.top_color + ' ' + c.bottom_type + ' ' + c.bottom_color + ' ' + c.footwear + ' ' + c.occasion).toLowerCase();
     if (busqueda && texto.indexOf(busqueda) === -1) return false;
     return true;
@@ -131,15 +150,15 @@ TTI.buscador.renderizar = function() {
     var card = document.createElement('article');
     card.className = 'card';
     var idx = combos.indexOf(c);
-    var tiempo = c.time_of_day === "día" ? "Ideal para el día" : (c.time_of_day === "noche" ? "Ideal para la noche" : "Día o noche");
+    var tiempo = c.time_of_day === "día" ? "Ideal para el día" : (c.time_of_day === "noche" ? "Ideal para la noche" : "Se puede usar tanto de día como de noche");
     card.innerHTML =
       '<div class="card-top">' + c.top_type + ' · ' + c.bottom_type + '</div>' +
       '<div class="card-main">Remera ' + c.top_color + ' + ' + c.bottom_type + ' ' + c.bottom_color + '</div>' +
-      '<div class="card-meta"><b>Calzado:</b> ' + c.footwear + '</div>' +
+      '<div class="card-meta"><b>Calzado recomendado:</b> ' + c.footwear + '</div>' +
       '<div class="card-meta"><b>Ocasión:</b> ' + c.occasion + '</div>' +
       '<div class="card-meta">' + tiempo + '</div>' +
       '<div class="chip-row"><span class="chip">' + c.top_type + '</span><span class="chip">' + c.bottom_type + '</span><span class="chip">' + c.top_color + '</span><span class="chip">' + c.bottom_color + '</span></div>' +
-      '<button class="benefits-btn" data-index="' + idx + '">Ver beneficios</button>';
+      '<button class="benefits-btn" data-index="' + idx + '">Ver beneficios del outfit</button>';
     resultados.appendChild(card);
   });
 };
@@ -156,9 +175,9 @@ TTI.buscador.abrirDetalle = function(index) {
     '<li><b>Parte inferior:</b> ' + TTI.buscador.beneficioPantalon(c.bottom_type, c.bottom_color) + '</li>' +
     '<li><b>Outfit completo:</b> ' + TTI.buscador.beneficioConjunto(c) + '</li>' +
     '<li class="detail-tools">' +
-      '<button class="detail-tool-btn" onclick="irATalleRemera()">Ver mi talle de remera</button>' +
+      '<button class="detail-tool-btn" onclick="irATalleRemera()">Calcular mi talle de remera</button>' +
       '<button class="detail-tool-btn" onclick="irATalleJogger()">Calcular mi talle de jogger</button>' +
-      '<button class="detail-tool-btn detail-tool-btn-disabled">Calcular mi talle de bermudas</button>' +
+      '<button class="detail-tool-btn" onclick="irATalleBermuda()">Calcular mi talle de bermuda</button>' +
     '</li>';
   el.detailView.classList.remove('hidden');
   window.scrollTo(0, 0);
