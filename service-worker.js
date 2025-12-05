@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tti-outfits-v6';
+const CACHE_NAME = 'tti-outfits-v7';
 
 const urlsToCache = [
   '/',

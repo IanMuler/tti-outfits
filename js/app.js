@@ -93,7 +93,10 @@ window.irATalleJogger = TTI.nav.irATalleJogger;
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('./service-worker.js')
-      .then(function(reg) { console.log('SW registrado:', reg.scope); })
+      .then(function(reg) {
+        // Chequear actualizaciones cada vez que se carga la página
+        reg.update();
+      })
       .catch(function(err) { console.log('Error SW:', err); });
   });
 }
