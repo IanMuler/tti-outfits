@@ -1,0 +1,138 @@
+/* =============================================
+   TALLES - Calculadoras de talle
+   ============================================= */
+
+.talle-screen {
+  padding: 20px 12px 40px;
+}
+
+.talle-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+  padding: 18px 16px 24px;
+}
+
+.talle-title {
+  text-align: center;
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 4px 0 10px;
+}
+
+.talle-intro {
+  font-size: 0.95rem;
+  color: #444444;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.talle-steps {
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.talle-graphic-link {
+  display: block;
+  margin-bottom: 14px;
+  text-align: center;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.talle-form-group,
+.talle-input-group {
+  margin-bottom: 10px;
+}
+
+.talle-form-group label,
+.talle-input-group label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.talle-input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid #d4d4d4;
+  font-size: 0.9rem;
+}
+
+.talle-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 999px;
+  border: none;
+  background: #000000;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.talle-error {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f4e9e9;
+  color: #7a0000;
+  font-size: 0.86rem;
+}
+
+.talle-result {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f7f7f7;
+  font-size: 0.9rem;
+}
+
+.talle-result-main {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.talle-recom { margin-top: 6px; }
+
+.talle-note {
+  font-size: 0.8rem;
+  color: #777777;
+  margin-top: 8px;
+}
+
+.talle-cta-label {
+  margin-top: 10px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.talle-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: none;
+  margin-top: 6px;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

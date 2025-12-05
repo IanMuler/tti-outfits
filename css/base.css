@@ -1,0 +1,67 @@
+/* =============================================
+   BASE - Variables, reset, layout y componentes
+   ============================================= */
+
+:root {
+  --bg: #f1f1f1;
+  --card: #ffffff;
+  --accent: #111111;
+  --accent-soft: #d4d4d4;
+  --text-main: #111111;
+  --text-soft: #555555;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "SF Pro Text", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+/* Layout */
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+/* Componentes reutilizables */
+.pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--accent-soft);
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+  color: var(--text-soft);
+}
+
+.tagline {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+.cta-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding-bottom: 1px;
+}

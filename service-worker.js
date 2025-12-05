@@ -1,32 +1,35 @@
-const CACHE_NAME = 'tti-outfits-v1';
+const CACHE_NAME = 'tti-outfits-v6';
+
 const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
   '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  '/icons/icon-512.png',
+  '/data/combos.json',
+  '/css/base.css',
+  '/css/bienvenida.css',
+  '/css/buscador.css',
+  '/css/talles.css',
+  '/js/app.js',
+  '/js/buscador-outfits.js',
+  '/js/calcular-talles.js'
 ];
 
-// Install event - cache files
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Cache opened');
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(urlsToCache))
       .then(() => self.skipWaiting())
   );
 });
 
-// Activate event - clean old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
@@ -35,25 +38,21 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Estrategia: Network-first para todo (cache solo para offline)
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).then(response => {
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-          return response;
+        // Guardar copia en cache
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, responseClone);
         });
+        return response;
+      })
+      .catch(() => {
+        // Sin conexión: usar cache
+        return caches.match(event.request);
       })
   );
 });

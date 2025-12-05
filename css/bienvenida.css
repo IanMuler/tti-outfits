@@ -1,0 +1,69 @@
+/* =============================================
+   BIENVENIDA - Pantalla de inicio
+   ============================================= */
+
+.welcome {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+}
+
+.welcome-card {
+  max-width: 640px;
+  width: 100%;
+  background: #111;
+  border-radius: 20px;
+  padding: 32px 24px 36px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.welcome-sub {
+  font-size: 1.25rem;
+  color: #f0f0f0;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.welcome-text {
+  font-size: 1.05rem;
+  color: #e0e0e0;
+  margin-bottom: 12px;
+}
+
+.welcome-contact {
+  margin: 8px 0 16px;
+  font-size: 0.8rem;
+  color: #c7c7c7;
+}
+
+.welcome-contact a { color: #fff; }
+
+.welcome-cta {
+  width: 100%;
+  padding: 10px;
+  border-radius: 999px;
+  border: none;
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.welcome-cta:first-of-type { margin-top: 0; }
+.welcome-cta:active { opacity: 0.9; }
+.welcome-cta-disabled { opacity: 0.45; cursor: default; }
