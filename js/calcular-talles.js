@@ -4,24 +4,25 @@
 
 // ---- REMERA ----
 TTI.talles.remera = {
-  orden: ["M", "L", "XL", "XXL"],
-
   sugerir: function(ancho) {
-    if (ancho < 47 || ancho > 62) return "OUT";
-    if (ancho <= 52.5) return "M";
-    if (ancho <= 55) return "L";
-    if (ancho <= 58) return "XL";
+    var rangos = TTI.constantes.talles.remera.rangos;
+    if (ancho < rangos.min || ancho > rangos.max) return "OUT";
+    if (ancho <= rangos.M) return "M";
+    if (ancho <= rangos.L) return "L";
+    if (ancho <= rangos.XL) return "XL";
     return "XXL";
   },
 
   vecinoMenos: function(t) {
-    var i = this.orden.indexOf(t);
-    return i > 0 ? this.orden[i - 1] : t;
+    var orden = TTI.constantes.talles.remera.orden;
+    var i = orden.indexOf(t);
+    return i > 0 ? orden[i - 1] : t;
   },
 
   vecinoMas: function(t) {
-    var i = this.orden.indexOf(t);
-    return i < this.orden.length - 1 ? this.orden[i + 1] : t;
+    var orden = TTI.constantes.talles.remera.orden;
+    var i = orden.indexOf(t);
+    return i < orden.length - 1 ? orden[i + 1] : t;
   },
 
   iniciar: function() {
@@ -65,14 +66,6 @@ TTI.talles.remera = {
 
 // ---- JOGGER ----
 TTI.talles.jogger = {
-  tabla: [
-    { talle: "42", cinturaMin: 86, cinturaMax: 93 },
-    { talle: "44", cinturaMin: 90, cinturaMax: 97 },
-    { talle: "46", cinturaMin: 94, cinturaMax: 101 },
-    { talle: "48", cinturaMin: 98, cinturaMax: 105 },
-    { talle: "50", cinturaMin: 102, cinturaMax: 109 }
-  ],
-
   el: {},
 
   limpiar: function() {
@@ -82,6 +75,7 @@ TTI.talles.jogger = {
 
   calcular: function() {
     var self = this;
+    var tabla = TTI.constantes.talles.jogger;
     self.limpiar();
 
     var cPlano = parseFloat((self.el.cinturaInput.value || "").replace(",", "."));
@@ -93,8 +87,8 @@ TTI.talles.jogger = {
     }
 
     var cinturaTotal = cPlano * 2;
-    var min = self.tabla[0].cinturaMin;
-    var max = self.tabla[self.tabla.length - 1].cinturaMax;
+    var min = tabla[0].cinturaMin;
+    var max = tabla[tabla.length - 1].cinturaMax;
 
     if (cinturaTotal < min || cinturaTotal > max) {
       self.el.errorBox.style.display = "block";
@@ -102,11 +96,11 @@ TTI.talles.jogger = {
       return;
     }
 
-    var talleBase = self.tabla[0];
+    var talleBase = tabla[0];
     var idxBase = 0;
-    for (var i = 0; i < self.tabla.length; i++) {
-      if (cinturaTotal >= self.tabla[i].cinturaMin && cinturaTotal <= self.tabla[i].cinturaMax) {
-        talleBase = self.tabla[i];
+    for (var i = 0; i < tabla.length; i++) {
+      if (cinturaTotal >= tabla[i].cinturaMin && cinturaTotal <= tabla[i].cinturaMax) {
+        talleBase = tabla[i];
         idxBase = i;
         break;
       }
@@ -123,8 +117,8 @@ TTI.talles.jogger = {
       (tiroTxt || largoTxt ? "<br>" + tiroTxt + largoTxt : "");
 
     var recom = "";
-    if (idxBase > 0) recom += "Más ajustado: talle " + self.tabla[idxBase - 1].talle + ". ";
-    if (idxBase < self.tabla.length - 1) recom += "Más suelto: talle " + self.tabla[idxBase + 1].talle + ".";
+    if (idxBase > 0) recom += "Más ajustado: talle " + tabla[idxBase - 1].talle + ". ";
+    if (idxBase < tabla.length - 1) recom += "Más suelto: talle " + tabla[idxBase + 1].talle + ".";
     self.el.resultRecom.textContent = recom;
 
     self.el.resultBox.style.display = "block";
@@ -157,14 +151,6 @@ TTI.talles.jogger = {
 
 // ---- BERMUDA ----
 TTI.talles.bermuda = {
-  tabla: [
-    { talle: 42, cintura: 84, tiro: 27.5, largo: 46 },
-    { talle: 44, cintura: 88, tiro: 28, largo: 47 },
-    { talle: 46, cintura: 92, tiro: 28.5, largo: 47 },
-    { talle: 48, cintura: 96, tiro: 29, largo: 49 },
-    { talle: 50, cintura: 110, tiro: 29.5, largo: 51 }
-  ],
-
   el: {},
 
   limpiar: function() {
@@ -176,6 +162,7 @@ TTI.talles.bermuda = {
 
   calcular: function() {
     var self = this;
+    var tabla = TTI.constantes.talles.bermuda;
     self.el.errorBox.style.display = "none";
 
     var cPlano = parseFloat((self.el.cinturaInput.value || "").replace(",", "."));
@@ -187,8 +174,8 @@ TTI.talles.bermuda = {
     }
 
     var cinturaTotal = cPlano * 2;
-    var globalMin = self.tabla[0].cintura - 2;
-    var globalMax = self.tabla[self.tabla.length - 1].cintura + 2;
+    var globalMin = tabla[0].cintura - 2;
+    var globalMax = tabla[tabla.length - 1].cintura + 2;
 
     if (cinturaTotal < globalMin || cinturaTotal > globalMax) {
       self.el.errorBox.textContent = "Las medidas cargadas quedan por fuera de nuestra curva de talles. Escribinos y te asesoramos.";
@@ -198,13 +185,13 @@ TTI.talles.bermuda = {
     }
 
     // Buscar el talle más cercano
-    var mejor = self.tabla[0];
+    var mejor = tabla[0];
     var mejorDiff = Math.abs(cinturaTotal - mejor.cintura);
 
-    for (var i = 0; i < self.tabla.length; i++) {
-      var diff = Math.abs(cinturaTotal - self.tabla[i].cintura);
+    for (var i = 0; i < tabla.length; i++) {
+      var diff = Math.abs(cinturaTotal - tabla[i].cintura);
       if (diff < mejorDiff) {
-        mejor = self.tabla[i];
+        mejor = tabla[i];
         mejorDiff = diff;
       }
     }

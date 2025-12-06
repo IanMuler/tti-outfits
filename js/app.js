@@ -10,8 +10,31 @@ TTI.buscador = {};
 TTI.talles = {};
 TTI.utils = {};
 
+// ---- UTILIDADES ----
+TTI.utils.derivarColoresPorTipo = function(combos) {
+  var resultado = {};
+  combos.forEach(function(c) {
+    // Colores de remera (siempre en top cuando top_type es Remera)
+    if (c.top_type === 'Remera') {
+      if (!resultado['Remera']) resultado['Remera'] = {};
+      resultado['Remera'][c.top_color] = true;
+    }
+    // Colores de pantalón/bermuda
+    if (c.bottom_type && c.bottom_type !== 'Remera') {
+      if (!resultado[c.bottom_type]) resultado[c.bottom_type] = {};
+      resultado[c.bottom_type][c.bottom_color] = true;
+    }
+  });
+  // Convertir objetos a arrays ordenados
+  Object.keys(resultado).forEach(function(tipo) {
+    resultado[tipo] = Object.keys(resultado[tipo]).sort();
+  });
+  return resultado;
+};
+
 // ---- CARGA DE DATOS ----
 TTI.datos.combos = [];
+TTI.datos.coloresPorTipo = {};
 
 TTI.datos.cargar = function(callback) {
   fetch('./data/combos.json')
@@ -21,6 +44,7 @@ TTI.datos.cargar = function(callback) {
     })
     .then(function(data) {
       TTI.datos.combos = data;
+      TTI.datos.coloresPorTipo = TTI.utils.derivarColoresPorTipo(data);
       if (callback) callback();
     })
     .catch(function(err) {
