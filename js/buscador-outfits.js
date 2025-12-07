@@ -72,6 +72,7 @@ TTI.buscador.renderizar = function() {
   var tipo = TTI.buscador.el.tipoSelect.value;
   var color = TTI.buscador.el.colorSelect.value;
   var oc = TTI.buscador.el.ocasionSelect.value;
+  var clima = TTI.buscador.el.climaSelect.value;
   var busqueda = TTI.buscador.el.searchInput.value.toLowerCase();
   var resultados = TTI.buscador.el.results;
   var combos = TTI.datos.combos;
@@ -92,6 +93,9 @@ TTI.buscador.renderizar = function() {
         if (c.bottom_color !== color) return false;
       }
     }
+    // Filtro de clima
+    if (clima !== 'todos' && c.clima !== clima) return false;
+
     // Filtro de ocasión
     if (oc !== 'todas') {
       var time = c.time_of_day;
@@ -167,6 +171,7 @@ TTI.buscador.iniciar = function() {
   el.tipoSelect = document.getElementById('tipoSelect');
   el.colorSelect = document.getElementById('colorSelect');
   el.ocasionSelect = document.getElementById('ocasionSelect');
+  el.climaSelect = document.getElementById('climaSelect');
   el.searchInput = document.getElementById('searchInput');
   el.applyBtn = document.getElementById('applyBtn');
   el.results = document.getElementById('results');
