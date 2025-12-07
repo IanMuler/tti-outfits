@@ -133,6 +133,7 @@ TTI.buscador.renderizar = function() {
       '<div class="card-main">Remera ' + c.top_color + ' + ' + c.bottom_type + ' ' + c.bottom_color + '</div>' +
       '<div class="card-meta"><b>Calzado recomendado:</b> ' + c.footwear + '</div>' +
       '<div class="card-meta"><b>Ocasión:</b> ' + c.occasion + '</div>' +
+      '<div class="card-meta"><b>Clima:</b> ' + c.clima + '</div>' +
       '<div class="card-meta">' + tiempo + '</div>' +
       '<div class="chip-row"><span class="chip">' + c.top_type + '</span><span class="chip">' + c.bottom_type + '</span><span class="chip">' + c.top_color + '</span><span class="chip">' + c.bottom_color + '</span></div>' +
       '<button class="benefits-btn" data-index="' + idx + '">Ver beneficios del outfit</button>';
