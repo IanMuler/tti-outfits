@@ -66,7 +66,7 @@ TTI.constantes = {
       { talle: 44, cintura: 88, tiro: 28, largo: 47 },
       { talle: 46, cintura: 92, tiro: 28.5, largo: 49 },
       { talle: 48, cintura: 96, tiro: 29, largo: 50 },
-      { talle: 50, cintura: 110, tiro: 29.5, largo: 51 }
+      { talle: 50, cintura: 100, tiro: 29.5, largo: 51 }
     ]
   }
 };
