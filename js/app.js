@@ -36,7 +36,7 @@ TTI.utils.derivarColoresPorTipo = function(combos) {
 TTI.datos.combos = [];
 TTI.datos.coloresPorTipo = {};
 
-TTI.datos.cargar = function(callback) {
+TTI.datos.cargar = function(callback, onError) {
   fetch('./data/combos.json')
     .then(function(response) {
       if (!response.ok) throw new Error('Error al cargar combos.json');
@@ -49,6 +49,7 @@ TTI.datos.cargar = function(callback) {
     })
     .catch(function(err) {
       console.error('Error cargando combos:', err);
+      if (onError) onError();
     });
 };
 
@@ -197,16 +198,39 @@ if ('serviceWorker' in navigator) {
 }
 
 // ---- INICIALIZACIÓN ----
+function hideLoaderAndShowApp() {
+  var loader = document.getElementById('loader-screen');
+  var app = document.getElementById('app-container');
+
+  // Solo ejecutar si el loader sigue visible
+  if (loader && loader.style.display !== 'none') {
+    loader.style.display = 'none';
+    if (app) {
+      app.style.display = 'block';
+    }
+    // Asegurarse de que la pantalla de bienvenida se muestre como punto de entrada
+    TTI.nav.mostrarBienvenida();
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  // Temporizador de seguridad: oculta el loader después de 4 segundos, pase lo que pase
+  var safetyTimeout = setTimeout(hideLoaderAndShowApp, 4000);
+
+  // Cargar datos e inicializar la app
   TTI.datos.cargar(function() {
+    // Si la carga fue exitosa, cancelar el temporizador de seguridad
+    clearTimeout(safetyTimeout);
+
+    // Inicializar componentes
     TTI.buscador.iniciar();
     TTI.talles.iniciar();
 
-    // Ocultar loader y mostrar app principal
-    document.getElementById('loader-screen').style.display = 'none';
-    document.getElementById('app-container').style.display = 'block';
-
-    // Asegurarse de mostrar la pantalla de bienvenida (es la inicial de la app)
-    TTI.nav.mostrarBienvenida();
+    // Ocultar el loader y mostrar la app ahora que está lista
+    hideLoaderAndShowApp();
+  }, function() {
+    // Fallback en caso de error de carga: cancelar temporizador y mostrar la app
+    clearTimeout(safetyTimeout);
+    hideLoaderAndShowApp();
   });
 });
