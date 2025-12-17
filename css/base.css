@@ -71,12 +71,20 @@ body {
   position: fixed;
   inset: 0;
   background-color: #000;
-  display: flex;
+  display: none; /* Oculto por defecto */
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   color: #fff;
+}
+
+body.is-loading #loader-screen {
+  display: flex; /* Visible solo cuando el body tiene la clase */
+}
+
+body.is-loading #app-container {
+  display: none; /* Ocultar app mientras carga */
 }
 
 .spinner {

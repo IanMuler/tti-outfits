@@ -198,39 +198,32 @@ if ('serviceWorker' in navigator) {
 }
 
 // ---- INICIALIZACIÓN ----
-function hideLoaderAndShowApp() {
-  var loader = document.getElementById('loader-screen');
-  var app = document.getElementById('app-container');
+(function() {
+  var appHasLoaded = false;
 
-  // Solo ejecutar si el loader sigue visible
-  if (loader && loader.style.display !== 'none') {
-    loader.style.display = 'none';
-    if (app) {
-      app.style.display = 'block';
-    }
-    // Asegurarse de que la pantalla de bienvenida se muestre como punto de entrada
+  function showApp() {
+    if (appHasLoaded) return;
+    appHasLoaded = true;
+
+    document.body.classList.remove('is-loading');
     TTI.nav.mostrarBienvenida();
   }
-}
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Temporizador de seguridad: oculta el loader después de 4 segundos, pase lo que pase
-  var safetyTimeout = setTimeout(hideLoaderAndShowApp, 4000);
+  // Temporizador de seguridad
+  var safetyTimeout = setTimeout(showApp, 4000);
 
-  // Cargar datos e inicializar la app
-  TTI.datos.cargar(function() {
-    // Si la carga fue exitosa, cancelar el temporizador de seguridad
-    clearTimeout(safetyTimeout);
-
-    // Inicializar componentes
-    TTI.buscador.iniciar();
-    TTI.talles.iniciar();
-
-    // Ocultar el loader y mostrar la app ahora que está lista
-    hideLoaderAndShowApp();
-  }, function() {
-    // Fallback en caso de error de carga: cancelar temporizador y mostrar la app
-    clearTimeout(safetyTimeout);
-    hideLoaderAndShowApp();
+  // Carga de datos e inicialización de la app
+  document.addEventListener('DOMContentLoaded', function() {
+    TTI.datos.cargar(function() {
+      // Éxito: inicializar y mostrar
+      clearTimeout(safetyTimeout);
+      TTI.buscador.iniciar();
+      TTI.talles.iniciar();
+      showApp();
+    }, function() {
+      // Error: solo mostrar (la app quedará sin datos)
+      clearTimeout(safetyTimeout);
+      showApp();
+    });
   });
-});
+})();
