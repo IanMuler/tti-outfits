@@ -218,3 +218,23 @@ button:active { opacity: 0.85; }
 
 .detail-tool-btn + .detail-tool-btn { margin-top: 6px; }
 .detail-tool-btn-disabled { opacity: 0.45; cursor: default; }
+
+/* Botón Comprar Online */
+.btn-comprar {
+  display: block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.btn-comprar:hover {
+  opacity: 0.85;
+}

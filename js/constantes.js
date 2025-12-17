@@ -68,5 +68,34 @@ TTI.constantes = {
       { talle: 48, cintura: 96, tiro: 29, largo: 50 },
       { talle: 50, cintura: 100, tiro: 29.5, largo: 51 }
     ]
+  },
+
+  // ---- LINKS ----
+  links: {
+    "Remera": {
+      "Negra": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-negra-cuello-redondo-chg8l/",
+      "Blanca": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-blanca-cuello-redondo/",
+      "Gris Melange": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-gris-melange-cuello-redondo-d72j0/",
+      "Gris Topo": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-gris-topo-cuello-redondo-53c88/",
+      "Arena": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-arena-cuello-redondo-1fzc5/",
+      "Verde": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-verde-cuello-redondo-7mnpn/",
+      "Borravino": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-borravino-cuello-redondo-umyki/"
+    },
+    "Jogger Cargo": {
+      "Negro": "https://www.tetelestai.com.ar/productos/jogger-cargo-gabardina-negro/",
+      "Verde": "https://www.tetelestai.com.ar/productos/jogger-cargo-gabardina-verde/",
+      "Gris": "https://www.tetelestai.com.ar/productos/jogger-cargo-gabardina-gris/",
+      "Beige Claro": "https://www.tetelestai.com.ar/productos/jogger-cargo-gabardina-beige-claro/"
+    },
+    "Jogger Liso": {
+      "Negro": "https://www.tetelestai.com.ar/productos/jogger-liso-negro/",
+      "Beige": "https://www.tetelestai.com.ar/productos/jogger-liso-beige/",
+      "Verde": "https://www.tetelestai.com.ar/productos/jogger-liso-verde/"
+    },
+    "Bermuda": {
+      "Beige": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-beige/",
+      "Negro": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-negro/",
+      "Verde": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-verde/"
+    }
   }
 };
