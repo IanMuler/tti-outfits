@@ -72,17 +72,21 @@
   font-size: 0.9rem;
 }
 
+.talle-form { text-align: center; }
+
 .talle-btn {
-  width: 100%;
-  padding: 10px;
+  display: inline-block;
+  width: auto;
+  padding: 10px 20px;
   border-radius: 999px;
-  border: none;
+  border: 1px solid #000;
   background: #000000;
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   margin-top: 4px;
+  text-transform: uppercase;
 }
 
 .talle-error {
@@ -122,17 +126,22 @@
   text-transform: uppercase;
 }
 
+.talle-result .talle-cta-label + a {
+  margin-top: 10px;
+}
+
 .talle-cta {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: auto;
   text-align: center;
-  padding: 8px 10px;
+  padding: 10px 20px;
   border-radius: 999px;
-  border: none;
+  border: 1px solid #111;
   margin-top: 6px;
   background: #111111;
   color: #ffffff;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
+  text-transform: uppercase;
 }

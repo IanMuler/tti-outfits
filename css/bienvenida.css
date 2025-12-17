@@ -54,16 +54,18 @@
 .welcome-contact a { color: #fff; }
 
 .welcome-cta {
-  width: 100%;
-  padding: 10px;
+  display: inline-block;
+  padding: 10px 20px;
   border-radius: 999px;
   border: none;
-  background: #fff;
-  color: #000;
+  background: #000;
+  color: #fff;
   font-weight: 600;
   font-size: 0.95rem;
+  text-transform: uppercase;
   cursor: pointer;
   margin-top: 8px;
+  border: 1px solid #fff;
 }
 
 .welcome-cta:first-of-type { margin-top: 0; }
