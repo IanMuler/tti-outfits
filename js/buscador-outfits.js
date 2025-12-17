@@ -155,13 +155,13 @@ TTI.buscador.abrirDetalle = function(index) {
   var topLink = (TTI.constantes.links[c.top_type] || {})[c.top_color];
   var bottomLink = (TTI.constantes.links[c.bottom_type] || {})[c.bottom_color];
 
-  var topHTML = '<li><b>' + c.top_type + ' ' + c.top_color + ':</b> ' + TTI.buscador.beneficioRemera(c.top_color);
+  var topHTML = '<li class="detail-garment-item"><span class="detail-garment-name">' + c.top_type + ' ' + c.top_color + ':</span> <span class="detail-benefit-text">' + TTI.buscador.beneficioRemera(c.top_color) + '</span>';
   if (topLink) {
     topHTML += '<a href="' + topLink + '" target="_blank" class="btn-comprar">COMPRAR ONLINE</a>';
   }
   topHTML += '</li>';
 
-  var bottomHTML = '<li><b>' + c.bottom_type + ' ' + c.bottom_color + ':</b> ' + TTI.buscador.beneficioPantalon(c.bottom_type, c.bottom_color);
+  var bottomHTML = '<li class="detail-garment-item"><span class="detail-garment-name">' + c.bottom_type + ' ' + c.bottom_color + ':</span> <span class="detail-benefit-text">' + TTI.buscador.beneficioPantalon(c.bottom_type, c.bottom_color) + '</span>';
   if (bottomLink) {
     bottomHTML += '<a href="' + bottomLink + '" target="_blank" class="btn-comprar">COMPRAR ONLINE</a>';
   }
@@ -170,7 +170,7 @@ TTI.buscador.abrirDetalle = function(index) {
   el.detailList.innerHTML =
     topHTML +
     bottomHTML +
-    '<li><b>Outfit completo:</b> ' + TTI.buscador.beneficioConjunto(c) + '</li>' +
+    '<li class="detail-garment-item"><span class="detail-garment-name">Outfit completo:</span> <span class="detail-benefit-text">' + TTI.buscador.beneficioConjunto(c) + '</span></li>' +
     '<li class="detail-tools">' +
       '<button class="detail-tool-btn" onclick="irATalleRemera()">Calcular mi talle de remera</button>' +
       '<button class="detail-tool-btn" onclick="irATalleJogger()">Calcular mi talle de jogger</button>' +

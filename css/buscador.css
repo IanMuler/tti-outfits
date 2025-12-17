@@ -185,24 +185,53 @@ button:active { opacity: 0.85; }
   margin-bottom: 10px;
 }
 
+/* Modificaciones para mejorar la legibilidad y estética de la sección de beneficios */
 .detail-subtitle {
-  font-size: 0.85rem;
+  font-size: 1.1rem; /* Aumentado ligeramente */
+  font-weight: 700;  /* Mayor peso tipográfico */
+  letter-spacing: 0.08em; /* Ajuste sutil */
+  color: #111111; /* Color más oscuro para destacar */
+  margin: 20px 0 15px; /* Más espacio vertical */
+  text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.11em;
-  color: #777777;
-  margin: 10px 0 6px;
 }
 
 .detail-list {
-  padding-left: 18px;
+  padding-left: 0; /* Eliminar padding por defecto de lista */
   margin: 0;
+  list-style: none; /* Eliminar viñetas */
 }
 
-.detail-list li {
-  font-size: 0.9rem;
-  color: #444444;
-  margin-bottom: 4px;
+.detail-garment-item {
+  margin-bottom: 20px; /* Espacio entre cada prenda */
+  padding-bottom: 15px; /* Espacio interno inferior */
+  border-bottom: 1px solid #e0e0e0; /* Línea divisoria sutil */
 }
+
+.detail-garment-item:last-of-type {
+  border-bottom: none; /* Eliminar línea de la última prenda */
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.detail-garment-name {
+  display: block; /* Para que ocupe su propia línea */
+  font-size: 1rem; /* Más grande que el beneficio */
+  font-weight: 600; /* Destacado */
+  color: #111111;
+  margin-bottom: 8px; /* Separación del texto de beneficio */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-benefit-text {
+  display: block; /* Para que ocupe su propia línea */
+  font-size: 0.9rem;
+  color: #333333;
+  line-height: 1.5; /* Mejor espaciado entre líneas */
+  margin-bottom: 10px; /* Separación del botón */
+}
+
 
 .detail-tools {
   margin-top: 8px;
