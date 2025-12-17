@@ -201,5 +201,12 @@ document.addEventListener('DOMContentLoaded', function() {
   TTI.datos.cargar(function() {
     TTI.buscador.iniciar();
     TTI.talles.iniciar();
+
+    // Ocultar loader y mostrar app principal
+    document.getElementById('loader-screen').style.display = 'none';
+    document.getElementById('app-container').style.display = 'block';
+
+    // Asegurarse de mostrar la pantalla de bienvenida (es la inicial de la app)
+    TTI.nav.mostrarBienvenida();
   });
 });
