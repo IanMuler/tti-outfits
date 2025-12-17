@@ -153,8 +153,8 @@ TTI.buscador.abrirDetalle = function(index) {
   el.detailTitle.textContent = 'Remera ' + c.top_color + ' + ' + c.bottom_type + ' ' + c.bottom_color;
   el.detailSummary.textContent = TTI.buscador.resumenConjunto(c);
   el.detailList.innerHTML =
-    '<li><b>Parte superior:</b> ' + TTI.buscador.beneficioRemera(c.top_color) + '</li>' +
-    '<li><b>Parte inferior:</b> ' + TTI.buscador.beneficioPantalon(c.bottom_type, c.bottom_color) + '</li>' +
+    '<li><b>' + c.top_type + ' ' + c.top_color + ':</b> ' + TTI.buscador.beneficioRemera(c.top_color) + '</li>' +
+    '<li><b>' + c.bottom_type + ' ' + c.bottom_color + ':</b> ' + TTI.buscador.beneficioPantalon(c.bottom_type, c.bottom_color) + '</li>' +
     '<li><b>Outfit completo:</b> ' + TTI.buscador.beneficioConjunto(c) + '</li>' +
     '<li class="detail-tools">' +
       '<button class="detail-tool-btn" onclick="irATalleRemera()">Calcular mi talle de remera</button>' +
