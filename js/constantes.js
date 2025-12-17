@@ -93,9 +93,9 @@ TTI.constantes = {
       "Verde": "https://www.tetelestai.com.ar/productos/jogger-liso-verde/"
     },
     "Bermuda": {
-      "Beige": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-beige/",
-      "Negro": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-negro/",
-      "Verde": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-verde/"
+      "Beige": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-beige-0g93v/",
+      "Negro": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-negro-ujwb7/",
+      "Verde": "https://www.tetelestai.com.ar/productos/bermuda-corte-chino-verde-k64nj/"
     }
   }
 };
