@@ -11,6 +11,66 @@ TTI.utils.normalizarOcasion = function(oc) {
   return "Ciudad";
 };
 
+// ---- LÓGICA DE CALZADO ----
+TTI.buscador.getCalzadoRecomendado = function(c) {
+  var bottomType = c.bottom_type;
+  var bottomColor = c.bottom_color;
+
+  // La regla principal aplica solo a joggers.
+  // Si no es jogger, devolvemos el valor original para no afectar otros outfits.
+  if (bottomType.indexOf("Jogger") === -1) {
+    return c.footwear;
+  }
+
+  // Si es Jogger, aplicamos la nueva lógica estricta.
+  var defaultShoe = "Zapatillas blancas";
+  var alternatives = [];
+
+  // Asignación por color de jogger
+  switch (bottomColor) {
+    case "Negro":
+      defaultShoe = "Zapatillas blancas";
+      alternatives = ["zapatillas negras", "zapatillas gris claro"];
+      break;
+    case "Gris":
+    case "Gris Topo":
+    case "Gris Melange":
+      defaultShoe = "Zapatillas blancas";
+      alternatives = ["zapatillas gris claro", "zapatillas negras", "zapatillas beige claro"];
+      break;
+    case "Beige":
+    case "Arena":
+    case "Beige Claro":
+      defaultShoe = "Zapatillas blancas";
+      alternatives = ["zapatillas beige claro", "zapatillas off-white", "zapatillas gris claro"];
+      break;
+    case "Verde":
+      defaultShoe = "Zapatillas blancas";
+      alternatives = ["zapatillas beige", "zapatillas gris claro"];
+      // Lógica condicional para zapatillas negras
+      if (c.top_color === "Negra" || c.top_color === "Gris Topo") {
+        alternatives.push("zapatillas negras");
+      }
+      break;
+    default:
+      // Fallback: si el color no es reconocido, solo zapatillas blancas.
+      return "Zapatillas blancas";
+  }
+
+  // Priorizar estilo según tipo de jogger
+  var styleAdjective = (bottomType === "Jogger Liso") ? "minimalistas" : "urbanas";
+  
+  var result = defaultShoe + " " + styleAdjective;
+
+  // Construir el string final con un máximo de 3 opciones.
+  if (alternatives.length > 0) {
+    result += " o " + alternatives.slice(0, 2).join(" / ");
+  }
+
+  return result;
+};
+
+
 // ---- BENEFICIOS ----
 TTI.buscador.beneficioRemera = function(color) {
   var textos = TTI.constantes.beneficios.remera;
@@ -132,10 +192,11 @@ TTI.buscador.renderizar = function() {
     card.className = 'card';
     var idx = combos.indexOf(c);
     var tiempo = c.time_of_day === "día" ? "Ideal para el día" : (c.time_of_day === "noche" ? "Ideal para la noche" : "Se puede usar tanto de día como de noche");
+    var calzado = TTI.buscador.getCalzadoRecomendado(c);
     card.innerHTML =
       '<div class="card-top">' + c.top_type + ' · ' + c.bottom_type + '</div>' +
       '<div class="card-main">Remera ' + c.top_color + ' + ' + c.bottom_type + ' ' + c.bottom_color + '</div>' +
-      '<div class="card-meta"><b>Calzado recomendado:</b> ' + c.footwear + '</div>' +
+      '<div class="card-meta"><b>Calzado recomendado:</b> ' + calzado + '</div>' +
       '<div class="card-meta"><b>Ocasión:</b> ' + c.occasion + '</div>' +
       '<div class="card-meta"><b>Clima:</b> ' + c.clima + '</div>' +
       '<div class="card-meta">' + tiempo + '</div>' +
