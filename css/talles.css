@@ -3,73 +3,100 @@
    ============================================= */
 
 .talle-screen {
-  padding: 20px 12px 40px;
+  padding: 24px 16px 40px; /* Ajuste de padding */
+  background: var(--bg-primary); /* Fondo principal */
+  color: var(--text-body);
 }
 
 .talle-card {
   max-width: 720px;
   margin: 0 auto;
-  background: #ffffff;
+  background: var(--bg-card); /* Fondo de tarjeta */
   border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.10);
-  padding: 18px 16px 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08); /* Sombra más suave */
+  padding: 24px; /* Ajuste de padding */
 }
 
 .talle-title {
   text-align: center;
-  font-size: 1.35rem;
+  font-size: 1.4rem; /* Ligeramente más grande */
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin: 4px 0 10px;
+  margin: 8px 0 20px; /* Más espacio */
+  color: var(--text-title);
 }
 
 .talle-intro {
-  font-size: 0.95rem;
-  color: #444444;
+  font-size: 1rem; /* Ligeramente más grande */
+  color: var(--text-body);
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 20px; /* Más espacio */
+  line-height: 1.5;
 }
 
 .talle-steps {
-  background: #f7f7f7;
+  background: var(--color-light-grey); /* Fondo más claro */
   border-radius: 12px;
-  padding: 10px 12px;
-  font-size: 0.9rem;
-  margin-bottom: 12px;
+  padding: 16px; /* Más padding */
+  font-size: 0.95rem;
+  margin-bottom: 20px; /* Más espacio */
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+.talle-steps strong {
+  color: var(--text-title);
 }
 
 .talle-graphic-link {
-  display: block;
-  margin-bottom: 14px;
+  display: inline-block; /* Para ajustarse al texto */
+  margin-bottom: 24px; /* Más espacio */
   text-align: center;
-  padding: 10px 12px;
+  padding: 10px 20px; /* Más padding */
   border-radius: 999px;
-  background: #111111;
-  color: #ffffff;
+  background: var(--color-black); /* Fondo negro */
+  color: var(--color-white); /* Texto blanco */
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.talle-graphic-link:hover {
+  opacity: 0.9;
 }
 
 .talle-form-group,
 .talle-input-group {
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Más espacio */
 }
 
 .talle-form-group label,
 .talle-input-group label {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.85rem; /* Ligeramente más grande */
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 4px;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px; /* Más espacio */
+  color: var(--text-subtitle);
 }
 
 .talle-input {
   width: 100%;
-  padding: 8px 10px;
+  padding: 10px 14px; /* Más padding */
   border-radius: 999px;
-  border: 1px solid #d4d4d4;
-  font-size: 0.9rem;
+  border: 1px solid var(--color-soft-grey); /* Borde suave */
+  font-size: 0.95rem; /* Ligeramente más grande */
+  outline: none;
+  color: var(--text-title);
+  background-color: var(--color-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.talle-input:focus {
+  border-color: var(--color-accent-green);
+  box-shadow: 0 0 0 2px rgba(110, 122, 88, 0.3); /* Sombra sutil con acento */
 }
 
 .talle-form { text-align: center; }
@@ -77,57 +104,102 @@
 .talle-btn {
   display: inline-block;
   width: auto;
-  padding: 10px 20px;
+  padding: 12px 24px; /* Más padding */
   border-radius: 999px;
-  border: 1px solid #000;
-  background: #000000;
-  color: #ffffff;
-  font-size: 0.9rem;
+  border: none; /* No borde por defecto */
+  background: var(--color-black);
+  color: var(--color-white);
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 4px;
+  margin-top: 10px; /* Más espacio */
   text-transform: uppercase;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.talle-btn:hover {
+  opacity: 0.9;
+}
+
+.talle-btn:active {
+  opacity: 0.8;
+}
+
+/* Estilos específicos para botones de limpiar/volver */
+.talle-btn[id$="LimpiarTalleJogger"],
+.talle-btn[id$="LimpiarTalleBermuda"] {
+  background: var(--color-light-grey);
+  color: var(--text-body);
+  border: 1px solid var(--color-soft-grey);
+}
+
+.talle-btn[id$="LimpiarTalleJogger"]:hover,
+.talle-btn[id$="LimpiarTalleBermuda"]:hover {
+  background-color: var(--color-soft-grey);
+  color: var(--color-white);
+  opacity: 1;
+}
+
+.talle-btn[id$="VolverArriba"] {
+  background: transparent;
+  color: var(--text-subtitle);
+  border: 1px solid var(--color-soft-grey);
+}
+
+.talle-btn[id$="VolverArriba"]:hover {
+  background-color: var(--color-light-grey);
+  opacity: 1;
 }
 
 .talle-error {
-  margin-top: 12px;
-  padding: 10px 12px;
+  margin-top: 20px; /* Más espacio */
+  padding: 15px; /* Más padding */
   border-radius: 10px;
-  background: #f4e9e9;
-  color: #7a0000;
-  font-size: 0.86rem;
+  background: #f4e9e9; /* Rojo suave */
+  color: #7a0000; /* Rojo oscuro */
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .talle-result {
-  margin-top: 14px;
-  padding: 12px;
+  margin-top: 24px; /* Más espacio */
+  padding: 20px; /* Más padding */
   border-radius: 12px;
-  background: #f7f7f7;
-  font-size: 0.9rem;
+  background: var(--color-light-grey); /* Fondo más claro */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-body);
 }
 
 .talle-result-main {
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 8px; /* Más espacio */
+  color: var(--text-title);
 }
 
-.talle-recom { margin-top: 6px; }
+.talle-recom {
+  margin-top: 12px; /* Más espacio */
+  color: var(--text-subtitle);
+  line-height: 1.5;
+}
 
 .talle-note {
-  font-size: 0.8rem;
-  color: #777777;
-  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-microcopy);
+  margin-top: 16px; /* Más espacio */
+  line-height: 1.4;
 }
 
 .talle-cta-label {
-  margin-top: 10px;
-  font-size: 0.86rem;
+  margin-top: 24px; /* Más espacio */
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
+  color: var(--text-title);
 }
 
 .talle-result .talle-cta-label + a {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .talle-cta {
@@ -136,12 +208,18 @@
   text-align: center;
   padding: 10px 20px;
   border-radius: 999px;
-  border: 1px solid #111;
-  margin-top: 6px;
-  background: #111111;
-  color: #ffffff;
+  border: 1px solid var(--color-soft-grey); /* Borde suave */
+  margin-top: 10px;
+  background: var(--color-black); /* Fondo negro */
+  color: var(--color-white);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.talle-cta:hover {
+  opacity: 0.9;
+  background-color: var(--text-title);
 }

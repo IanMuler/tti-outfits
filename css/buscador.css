@@ -5,146 +5,171 @@
 /* Hero */
 .hero {
   text-align: center;
-  margin-bottom: 20px;
-  background: #000000;
-  color: #ffffff;
-  padding: 20px 0;
+  margin-bottom: 24px; /* Más espacio */
+  background: var(--color-black); /* Fondo negro */
+  color: var(--color-white); /* Texto blanco */
+  padding: 24px 0; /* Más padding */
   border-radius: 12px;
 }
 
 .hero-title {
-  font-size: 1.7rem;
+  font-size: 1.8rem; /* Ligeramente más grande */
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .hero-sub {
-  margin-top: 6px;
-  font-size: 0.9rem;
-  color: #ffffff;
+  margin-top: 8px; /* Más espacio */
+  font-size: 1rem; /* Ligeramente más grande */
+  color: var(--color-soft-grey); /* Gris suave */
+  line-height: 1.4;
 }
 
 .slogan {
-  margin-top: 4px;
-  font-size: 0.85rem;
-  color: #ffffff;
+  margin-top: 8px; /* Más espacio */
+  font-size: 0.9rem; /* Ligeramente más grande */
+  color: var(--color-medium-grey); /* Gris medio */
   font-weight: 500;
 }
 
 .hero .pill {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: var(--color-white);
+  border-color: rgba(255,255,255,0.3); /* Borde más suave */
 }
 
 /* Controles */
 .controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
+  gap: 12px; /* Más gap */
+  margin-bottom: 24px; /* Más espacio */
   justify-content: center;
-  background: #b3b3b3;
-  padding: 16px;
+  background: var(--color-light-grey); /* Nuevo fondo más claro */
+  padding: 20px; /* Más padding */
   border-radius: 12px;
 }
 
 select,
 input[type="text"] {
-  padding: 8px 10px;
+  padding: 10px 14px; /* Más padding */
   border-radius: 999px;
-  border: 1px solid #000000;
-  font-size: 0.85rem;
-  min-width: 135px;
+  border: 1px solid var(--color-soft-grey); /* Borde más suave */
+  font-size: 0.9rem; /* Ligeramente más grande */
+  min-width: 140px;
   outline: none;
-  background: #fff;
-  color: #000000;
+  background: var(--color-white);
+  color: var(--text-body);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-input[type="text"] { flex: 1 1 210px; }
-select option { color: #000000; }
+select:focus,
+input[type="text"]:focus {
+  border-color: var(--color-accent-green);
+  box-shadow: 0 0 0 2px rgba(110, 122, 88, 0.3); /* Sombra sutil con acento */
+}
+
+input[type="text"] { flex: 1 1 240px; } /* Ajuste de ancho */
+select option { color: var(--text-body); }
 
 button {
-  padding: 8px 12px;
+  padding: 10px 18px; /* Más padding */
   border-radius: 999px;
   border: none;
-  background: #111;
-  color: #fff;
-  font-size: 0.85rem;
+  background: var(--color-black); /* Fondo negro */
+  color: var(--color-white); /* Texto blanco */
+  font-size: 0.9rem; /* Ligeramente más grande */
   cursor: pointer;
-}
-
-.controls button {
   text-transform: uppercase;
+  font-weight: 600;
+  transition: opacity 0.2s, background-color 0.2s;
 }
 
-button:active { opacity: 0.85; }
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  opacity: 0.8;
+}
 
 /* Tarjetas */
 .card {
-  background: var(--card);
+  background: var(--bg-card);
   border-radius: 16px;
-  padding: 12px 13px 14px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  padding: 20px; /* Más padding */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05); /* Sombra más suave */
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px; /* Más gap */
 }
 
 .card-top {
-  font-size: 0.8rem;
+  font-size: 0.85rem; /* Ligeramente más grande */
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--text-soft);
+  letter-spacing: 0.15em;
+  color: var(--text-microcopy);
 }
 
 .card-main {
-  font-size: 0.95rem;
+  font-size: 1.05rem; /* Ligeramente más grande */
   font-weight: 600;
+  color: var(--text-title);
 }
 
 .card-meta {
-  font-size: 0.8rem;
-  color: var(--text-soft);
+  font-size: 0.85rem; /* Ligeramente más grande */
+  color: var(--text-subtitle); /* Usar subtítulo */
+  line-height: 1.4;
 }
 
 .chip-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 8px; /* Más gap */
+  margin-top: 8px; /* Más espacio */
 }
 
 .chip {
-  font-size: 0.7rem;
-  padding: 3px 8px;
+  font-size: 0.75rem; /* Ligeramente más grande */
+  padding: 4px 10px; /* Más padding */
   border-radius: 999px;
-  border: 1px solid var(--accent-soft);
-  color: var(--text-soft);
+  border: 1px solid var(--color-light-grey); /* Borde más suave */
+  color: var(--text-microcopy);
+  background-color: var(--color-off-white);
 }
 
 .benefits-btn {
-  margin-top: 6px;
+  margin-top: 16px; /* Más espacio */
   align-self: flex-start;
-  background: #111111;
-  color: #ffffff;
-  font-size: 0.78rem;
-  padding: 6px 12px;
+  background: var(--color-black); /* Fondo negro */
+  color: var(--color-white); /* Texto blanco */
+  font-size: 0.85rem; /* Ligeramente más grande */
+  padding: 8px 16px; /* Más padding */
   border-radius: 999px;
   border: none;
   cursor: pointer;
   text-transform: uppercase;
+  font-weight: 600;
+  transition: opacity 0.2s, background-color 0.2s;
 }
 
-.benefits-btn:active { opacity: 0.9; }
+.benefits-btn:hover {
+  opacity: 0.9;
+}
+
+.benefits-btn:active {
+  opacity: 0.8;
+}
+
 
 /* Modal de detalle */
 .detail {
   position: fixed;
   inset: 0;
-  background: #f3f3f3;
+  background: var(--bg-primary); /* Fondo principal */
   z-index: 100;
-  padding: 20px 16px 32px;
+  padding: 24px 16px 40px; /* Más padding */
   overflow-y: auto;
 }
 
@@ -153,154 +178,181 @@ button:active { opacity: 0.85; }
 .detail-card {
   max-width: 960px;
   margin: 0 auto;
-  background: #ffffff;
+  background: var(--bg-card); /* Fondo de tarjeta */
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
-  padding: 18px 16px 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08); /* Sombra más suave */
+  padding: 24px; /* Más padding */
 }
 
 .detail-back {
   background: transparent;
-  color: #111111;
-  border: 1px solid #d4d4d4;
-  font-size: 0.8rem;
-  padding: 6px 10px;
+  color: var(--text-subtitle); /* Color de subtítulo */
+  border: 1px solid var(--color-light-grey); /* Borde suave */
+  font-size: 0.85rem; /* Ligeramente más grande */
+  padding: 8px 16px; /* Más padding */
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin-bottom: 10px;
+  gap: 6px;
+  margin-bottom: 20px; /* Más espacio */
   text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.detail-back:hover {
+  color: var(--color-black);
+  border-color: var(--color-black);
 }
 
 .detail-title {
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Más grande */
   font-weight: 600;
-  margin: 4px 0 8px;
+  color: var(--text-title);
+  margin: 8px 0 12px; /* Más espacio */
 }
 
 .detail-summary {
-  font-size: 0.9rem;
-  color: #333333;
-  margin-bottom: 10px;
+  font-size: 0.95rem; /* Más grande */
+  color: var(--text-body);
+  margin-bottom: 20px; /* Más espacio */
+  line-height: 1.5;
 }
 
 /* Modificaciones para mejorar la legibilidad y estética de la sección de beneficios */
 .detail-subtitle {
-  font-size: 1.1rem; /* Aumentado ligeramente */
+  font-size: 1.25rem; /* Aumentado para destacar */
   font-weight: 700;  /* Mayor peso tipográfico */
-  letter-spacing: 0.08em; /* Ajuste sutil */
-  color: #111111; /* Color más oscuro para destacar */
-  margin: 20px 0 15px; /* Más espacio vertical */
+  letter-spacing: 0.08em;
+  color: var(--text-title); /* Negro profundo */
+  margin: 32px 0 24px; /* Mucho más espacio vertical */
   text-align: center;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .detail-list {
-  padding-left: 0; /* Eliminar padding por defecto de lista */
+  padding-left: 0;
   margin: 0;
-  list-style: none; /* Eliminar viñetas */
+  list-style: none;
 }
 
 .detail-garment-item {
-  margin-bottom: 20px; /* Espacio entre cada prenda */
-  padding-bottom: 15px; /* Espacio interno inferior */
-  border-bottom: 1px solid #e0e0e0; /* Línea divisoria sutil */
+  margin-bottom: 24px; /* Más espacio entre cada prenda */
+  padding-bottom: 20px; /* Espacio interno inferior */
+  border-bottom: 1px solid var(--color-light-grey); /* Línea divisoria muy fina y clara */
 }
 
 .detail-garment-item:last-of-type {
-  border-bottom: none; /* Eliminar línea de la última prenda */
+  border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
 .detail-garment-name {
-  display: block; /* Para que ocupe su propia línea */
-  font-size: 1rem; /* Más grande que el beneficio */
+  display: block;
+  font-size: 1.1rem; /* Más grande que el beneficio */
   font-weight: 600; /* Destacado */
-  color: #111111;
-  margin-bottom: 8px; /* Separación del texto de beneficio */
+  color: var(--text-title);
+  margin-bottom: 10px; /* Separación del texto de beneficio */
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em; /* Tracking levemente más abierto */
 }
 
 .detail-benefit-text {
-  display: block; /* Para que ocupe su propia línea */
-  font-size: 0.9rem;
-  color: #333333;
-  line-height: 1.5; /* Mejor espaciado entre líneas */
-  margin-bottom: 10px; /* Separación del botón */
+  display: block;
+  font-size: 0.95rem; /* Ligeramente más grande */
+  color: var(--text-body);
+  line-height: 1.6; /* Mayor line-height (aprox 160%) */
+  margin-bottom: 16px; /* Más separación del botón */
 }
 
 
 .detail-tools {
-  margin-top: 8px;
+  margin-top: 24px; /* Más espacio */
   list-style: none;
   padding-left: 0;
   text-align: center;
+  display: flex; /* Para mejor alineación de botones */
+  flex-direction: column;
+  gap: 10px; /* Espacio entre botones */
 }
 
 .detail-tool-btn {
   display: inline-block;
   width: auto;
-  padding: 8px 16px;
+  padding: 10px 20px; /* Más padding */
   border-radius: 999px;
-  border: 1px solid #111111;
-  background: #f5f3ec;
-  color: #111111;
-  font-size: 0.85rem;
+  border: 1px solid var(--color-soft-grey); /* Borde suave */
+  background: var(--bg-card); /* Fondo de tarjeta */
+  color: var(--text-body);
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
-.detail-tool-btn + .detail-tool-btn { margin-top: 6px; }
+.detail-tool-btn:hover {
+  background-color: var(--color-light-grey);
+  border-color: var(--text-subtitle);
+}
+
+.detail-tool-btn + .detail-tool-btn { margin-top: 0; } /* Reseteamos el margin-top porque usamos gap en el padre */
 .detail-tool-btn-disabled { opacity: 0.45; cursor: default; }
 
 /* Botón Comprar Online */
 .btn-comprar {
   display: block;
-  margin-top: 8px;
-  padding: 6px 10px;
-  background-color: #000;
-  color: #fff;
+  margin-top: 16px; /* Más espacio */
+  padding: 10px 18px; /* Ajustado */
+  background-color: var(--color-black);
+  color: var(--color-white);
   text-align: center;
   text-decoration: none;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.9rem; /* Ligeramente más grande */
   font-weight: 600;
   text-transform: uppercase;
   transition: opacity 0.2s;
 }
 
 .btn-comprar:hover {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-.btn-ver-prendas {
+.btn-ver-prendas { /* Botón principal de WhatsApp */
   display: inline-block;
   width: auto;
-  padding: 10px 20px;
+  padding: 12px 24px; /* Más padding */
   border-radius: 999px;
-  background: #000;
-  color: #fff;
+  background: var(--color-black);
+  color: var(--color-white);
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem; /* Más grande */
+  font-weight: 700; /* Más peso */
   text-transform: uppercase;
+  transition: opacity 0.2s, background-color 0.2s;
 }
 
-.detail-website-link {
+.btn-ver-prendas:hover {
+  opacity: 0.9;
+  background-color: var(--text-title); /* Sutil oscurecimiento */
+}
+
+
+.detail-website-link { /* Enlace a la web oficial */
   display: block;
   text-align: center;
-  color: #000; /* Usar el color principal para "oficialidad" */
+  color: var(--color-accent-green); /* Verde de acento */
   text-decoration: none;
-  font-size: 1rem; /* Ligeramente más grande */
+  font-size: 1.05rem; /* Más grande que el texto normal */
   font-weight: 500; /* Destacado sutil */
-  transition: opacity 0.2s;
+  margin-top: 24px; /* Más espacio del botón de WhatsApp */
+  transition: color 0.2s, text-decoration 0.2s;
 }
 
 .detail-website-link:hover {
-  opacity: 0.8;
-  text-decoration: underline; /* Subrayado discreto al pasar el ratón */
+  color: var(--text-title); /* Color más oscuro al pasar el ratón */
+  text-decoration: underline; /* Subrayado discreto */
 }

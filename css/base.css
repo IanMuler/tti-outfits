@@ -3,12 +3,24 @@
    ============================================= */
 
 :root {
-  --bg: #f1f1f1;
-  --card: #ffffff;
-  --accent: #111111;
-  --accent-soft: #d4d4d4;
-  --text-main: #111111;
-  --text-soft: #555555;
+  /* Paleta de Colores Tetelestai */
+  --color-off-white: #F7F7F7; /* Blanco roto / Fondo principal */
+  --color-light-grey: #F4F4F4; /* Gris muy claro */
+  --color-white: #FFFFFF;    /* Blanco puro para tarjetas */
+  --color-black: #111111;    /* Negro profundo para títulos */
+  --color-dark-grey: #4A4A4A; /* Gris oscuro para subtítulos */
+  --color-medium-grey: #6A6A6A; /* Gris medio para texto de cuerpo */
+  --color-soft-grey: #7A7A7A; /* Gris claro para microcopy */
+  --color-accent-green: #6E7A58; /* Verde apagado para acentos */
+
+  /* Variables semánticas basadas en la paleta */
+  --bg-primary: var(--color-off-white);
+  --bg-card: var(--color-white);
+  --text-title: var(--color-black);
+  --text-subtitle: var(--color-dark-grey);
+  --text-body: var(--color-medium-grey);
+  --text-microcopy: var(--color-soft-grey);
+  --color-accent: var(--color-accent-green);
 }
 
 * { box-sizing: border-box; }
@@ -16,21 +28,21 @@
 body {
   margin: 0;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "SF Pro Text", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text-main);
+  background: var(--bg-primary);
+  color: var(--text-body);
 }
 
 /* Layout */
 .app {
   max-width: 960px;
   margin: 0 auto;
-  padding: 20px 16px 40px;
+  padding: 24px 16px 40px; /* Ajuste de padding */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste de minmax para tarjetas */
+  gap: 16px; /* Ajuste de gap */
 }
 
 /* Componentes reutilizables */
@@ -38,28 +50,28 @@ body {
   display: inline-block;
   padding: 4px 12px;
   border-radius: 999px;
-  border: 1px solid var(--accent-soft);
+  border: 1px solid var(--color-soft-grey); /* Borde con gris suave */
   font-size: 0.75rem;
   margin-bottom: 4px;
-  color: var(--text-soft);
+  color: var(--text-microcopy);
 }
 
 .tagline {
   text-align: center;
   font-size: 0.8rem;
-  color: var(--text-soft);
-  margin-bottom: 8px;
+  color: var(--text-microcopy);
+  margin-bottom: 16px; /* Más espacio */
 }
 
 .footer {
   text-align: center;
-  margin-top: 22px;
+  margin-top: 32px; /* Más espacio */
   font-size: 0.8rem;
-  color: var(--text-soft);
+  color: var(--text-microcopy);
 }
 
 .cta-link {
-  color: var(--accent);
+  color: var(--text-body); /* Color de texto normal */
   font-weight: 600;
   text-decoration: none;
   border-bottom: 1px solid rgba(0,0,0,0.2);
@@ -74,13 +86,13 @@ body {
 #loader-screen {
   position: fixed;
   inset: 0;
-  background-color: #000;
+  background-color: var(--color-black); /* Fondo negro para loader */
   display: flex; /* Mostrar loader por defecto */
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  color: #fff;
+  color: var(--color-white);
 }
 
 /* Cuando el JS termine, se quita is-loading del body */
@@ -96,7 +108,7 @@ body:not(.is-loading) #app-container {
   width: 40px;
   height: 40px;
   border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #fff;
+  border-top-color: var(--color-white);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
