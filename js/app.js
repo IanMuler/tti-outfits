@@ -205,23 +205,36 @@ if ('serviceWorker' in navigator) {
     if (appHasLoaded) return;
     appHasLoaded = true;
 
-    document.body.classList.remove('is-loading');
+    var loader = document.getElementById('fallback-loader');
+    var app = document.getElementById('app-container');
+
+    if (loader) {
+      loader.style.display = 'none';
+    }
+    if (app) {
+      app.style.display = 'block';
+    }
+
+    // Mostrar la pantalla de bienvenida como punto de entrada
     TTI.nav.mostrarBienvenida();
   }
 
-  // Temporizador de seguridad
+  // Temporizador de seguridad: llama a showApp después de 4 segundos sin importar qué
   var safetyTimeout = setTimeout(showApp, 4000);
 
-  // Carga de datos e inicialización de la app
+  // Carga de datos e inicialización
   document.addEventListener('DOMContentLoaded', function() {
     TTI.datos.cargar(function() {
-      // Éxito: inicializar y mostrar
+      // Si la carga es exitosa, se cancela el temporizador de seguridad
       clearTimeout(safetyTimeout);
+      // Se inicializan los componentes
       TTI.buscador.iniciar();
       TTI.talles.iniciar();
+      // Y se muestra la app
       showApp();
     }, function() {
-      // Error: solo mostrar (la app quedará sin datos)
+      // Si la carga falla, también se cancela el temporizador y se muestra la app
+      // (aunque podría estar parcialmente funcional)
       clearTimeout(safetyTimeout);
       showApp();
     });
