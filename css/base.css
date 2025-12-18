@@ -66,12 +66,16 @@ body {
   padding-bottom: 1px;
 }
 
-/* Pantalla de carga */
+/* --- Pantalla de carga --- */
+#app-container {
+  display: none; /* Ocultar la app por defecto */
+}
+
 #loader-screen {
   position: fixed;
   inset: 0;
   background-color: #000;
-  display: none; /* Oculto por defecto */
+  display: flex; /* Mostrar loader por defecto */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -79,12 +83,13 @@ body {
   color: #fff;
 }
 
-body.is-loading #loader-screen {
-  display: flex; /* Visible solo cuando el body tiene la clase */
+/* Cuando el JS termine, se quita is-loading del body */
+body:not(.is-loading) #loader-screen {
+  display: none;
 }
 
-body.is-loading #app-container {
-  display: none; /* Ocultar app mientras carga */
+body:not(.is-loading) #app-container {
+  display: block;
 }
 
 .spinner {
