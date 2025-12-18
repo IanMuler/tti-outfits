@@ -201,14 +201,12 @@ if ('serviceWorker' in navigator) {
 (function() {
   var appHasLoaded = false;
   var safetyTimeoutId;
-  var domCheckIntervalId;
 
   function showApp() {
     if (appHasLoaded) return;
     appHasLoaded = true;
 
-    clearTimeout(safetyTimeoutId);
-    clearInterval(domCheckIntervalId);
+    clearTimeout(safetyTimeoutId); // Asegura que el timeout no se dispare después
 
     var loader = document.getElementById('fallback-loader');
     var app = document.getElementById('app-container');
@@ -220,26 +218,12 @@ if ('serviceWorker' in navigator) {
       app.style.display = 'block';
     }
 
-    // Asegurarse de mostrar la pantalla de bienvenida como punto de entrada
+    // Mostrar la pantalla de bienvenida como punto de entrada
     TTI.nav.mostrarBienvenida();
   }
 
-  // Liberación por timeout de seguridad (3 segundos)
-  safetyTimeoutId = setTimeout(showApp, 3000); // 3 segundos
-
-  // Detección de elementos interactivos
-  function checkInteractiveElements() {
-    var welcomeCta = document.querySelector('#welcomeScreen .welcome-cta');
-    var anySelect = document.querySelector('#outfitApp select'); // Un select de filtros
-
-    if (welcomeCta || anySelect) {
-      // Si se encuentra cualquier elemento interactivo, se considera renderizado básico
-      showApp();
-    }
-  }
-
-  // Intervalo para verificar elementos interactivos cada 100ms
-  domCheckIntervalId = setInterval(checkInteractiveElements, 100);
+  // Liberación por timeout de seguridad (2 segundos)
+  safetyTimeoutId = setTimeout(showApp, 2000); // Prioridad absoluta: 2 segundos
 
   // Inicialización principal
   document.addEventListener('DOMContentLoaded', function() {
@@ -249,7 +233,7 @@ if ('serviceWorker' in navigator) {
       TTI.talles.iniciar();
       showApp(); // Mostrar la app si todo cargó correctamente
     }, function() {
-      // Error en carga de datos: mostrar app de todas formas
+      // Error en carga de datos: mostrar app de todas formas (aunque podría estar incompleta)
       showApp();
     });
   });
