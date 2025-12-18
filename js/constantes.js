@@ -74,11 +74,12 @@ TTI.constantes = {
   links: {
     "Remera": {
       "Negra": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-negra-cuello-redondo-chg8l/",
-      "Blanca": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-blanca-cuello-redondo/",
+      "Blanca": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-blanca-cuello-redondo-rvnrc/",
       "Gris Melange": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-gris-melange-cuello-redondo-d72j0/",
       "Gris Topo": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-gris-topo-cuello-redondo-53c88/",
       "Arena": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-arena-cuello-redondo-1fzc5/",
       "Verde": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-verde-cuello-redondo-7mnpn/",
+      "Azul": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-azul-cuello-redondo-hqp1d/",
       "Borravino": "https://www.tetelestai.com.ar/productos/remera-clasica-premium-borravino-cuello-redondo-umyki/"
     },
     "Jogger Cargo": {

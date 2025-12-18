@@ -157,13 +157,13 @@ TTI.buscador.abrirDetalle = function(index) {
 
   var topHTML = '<li class="detail-garment-item"><span class="detail-garment-name">' + c.top_type + ' ' + c.top_color + ':</span> <span class="detail-benefit-text">' + TTI.buscador.beneficioRemera(c.top_color) + '</span>';
   if (topLink) {
-    topHTML += '<a href="' + topLink + '" target="_blank" class="btn-comprar">COMPRAR ONLINE</a>';
+    topHTML += '<a href="' + topLink + '" class="btn-comprar">COMPRAR ONLINE</a>';
   }
   topHTML += '</li>';
 
   var bottomHTML = '<li class="detail-garment-item"><span class="detail-garment-name">' + c.bottom_type + ' ' + c.bottom_color + ':</span> <span class="detail-benefit-text">' + TTI.buscador.beneficioPantalon(c.bottom_type, c.bottom_color) + '</span>';
   if (bottomLink) {
-    bottomHTML += '<a href="' + bottomLink + '" target="_blank" class="btn-comprar">COMPRAR ONLINE</a>';
+    bottomHTML += '<a href="' + bottomLink + '" class="btn-comprar">COMPRAR ONLINE</a>';
   }
   bottomHTML += '</li>';
 
