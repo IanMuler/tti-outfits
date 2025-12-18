@@ -197,13 +197,18 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// ---- INICIALIZACIÓN ----
+// ---- INICIALIZACIÓN ROBUSTA ----
 (function() {
   var appHasLoaded = false;
+  var safetyTimeoutId;
+  var domCheckIntervalId;
 
   function showApp() {
     if (appHasLoaded) return;
     appHasLoaded = true;
+
+    clearTimeout(safetyTimeoutId);
+    clearInterval(domCheckIntervalId);
 
     var loader = document.getElementById('fallback-loader');
     var app = document.getElementById('app-container');
@@ -215,27 +220,36 @@ if ('serviceWorker' in navigator) {
       app.style.display = 'block';
     }
 
-    // Mostrar la pantalla de bienvenida como punto de entrada
+    // Asegurarse de mostrar la pantalla de bienvenida como punto de entrada
     TTI.nav.mostrarBienvenida();
   }
 
-  // Temporizador de seguridad: llama a showApp después de 4 segundos sin importar qué
-  var safetyTimeout = setTimeout(showApp, 4000);
+  // Liberación por timeout de seguridad (3 segundos)
+  safetyTimeoutId = setTimeout(showApp, 3000); // 3 segundos
 
-  // Carga de datos e inicialización
+  // Detección de elementos interactivos
+  function checkInteractiveElements() {
+    var welcomeCta = document.querySelector('#welcomeScreen .welcome-cta');
+    var anySelect = document.querySelector('#outfitApp select'); // Un select de filtros
+
+    if (welcomeCta || anySelect) {
+      // Si se encuentra cualquier elemento interactivo, se considera renderizado básico
+      showApp();
+    }
+  }
+
+  // Intervalo para verificar elementos interactivos cada 100ms
+  domCheckIntervalId = setInterval(checkInteractiveElements, 100);
+
+  // Inicialización principal
   document.addEventListener('DOMContentLoaded', function() {
     TTI.datos.cargar(function() {
-      // Si la carga es exitosa, se cancela el temporizador de seguridad
-      clearTimeout(safetyTimeout);
-      // Se inicializan los componentes
+      // Éxito: inicializar componentes y mostrar app
       TTI.buscador.iniciar();
       TTI.talles.iniciar();
-      // Y se muestra la app
-      showApp();
+      showApp(); // Mostrar la app si todo cargó correctamente
     }, function() {
-      // Si la carga falla, también se cancela el temporizador y se muestra la app
-      // (aunque podría estar parcialmente funcional)
-      clearTimeout(safetyTimeout);
+      // Error en carga de datos: mostrar app de todas formas
       showApp();
     });
   });
