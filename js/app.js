@@ -189,52 +189,73 @@ window.irATalleJogger = TTI.nav.irATalleJogger;
 window.irATalleBermuda = TTI.nav.irATalleBermuda;
 window.volverDesdeTalle = TTI.nav.volverDesdeTalle;
 
-// ---- SERVICE WORKER ----
+// ---- SERVICE WORKER (DISABLED) ----
+// Se deshabilita y desregistra el Service Worker para evitar problemas de
+// caché en webviews y navegadores, que es una de las causas probables
+// de la pantalla blanca en la primera carga.
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('./service-worker.js')
-      .catch(function(err) { console.log('Error SW:', err); });
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for (let registration of registrations) {
+      registration.unregister();
+    }
   });
 }
 
-// ---- INICIALIZACIÓN ROBUSTA ----
-(function() {
-  var appHasLoaded = false;
-  var safetyTimeoutId;
+// ---- INICIALIZACIÓN ROBUSTA Y SISTEMA DE RESCATE ----
 
-  function showApp() {
-    if (appHasLoaded) return;
-    appHasLoaded = true;
+// Bandera global para asegurar que la inicialización ocurra solo una vez.
+window.appInitialized = false;
+// Bandera global para que el sistema de rescate sepa si la app cargó.
+window.appLoaded = false;
 
-    clearTimeout(safetyTimeoutId); // Asegura que el timeout no se dispare después
-
-    var loader = document.getElementById('fallback-loader');
-    var app = document.getElementById('app-container');
-
-    if (loader) {
-      loader.style.display = 'none';
-    }
-    if (app) {
-      app.style.display = 'block';
-    }
-
-    // Mostrar la pantalla de bienvenida como punto de entrada
-    TTI.nav.mostrarBienvenida();
+// Contiene la lógica central de inicialización de la app.
+function initApp() {
+  // Si ya se inicializó, no hacer nada.
+  if (window.appInitialized) {
+    return;
   }
+  window.appInitialized = true;
 
-  // Liberación por timeout de seguridad (2 segundos)
-  safetyTimeoutId = setTimeout(showApp, 2000); // Prioridad absoluta: 2 segundos
-
-  // Inicialización principal
-  document.addEventListener('DOMContentLoaded', function() {
-    TTI.datos.cargar(function() {
-      // Éxito: inicializar componentes y mostrar app
-      TTI.buscador.iniciar();
-      TTI.talles.iniciar();
-      showApp(); // Mostrar la app si todo cargó correctamente
-    }, function() {
-      // Error en carga de datos: mostrar app de todas formas (aunque podría estar incompleta)
-      showApp();
-    });
+  TTI.datos.cargar(function() {
+    // Éxito en la carga de datos: inicializar componentes.
+    TTI.buscador.iniciar();
+    TTI.talles.iniciar();
+    TTI.nav.mostrarBienvenida(); // Punto de entrada de la app.
+    
+    // Marcar la app como completamente cargada para el sistema de rescate.
+    window.appLoaded = true;
+  }, function() {
+    // Error en la carga de datos: aún así intentamos mostrar la app.
+    TTI.nav.mostrarBienvenida();
+    window.appLoaded = true; // Marcar como cargada para evitar reload en bucle.
   });
-})();
+}
+
+// Sistema de inicialización segura (anti-pantalla blanca).
+// Intenta iniciar la app tan pronto como el DOM es interactivo,
+// sin depender exclusivamente del evento DOMContentLoaded.
+function safeInit() {
+  if (window.appInitialized) {
+    return;
+  }
+  
+  // Si el DOM ya está listo (interactive o complete), iniciar la app.
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initApp();
+  } else {
+    // Si no, volver a intentar en 50ms.
+    setTimeout(safeInit, 50);
+  }
+}
+
+// Sistema de rescate automático silencioso.
+// Si después de 1500ms la app no se ha marcado como 'cargada',
+// forzamos un refresco. Esto es invisible para el usuario.
+setTimeout(function() {
+  if (!window.appLoaded) {
+    location.reload();
+  }
+}, 1500);
+
+// Iniciar el proceso de inicialización segura.
+safeInit();
