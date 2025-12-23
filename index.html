@@ -366,9 +366,22 @@
       var span = document.getElementsByClassName("image-modal-close")[0];
   
       function openImageModal(imageSrc, captionText) {
+        // Muestra el modal y establece un texto de carga inicial.
         modal.style.display = "block";
+        modalCaption.textContent = "Cargando imagen...";
+        
+        // Asigna la ruta de la imagen.
         modalImage.src = imageSrc;
-        modalCaption.textContent = captionText;
+        
+        // Si la imagen se carga correctamente, muestra el pie de foto correcto.
+        modalImage.onload = function() {
+          modalCaption.textContent = captionText;
+        };
+
+        // Si la imagen falla al cargar (error 404, etc.), muestra un mensaje de error.
+        modalImage.onerror = function() {
+          modalCaption.textContent = "Error: No se pudo cargar la imagen. Verifique el nombre del archivo en la carpeta 'img'.";
+        };
       }
   
       // Botón para la remera
