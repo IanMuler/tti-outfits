@@ -237,9 +237,6 @@ TTI.talles.bermuda = {
       self.el.largoInput.value = "";
       self.limpiar();
     });
-    self.el.btnGuia.addEventListener("click", function() {
-      window.open("https://wa.me/p/25334997052832175/5491157365177", "_blank");
-    });
   }
 };
 

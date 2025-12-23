@@ -198,7 +198,7 @@
           </p>
         </div>
 
-        <button class="talle-btn" onclick="window.open('https://wa.me/p/25488386634088462/5491157365177','_blank')" type="button" style="margin-bottom:12px;">
+        <button id="openJoggerModalBtn" class="talle-btn" type="button" style="margin-bottom:12px;">
           Ver gráfico de puntos a medir
         </button>
 
@@ -278,7 +278,7 @@
         </div>
 
         <button class="talle-btn" id="guiaBtnBermuda" type="button" style="margin-bottom:12px;">
-          Ver guía rápida de medición
+          Ver gráfico de medicion
         </button>
 
         <div class="talle-form">
@@ -361,11 +361,38 @@
     <script>
       // Lógica del Modal de Imagen
       var modal = document.getElementById("imageModal");
-      var btn = document.getElementById("openModalBtn");
+      var modalImage = document.getElementById("modalImage");
+      var modalCaption = document.querySelector(".image-modal-caption");
       var span = document.getElementsByClassName("image-modal-close")[0];
   
-      btn.onclick = function() {
+      function openImageModal(imageSrc, captionText) {
         modal.style.display = "block";
+        modalImage.src = imageSrc;
+        modalCaption.textContent = captionText;
+      }
+  
+      // Botón para la remera
+      var openRemeraModalBtn = document.getElementById("openModalBtn");
+      if (openRemeraModalBtn) {
+        openRemeraModalBtn.onclick = function() {
+          openImageModal("img/remera-indicador.jpg", "Gráfico de referencia para medir remeras");
+        }
+      }
+  
+      // Botón para el jogger
+      var openJoggerModalBtn = document.getElementById("openJoggerModalBtn");
+      if (openJoggerModalBtn) {
+        openJoggerModalBtn.onclick = function() {
+          openImageModal("img/jogger-indicador.jpg", "Gráfico de referencia para medir joggers");
+        }
+      }
+
+      // Botón para la bermuda
+      var openBermudaModalBtn = document.getElementById("guiaBtnBermuda");
+      if (openBermudaModalBtn) {
+        openBermudaModalBtn.onclick = function() {
+          openImageModal("img/bermuda-indicador.jpg", "Gráfico de referencia para medir bermudas");
+        }
       }
   
       span.onclick = function() {
