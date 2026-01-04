@@ -25,10 +25,14 @@
       <div class="welcome-card">
         <h1 class="welcome-title">TETELESTAI</h1>
         <p class="welcome-sub">
-          Para hombres con propósito y valores, que eligen vestirse simple, prolijos y con identidad propia todos los días.
+          Para hombres con propósito y valores. Que eligen vestirse simple, prolijos y con identidad todos los días.
         </p>
         <p class="welcome-text">
-          Una herramienta simple para resolver dos cosas: qué ponerte y cómo combinarlo. Vos elegís lo que te representa; nosotros ordenamos el outfit.
+          Una herramienta para resolver tres cosas:  
+          qué ponerte, cómo combinarlo y elegir tu talle.
+
+          Vos elegís lo que te representa.  
+          Nosotros ordenamos el outfit y el talle.
         </p>
         <div class="welcome-contact">
           <p><strong>Contacto</strong></p>
@@ -149,20 +153,19 @@
         <div id="talleError" class="talle-error" style="display:none;">
           No contamos con un talle ideal para esas medidas. Escribinos y te asesoramos.
         </div>
-        <div id="talleResultado" class="talle-result" style="display:none;">
-          <p class="talle-result-main">
-            Talle sugerido: <strong id="talleSugerido"></strong>
-          </p>
-          <p id="talleTexto"></p>
-          <p id="talleRecom" class="talle-recom"></p>
-          <p class="talle-note">
-            Nuestras remeras son <strong>100% algodón</strong>, por eso pueden reducir levemente (~1 cm) luego del primer lavado.
-          </p>
-          <p class="talle-cta-label">Conseguí tu remera en:</p>
-          <a class="talle-cta" href="https://www.tetelestai.com.ar" style="font-weight:600" target="_blank">www.tetelestai.com.ar</a>
-          <a class="talle-cta" href="https://wa.me/5491157365177" style="font-weight:600" target="_blank">WhatsApp TETELESTAI</a>
-        </div>
-      </div>
+                <div id="talleResultado" class="talle-result" style="display:none;">
+                  <p class="talle-result-main" id="talleSugerido">Esperando tus medidas</p>
+                  <p id="talleTexto">
+                    Calculamos tu talle en función del ancho y del calce real de nuestras remeras.
+                  </p>
+                  <p id="talleRecom" class="talle-recom"></p>
+                  <p class="talle-note" id="talleDetalle">
+                    Nuestras remeras clásicas están pensadas para un calce limpio y cómodo, sin quedar ni demasiado sueltas ni apretadas.
+                  </p>
+                  <p class="talle-cta-label">Conseguí tu remera en:</p>
+                  <a class="talle-cta" href="https://www.tetelestai.com.ar" style="font-weight:600" target="_blank">www.tetelestai.com.ar</a>
+                  <a class="talle-cta" href="https://wa.me/5491157365177" style="font-weight:600" target="_blank">WhatsApp TETELESTAI</a>
+                </div>      </div>
     </div>
 
     <!-- Pantalla saber mi talle de jogger -->
@@ -234,11 +237,14 @@
           </div>
 
           <div id="talleJoggerResultado" class="talle-result" style="display:none;">
-            <p class="talle-result-main">
-              Talle sugerido: <strong id="talleJoggerSugerido"></strong>
+            <p class="talle-result-main" id="talleJoggerSugerido">Esperando tus medidas</p>
+            <p id="talleJoggerTexto">
+              Calculamos tu talle en función de la cintura y del calce real de nuestros joggers.
             </p>
-            <p id="talleJoggerTexto"></p>
             <p id="talleJoggerRecom" class="talle-recom"></p>
+            <p class="talle-note" id="talleJoggerDetalle">
+              Nuestros joggers están hechos en gabardina de 12 hilos, buscando un calce equilibrado: cómodos, prolijos y con presencia en cualquier contexto.
+            </p>
             <p class="talle-cta-label">Conseguí tu jogger en:</p>
             <a class="talle-cta" href="https://www.tetelestai.com.ar" style="font-weight:600" target="_blank">www.tetelestai.com.ar</a>
             <a class="talle-cta" href="https://wa.me/5491157365177" style="font-weight:600" target="_blank">WhatsApp TETELESTAI</a>
@@ -322,8 +328,7 @@
               Calculamos tu talle en función de la cintura y del calce real de nuestras bermudas.
             </p>
             <p class="talle-note" id="talleBermudaDetalle">
-              Nuestras bermudas corte chino están pensadas para un calce limpio y cómodo,
-              sin quedar ni demasiado sueltas ni apretadas.
+              Nuestras bermudas corte chino están pensadas para un calce limpio y cómodo, sin quedar ni demasiado sueltas ni apretadas.
             </p>
             <p class="talle-cta-label">Conseguí tu bermuda en:</p>
             <a class="talle-cta" href="https://www.tetelestai.com.ar" style="font-weight:600;" target="_blank">www.tetelestai.com.ar</a>
