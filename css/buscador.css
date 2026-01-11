@@ -29,7 +29,7 @@
 .slogan {
   margin-top: 8px; /* Más espacio */
   font-size: 0.9rem; /* Ligeramente más grande */
-  color: var(--color-medium-grey); /* Gris medio */
+  color: var(--color-white); /* Texto blanco */
   font-weight: 500;
 }
 
