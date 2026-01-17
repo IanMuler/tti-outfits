@@ -9,6 +9,7 @@
     --btn-secondary-bg: #E0E0E0; /* Lighter grey for secondary buttons */
     --btn-secondary-text: #1A1A1A;
     --btn-border: #D0D0D0; /* Border for secondary buttons */
+    --text-description-on-dark: #CFCFCF; /* Gris claro/blanco atenuado */
 }
 
 body {
@@ -306,4 +307,8 @@ select, input[type="text"] {
     .welcome-contact, .welcome-cta {
         margin-top: 12px;
     }
+}
+
+.talle-screen div[style*="background:#000"] > p {
+    color: var(--text-description-on-dark) !important;
 }
