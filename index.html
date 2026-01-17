@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="css/buscador.css">
 <link rel="stylesheet" href="css/talles.css">
 <link rel="stylesheet" href="css/modal.css">
+<link rel="stylesheet" href="css/redesign.css">
 </head>
 <body class="is-loading">
 
@@ -149,6 +150,8 @@
           <input type="number" id="largoInput" class="talle-input" placeholder="Ej: 74" min="50" max="100" step="0.1">
         </div>
         <button id="btnCalcularTalle" class="talle-btn" type="button">Calcular mi talle de remera</button>
+        <button id="btnLimpiarTalleRemera" class="talle-btn" type="button">Borrar datos</button>
+        <button type="button" class="talle-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">Volver arriba</button>
         <div id="talleError" class="talle-error" style="display:none;">
           No contamos con un talle ideal para esas medidas. Escribinos y te asesoramos.
         </div>

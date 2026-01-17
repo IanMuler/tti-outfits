@@ -1,0 +1,309 @@
+:root {
+    --font-family-display: 'Oswald', var(--font-family-base); /* For distinctive titles */
+    --font-family-base: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --bg-color: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5A5A5A;
+    --cta-primary-bg: #1A1A1A;
+    --cta-primary-text: #FFFFFF;
+    --btn-secondary-bg: #E0E0E0; /* Lighter grey for secondary buttons */
+    --btn-secondary-text: #1A1A1A;
+    --btn-border: #D0D0D0; /* Border for secondary buttons */
+}
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Typography Hierarchy --- */
+.welcome-card .welcome-title { /* This is for TETELESTAI */
+    font-family: var(--font-family-display); /* Use Oswald or similar for Brand/Main Title */
+    font-size: 20px; /* CHICO for brand name */
+    font-weight: 500; /* REGULAR o SEMIBOLD */
+    line-height: 1.2;
+    letter-spacing: normal;
+    margin: 0;
+    color: var(--cta-primary-text); /* BLANCO */
+    text-transform: none; /* Ensure no uppercase */
+    margin-bottom: 8px; /* Spacing */
+}
+
+/* Adjust sizes for the specific elements inside the welcome card */
+.welcome-card .welcome-sub { /* This holds the main title now */
+    font-size: 38px; /* GRANDE */
+    font-weight: 700; /* BOLD */
+    color: var(--cta-primary-text); /* BLANCO */
+    line-height: 1.2;
+    margin-top: 16px; /* Spacing */
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+.welcome-card .welcome-text { /* This holds the secondary text now */
+    font-size: 16px; /* CHICO */
+    font-weight: 400; /* REGULAR */
+    color: var(--text-secondary); /* GRIS */
+    line-height: 1.5; /* Generous line-height */
+    max-width: 580px;
+    margin: 16px auto 24px; /* Spacing */
+}
+
+.welcome-card .slogan { /* This holds the signature now */
+    font-size: 18px; /* CHICO a MEDIO */
+    font-weight: 500; /* SEMIBOLD */
+    color: var(--cta-primary-text); /* BLANCO */
+    line-height: 1.5;
+    margin-top: 24px; /* Spacing */
+}
+
+h2, .talle-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-top: 32px; /* Spacing */
+    margin-bottom: 24px; /* Spacing */
+}
+
+p, .card-meta, .talle-steps {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-primary); /* Default to primary text color */
+}
+.talle-steps strong {
+    color: var(--text-primary);
+}
+
+
+/* --- Layout & Spacing --- */
+.app, .detail-card {
+    max-width: 960px; /* Max-width del contenedor principal */
+    margin: 0 auto;
+}
+
+.welcome {
+    background-color: #111111; /* Asegurar fondo oscuro */
+    padding: 64px 24px; /* Generous padding */
+}
+
+.welcome-card {
+    background-color: transparent; /* No background for the card itself */
+    box-shadow: none;
+    padding: 0; /* No extra padding here, managed by welcome */
+    text-align: center;
+    max-width: 800px; /* Adjust max-width if needed for content */
+}
+
+.welcome-contact {
+    margin-top: 32px; /* Spacing */
+    margin-bottom: 32px; /* Spacing */
+}
+.welcome-contact p {
+    color: var(--text-secondary); /* Secondary text color */
+}
+.welcome-contact a {
+    color: var(--cta-primary-text); /* White for contrast */
+}
+
+
+/* --- CTAs & Buttons --- */
+.welcome-cta, .talle-btn, .benefits-btn {
+    display: inline-block;
+    min-height: 48px;
+    padding: 0 24px;
+    border-radius: 8px; /* 6-8px */
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 48px; /* Centra el texto verticalmente */
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.15s ease-in-out;
+    border: none;
+    text-transform: none; /* Override uppercase if any */
+    letter-spacing: normal;
+    margin-top: 16px; /* Spacing between buttons */
+}
+
+.welcome-cta:first-of-type {
+    margin-top: 0; /* No margin top for the first cta in a group */
+}
+
+
+/* --- Specific button styling (main CTAs) --- */
+#btnCalcularTalle, #btnCalcularTalleJogger, #btnCalcularTalleBermuda,
+.welcome-cta[onclick*="entrarApp"] { /* Primary CTA */
+    background-color: var(--cta-primary-bg);
+    color: var(--cta-primary-text);
+}
+.welcome-cta:hover, #btnCalcularTalle:hover, #btnCalcularTalleJogger:hover, #btnCalcularTalleBermuda:hover {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
+/* --- Adjustment 2: "Volver" Button --- */
+.detail-back {
+    min-height: 40px; /* Slightly smaller for secondary action */
+    line-height: 40px;
+    padding: 0 16px;
+    border-radius: 8px;
+    background-color: #CDCDCD; /* Darker grey for more visibility */
+    color: var(--btn-secondary-text); /* Dark text */
+    border: 1px solid #B0B0B0; /* More defined border */
+    font-size: 14px; /* Smaller font size */
+    font-weight: 500;
+    text-transform: none;
+    margin-bottom: 24px; /* Spacing */
+    display: inline-flex; /* To use gap if needed */
+    align-items: center;
+    gap: 8px;
+}
+.detail-back:hover {
+    background-color: #B5B5B5; /* Even darker grey on hover */
+    transform: scale(1.02);
+}
+
+/* --- Adjustment 3: Talle Remera functional buttons --- */
+/* These buttons will be added in index.html, so I'll preemptively style them */
+#btnLimpiarTalleRemera, .talle-btn[onclick*="window.scrollTo"] { /* For "Borrar datos" and "Volver arriba" */
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 1px solid var(--btn-border);
+    font-weight: 500;
+    font-size: 14px;
+    min-height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+    margin-top: 16px; /* Spacing */
+}
+#btnLimpiarTalleRemera:hover, .talle-btn[onclick*="window.scrollTo"]:hover {
+    background-color: #D5D5D5;
+}
+
+
+/* --- Other general adjustments --- */
+.controls button {
+    min-height: 48px;
+    line-height: 48px;
+    border-radius: 8px;
+    background-color: var(--cta-primary-bg);
+    color: var(--cta-primary-text);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0 24px;
+}
+
+.card {
+    border-radius: 12px;
+    padding: 24px;
+    gap: 16px;
+    background-color: #FAFAFA; /* Light background for cards */
+}
+
+/* Links inside cards should be subtle */
+.detail-garment-item .btn-comprar {
+    background: none;
+    color: var(--text-primary); /* Dark text */
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: normal;
+    min-height: auto;
+    padding: 0;
+    margin-top: 8px;
+}
+.detail-garment-item .btn-comprar:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+
+/* Override existing welcome-cta to use more subtle gray for the other calculation buttons */
+.welcome-cta:not([onclick*="entrarApp"]) {
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 1px solid var(--btn-border);
+}
+.welcome-cta:not([onclick*="entrarApp"]):hover {
+    background-color: #D5D5D5;
+}
+
+/* --- General elements from previous styling --- */
+select, input[type="text"] {
+    min-height: 48px;
+    border-radius: 8px;
+    border: 1px solid var(--btn-border);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-size: 16px;
+    padding: 0 16px;
+}
+
+/* Result sections */
+.talle-result {
+    background-color: #FAFAFA;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 24px;
+}
+.talle-result-main {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+.talle-note {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.talle-cta-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 24px;
+}
+.talle-cta {
+    min-height: 48px;
+    line-height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    background-color: var(--cta-primary-bg);
+    color: var(--cta-primary-text);
+    margin-top: 16px;
+}
+.talle-cta:hover {
+    transform: scale(1.03);
+}
+
+/* Footer links */
+.footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    h1, .hero-title, .welcome-card .welcome-sub {
+        font-size: 32px; /* Adjusted size for main title on smaller screens */
+    }
+    h2, .talle-title {
+        font-size: 20px;
+    }
+    .welcome-card, .talle-card, .detail-card, .hero, .controls, .card {
+        padding: 24px 16px;
+    }
+    .welcome-contact, .welcome-cta {
+        margin-top: 12px;
+    }
+}
