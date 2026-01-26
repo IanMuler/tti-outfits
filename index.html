@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -53,7 +53,7 @@
         <div class="pill">TETELESTAI · Outfit Finder</div>
         <h1 class="hero-title">Outfits TETELESTAI</h1>
         <p class="hero-sub">
-          Elegí la ocasión o una prenda.<br>Te armamos los outfits indicados.
+          Seleccioná la ocasión, el clima o una prenda.<br>Te armamos los outfits indicados.
         </p>
         <p class="slogan">
           Enfocate en lo esencial, nosotros en que te veas bien.
@@ -187,22 +187,22 @@
 
         <div class="talle-steps">
           <p><strong>1. Cintura</strong><br>
-            Apoyá el jogger sobre una mesa, bien estirado y sin arrugas.  
-            Medí la cintura de un extremo al otro, sin estirar el elástico.  
+            Apoyá el jogger sobre una mesa, bien estirado y sin arrugas.
+            Medí la cintura de un extremo al otro, sin estirar el elástico.
             <br>
-            Solo ingresá esa medida.  
+            Solo ingresá esa medida.
             La app calcula automáticamente el contorno real.
             <br><br>
-            ¿No tenés un jogger?  
+            ¿No tenés un jogger?
             Usá un jean que te quede bien y medí la cintura de la misma forma.
           </p>
           <p><strong>2. Tiro</strong><br>
-            Con el pantalón apoyado, medí desde la unión de las costuras de la entrepierna hasta la parte superior de la cintura.  
+            Con el pantalón apoyado, medí desde la unión de las costuras de la entrepierna hasta la parte superior de la cintura.
             Sirve para chequear que el tiro te resulte cómodo al sentarte y moverte.
           </p>
           <p><strong>3. Largo</strong><br>
-            Extendé el jogger completo.  
-            Medí desde la parte superior de la cintura hasta la botamanga.  
+            Extendé el jogger completo.
+            Medí desde la parte superior de la cintura hasta la botamanga.
             Si tiene puño, incluí el puño en la medida.
           </p>
         </div>
@@ -272,25 +272,26 @@
 
         <div class="talle-steps">
           <p><strong>1. Cintura</strong><br>
-            Apoyá la bermuda abotonada sobre una superficie plana.  
+            Apoyá la bermuda abotonada sobre una superficie plana.
             Medí la cintura de un extremo al otro, solo el frente, sin estirar la tela.
             <br><br>
-            Solo ingresá esa medida.  
+            Solo ingresá esa medida.
             La app calcula automáticamente el contorno real.
             <br><br>
-            Esta cintura es rígida: sin elástico, con pasacinto, botón y cierre.  
+            Esta cintura es rígida: sin elástico, con pasacinto, botón y cierre.
             Medí con calma, sin forzar la tela.
           </p>
           <p><strong>2. Tiro</strong><br>
-            Medí desde el borde superior de la cintura hasta el cruce de costuras de la entrepierna.  
+            Medí desde el borde superior de la cintura hasta el cruce de costuras de la entrepierna.
             Sirve para chequear comodidad al sentarte y moverte.
           </p>
           <p><strong>3. Largo</strong><br>
-            Medí desde el borde superior de la cintura hasta el final de la botamanga.  
+            Extendé el jogger completo.
+            Medí desde el borde superior de la cintura hasta el final de la botamanga.
             Esta medida define si la preferís más arriba de la rodilla, a la altura o más abajo.
           </p>
           <p><strong>Tip rápido</strong><br>
-            Si querés ir directo al punto, la cintura manda.  
+            Si querés ir directo al punto, la cintura manda.
             Tiro y largo ayudan a ajustar el calce según cómo te gusta que quede.
           </p>
         </div>
@@ -367,29 +368,29 @@
       <img class="image-modal-content" id="modalImage" src="img/remera-indicador.jpg">
       <div class="image-modal-caption">Gráfico de referencia para medir remeras</div>
     </div>
-    
+
   </div>
   <!-- JavaScript -->
   <script src="js/app.js"></script>
   <script src="js/constantes.js"></script>
   <script src="js/buscador-outfits.js"></script>
     <script src="js/calcular-talles.js"></script>
-  
+
     <script>
       // Lógica del Modal de Imagen
       var modal = document.getElementById("imageModal");
       var modalImage = document.getElementById("modalImage");
       var modalCaption = document.querySelector(".image-modal-caption");
       var span = document.getElementsByClassName("image-modal-close")[0];
-  
+
       function openImageModal(imageSrc, captionText) {
         // Muestra el modal y establece un texto de carga inicial.
         modal.style.display = "block";
         modalCaption.textContent = "Cargando imagen...";
-        
+
         // Asigna la ruta de la imagen.
         modalImage.src = imageSrc;
-        
+
         // Si la imagen se carga correctamente, muestra el pie de foto correcto.
         modalImage.onload = function() {
           modalCaption.textContent = captionText;
@@ -400,7 +401,7 @@
           modalCaption.textContent = "Error: No se pudo cargar la imagen. Verifique el nombre del archivo en la carpeta 'img'.";
         };
       }
-  
+
       // Botón para la remera
       var openRemeraModalBtn = document.getElementById("openModalBtn");
       if (openRemeraModalBtn) {
@@ -408,7 +409,7 @@
           openImageModal("img/remera.jpg", "Gráfico de referencia para medir remeras");
         }
       }
-  
+
       // Botón para el jogger
       var openJoggerModalBtn = document.getElementById("openJoggerModalBtn");
       if (openJoggerModalBtn) {
@@ -424,18 +425,18 @@
           openImageModal("img/bermuda.jpg", "Gráfico de referencia para medir bermudas");
         }
       }
-  
+
       span.onclick = function() {
         modal.style.display = "none";
       }
-  
+
       window.onclick = function(event) {
         if (event.target == modal) {
           modal.style.display = "none";
         }
       }
     </script>
-  
+
     <!-- Rescue script: forzar recarga si la app no inicia en 1.8s -->
     <script>
       setTimeout(function() {
@@ -445,3 +446,4 @@
       }, 1800);
     </script>
   </body>
+</html>
