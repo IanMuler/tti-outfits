@@ -139,8 +139,9 @@ p, .card-meta, .talle-steps {
 /* --- Specific button styling (main CTAs) --- */
 #btnCalcularTalle, #btnCalcularTalleJogger, #btnCalcularTalleBermuda,
 .welcome-cta[onclick*="entrarApp"] { /* Primary CTA */
-    background-color: var(--cta-primary-bg);
-    color: var(--cta-primary-text);
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 1px solid var(--btn-border);
 }
 .welcome-cta:hover, #btnCalcularTalle:hover, #btnCalcularTalleJogger:hover, #btnCalcularTalleBermuda:hover {
     transform: scale(1.03);
