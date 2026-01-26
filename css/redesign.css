@@ -4,12 +4,15 @@
     --bg-color: #FFFFFF;
     --text-primary: #1A1A1A;
     --text-secondary: #5A5A5A;
+    --text-tertiary: #8A8A8A; /* New: for even lighter descriptive text */
     --cta-primary-bg: #1A1A1A;
     --cta-primary-text: #FFFFFF;
     --btn-secondary-bg: #E0E0E0; /* Lighter grey for secondary buttons */
     --btn-secondary-text: #1A1A1A;
     --btn-border: #D0D0D0; /* Border for secondary buttons */
     --text-description-on-dark: #CFCFCF; /* Gris claro/blanco atenuado */
+    --card-bg: #FAFAFA; /* Light background for cards */
+    --divider-color: #EEEEEE; /* Lighter divider for subtle separation */
 }
 
 body {
@@ -72,7 +75,7 @@ h2, .talle-title {
     margin-bottom: 24px; /* Spacing */
 }
 
-p, .card-meta, .talle-steps {
+p, .talle-steps { /* Removed .card-meta from here as it will have specific styling */
     font-size: 16px;
     font-weight: 400;
     color: var(--text-primary); /* Default to primary text color */
@@ -139,9 +142,9 @@ p, .card-meta, .talle-steps {
 /* --- Specific button styling (main CTAs) --- */
 #btnCalcularTalle, #btnCalcularTalleJogger, #btnCalcularTalleBermuda,
 .welcome-cta[onclick*="entrarApp"] { /* Primary CTA */
-    background-color: var(--btn-secondary-bg);
-    color: var(--btn-secondary-text);
-    border: 1px solid var(--btn-border);
+    background-color: var(--btn-secondary-bg); /* Changed to secondary */
+    color: var(--btn-secondary-text); /* Changed to secondary */
+    border: 1px solid var(--btn-border); /* Added border */
 }
 .welcome-cta:hover, #btnCalcularTalle:hover, #btnCalcularTalleJogger:hover, #btnCalcularTalleBermuda:hover {
     transform: scale(1.03);
@@ -188,6 +191,150 @@ p, .card-meta, .talle-steps {
 }
 
 
+/* --- Outfit Cards General Styling --- */
+.card {
+    border-radius: 12px;
+    padding: 24px;
+    /* gap: 16px; This was on the card itself, but the grid applies gaps. Removing for clarity */
+    background-color: var(--card-bg); /* Light background for cards */
+    border: 1px solid var(--divider-color); /* Subtle border for definition */
+    margin-bottom: 2rem; /* Increased spacing between cards for better visual separation */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Very subtle shadow */
+}
+
+/* --- 1) Titles of each block (nombre de prenda y “Outfit completo”) --- */
+.card-top {
+    font-family: var(--font-family-display); /* Editorial font */
+    font-size: 1.25rem; /* ~20px, ~25% increase from 16px */
+    font-weight: 600; /* Semibold */
+    color: var(--text-primary); /* Black/very dark gray */
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem; /* Increased margin */
+    line-height: 1.2;
+    text-decoration: none; /* No underline */
+}
+.card-main {
+    font-family: var(--font-family-display); /* Editorial font */
+    font-size: 1.125rem; /* ~18px, ~12.5% increase from 16px */
+    font-weight: 600; /* Semibold */
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem; /* More space below main title */
+    line-height: 1.2;
+    text-decoration: none; /* No underline */
+}
+/* .detail-title is in index.html, not dynamically generated */
+.detail-title {
+    font-family: var(--font-family-display);
+    font-size: 1.5rem; /* Larger title for detail view */
+    font-weight: 700; /* Bold for main detail title */
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none; /* No underline */
+}
+
+.detail-garment-name {
+    font-family: var(--font-family-base); /* Keep base font as it's a subtitle within a list item */
+    font-size: 1rem; /* ~16px, base size but semibold */
+    font-weight: 600; /* Semibold */
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-top: 1rem; /* Increased vertical separation */
+    margin-bottom: 0.25rem;
+    display: block;
+    text-decoration: none; /* No underline */
+}
+
+/* --- 2) Descriptive texts --- */
+.card-meta {
+    font-size: 0.9375rem; /* ~15px, slightly smaller than base */
+    color: var(--text-secondary); /* Medium gray */
+    line-height: 1.6;
+    margin-bottom: 0.35rem; /* Reduced margin for tighter look */
+}
+.card-meta b {
+    color: var(--text-primary); /* Keep bold text dark */
+}
+p.detail-summary { /* Specificity for summary paragraph */
+    font-size: 0.9375rem; /* ~15px */
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem; /* More spacing below the summary */
+}
+.detail-benefit-text {
+    font-size: 0.9375rem; /* ~15px */
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* --- 3) Título de sección “Lo que te ofrece este outfit” --- */
+.detail-subtitle {
+    font-family: var(--font-family-base); /* Keep base font as it's a section title */
+    font-size: 1.125rem; /* ~18px */
+    font-weight: 600; /* Semibold */
+    color: var(--text-primary);
+    text-align: center;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--divider-color); /* Thin dividing line */
+    text-decoration: none; /* No underline */
+}
+
+/* --- 4) Separation between blocks of garments in detail view --- */
+.detail-garment-item {
+    padding-bottom: 1.25rem; /* Increased padding */
+    margin-bottom: 1.25rem; /* Increased margin */
+    border-bottom: 1px solid var(--divider-color); /* Thin dividing line */
+}
+/* Remove border/margin from last item of this type */
+.detail-garment-item:last-of-type { /* This will be the "Outfit completo" item */
+     border-bottom: none;
+     margin-bottom: 0;
+     padding-bottom: 0;
+}
+/* Ensure detail-tools also have proper spacing */
+.detail-tools {
+    margin-top: 2.5rem; /* Increased spacing */
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--divider-color); /* Separator */
+}
+/* The detail-cta-full-outfit was removed in previous step, so no need to style */
+
+/* --- 5) CTAs de compra (“Comprar online”) --- */
+.btn-comprar {
+    display: block; /* Make it behave like a block button */
+    min-height: 40px; /* Smaller height for subtle buttons */
+    line-height: 38px; /* Adjusted for border */
+    padding: 0 18px; /* Slightly more padding */
+    border-radius: 4px; /* Slightly less rounded */
+    font-size: 0.9375rem; /* ~15px */
+    font-weight: 600; /* Semibold */
+    text-decoration: none; /* Remove underline */
+    color: var(--text-primary); /* Dark text */
+    background-color: transparent; /* Transparent background */
+    border: 1px solid var(--text-primary); /* Use primary text color for border */
+    transition: all 0.2s ease-in-out; /* Subtle transition */
+    margin-top: 1.25rem; /* Increased spacing */
+    text-align: center; /* Center text within button */
+    width: fit-content; /* Adjust width to content */
+    margin-left: auto; /* Center block element */
+    margin-right: auto; /* Center block element */
+}
+.btn-comprar:hover {
+    background-color: var(--cta-primary-bg); /* Black background */
+    color: var(--cta-primary-text); /* White text */
+    border-color: var(--cta-primary-bg); /* Dark border on hover */
+    transform: translateY(-1px); /* Subtle lift */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
 /* --- Other general adjustments --- */
 .controls button {
     min-height: 48px;
@@ -200,42 +347,26 @@ p, .card-meta, .talle-steps {
     padding: 0 24px;
 }
 
-.card {
-    border-radius: 12px;
-    padding: 24px;
-    gap: 16px;
-    background-color: #FAFAFA; /* Light background for cards */
+.chip-row {
+    margin-top: 1.5rem; /* Increased top margin */
+    padding-top: 1.5rem; /* Add padding for border */
+    border-top: 1px solid var(--divider-color); /* Separator */
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
-
-/* Links inside cards should be subtle */
-.detail-garment-item .btn-comprar {
-    background: none;
-    color: var(--text-primary); /* Dark text */
-    text-decoration: underline;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: normal;
-    min-height: auto;
-    padding: 0;
-    margin-top: 8px;
-}
-.detail-garment-item .btn-comprar:hover {
-    text-decoration: none;
-    opacity: 0.8;
-}
-
-
-/* Override existing welcome-cta to use more subtle gray for the other calculation buttons */
-.welcome-cta:not([onclick*="entrarApp"]) {
+.chip {
     background-color: var(--btn-secondary-bg);
     color: var(--btn-secondary-text);
-    border: 1px solid var(--btn-border);
-}
-.welcome-cta:not([onclick*="entrarApp"]):hover {
-    background-color: #D5D5D5;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
-/* --- General elements from previous styling --- */
+
 select, input[type="text"] {
     min-height: 48px;
     border-radius: 8px;
@@ -312,4 +443,37 @@ select, input[type="text"] {
 
 .talle-screen div[style*="background:#000"] > p {
     color: var(--text-description-on-dark) !important;
+}
+
+/* Override existing welcome-cta to use more subtle gray for the other calculation buttons */
+.welcome-cta:not([onclick*="entrarApp"]) {
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 1px solid var(--btn-border);
+}
+.welcome-cta:not([onclick*="entrarApp"]):hover {
+    background-color: #D5D5D5;
+}
+
+/* The previous rule for .detail-garment-item .btn-comprar is now covered by the more general .btn-comprar */
+/* Explicitly remove the old override to avoid conflicts */
+.detail-garment-item .btn-comprar { /* Remove specific overrides */
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 0.9375rem !important;
+    line-height: 38px !important;
+    min-height: 40px !important;
+    padding: 0 16px !important;
+    margin-top: 1rem !important;
+    border: 1px solid var(--btn-border) !important; /* Adjusted to use btn-border */
+    border-radius: 4px !important;
+}
+.detail-garment-item .btn-comprar:hover {
+    background-color: var(--cta-primary-bg) !important;
+    color: var(--cta-primary-text) !important;
+    border-color: var(--cta-primary-bg) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
 }
