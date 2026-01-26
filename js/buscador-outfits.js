@@ -232,7 +232,6 @@ TTI.buscador.abrirDetalle = function(index) {
     topHTML +
     bottomHTML +
     '<li class="detail-garment-item"><span class="detail-garment-name">Outfit completo:</span> <span class="detail-benefit-text">' + TTI.buscador.beneficioConjunto(c) + '</span></li>' +
-    '<li class="detail-cta-full-outfit"><a href="https://www.tetelestai.com.ar" target="_blank" class="btn-comprar">COMPRAR OUTFIT COMPLETO</a></li>' + // New CTA
     '<li class="detail-tools">' +
       '<button class="detail-tool-btn" onclick="irATalleRemera()">Calcular mi talle de remera</button>' +
       '<button class="detail-tool-btn" onclick="irATalleJogger()">Calcular mi talle de jogger</button>' +
