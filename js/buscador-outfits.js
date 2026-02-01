@@ -257,7 +257,20 @@ TTI.buscador.iniciar = function() {
   el.detailSummary = document.getElementById('detailSummary');
   el.detailList = document.getElementById('detailList');
 
-  el.tipoSelect.addEventListener('change', TTI.buscador.poblarColores);
+  // Disable color select by default
+  el.colorSelect.disabled = true;
+
+  el.tipoSelect.addEventListener('change', function() {
+    TTI.buscador.poblarColores();
+    // Enable or disable color select based on garment selection
+    if (el.tipoSelect.value === 'todos') {
+      el.colorSelect.disabled = true;
+      el.colorSelect.value = 'todos'; // Reset color filter
+    } else {
+      el.colorSelect.disabled = false;
+    }
+  });
+
   el.applyBtn.addEventListener('click', TTI.buscador.renderizar);
   el.detailBack.addEventListener('click', function() { el.detailView.classList.add('hidden'); });
   el.results.addEventListener('click', function(e) {
