@@ -26,13 +26,10 @@
       <div class="welcome-card">
         <h1 class="welcome-title">TETELESTAI</h1>
         <p class="welcome-sub">
-          CONSULTÁ TU OUTFIT IDEAL PARA CADA OCASIÓN Y CALCULÁ TU TALLE
+          CALCULÁ TU TALLE Y ELEGÍ SIN ERRORES
         </p>
         <p class="welcome-text">
-          Con TTi Uno, resolvés qué ponerte y tu talle de una manera simple.
-        </p>
-        <p class="slogan">
-            Outfit y talles correctos en minutos.
+          Con TTi Uno, resolvés tu talle de una manera simple.
         </p>
         <div class="welcome-contact">
           <p><strong>Contacto</strong></p>
@@ -40,81 +37,16 @@
           <p>Instagram: <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank">@tetelestai.indumentaria</a></p>
           <p>Web: <a href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a></p>
         </div>
-        <button class="welcome-cta" onclick="entrarApp()">Descubrir mi outfit ideal</button>
-        <button class="welcome-cta" onclick="irATalleRemera()">Calcular mi talle de remera</button>
-        <button class="welcome-cta" type="button" onclick="irATalleJogger()">Calcular mi talle de jogger</button>
+        <button class="welcome-cta" onclick="irATalleRemera()" style="line-height: 1.2; padding: 10px 24px;">
+          Calcular mi talle de remera<br>
+          <span style="font-size: 0.75rem; font-weight: 400; text-transform: none; display: block; margin-top: -2px;">(manga corta y larga)</span>
+        </button>
+        <button class="welcome-cta" type="button" onclick="irATalleJogger()" style="line-height: 1.2; padding: 10px 24px;">
+          Calcular mi talle de jogger<br>
+          <span style="font-size: 0.75rem; font-weight: 400; text-transform: none; display: block; margin-top: -2px;">(cargo y liso)</span>
+        </button>
         <button class="welcome-cta" type="button" onclick="irATalleBermuda()">Calcular mi talle de bermuda</button>
       </div>
-    </div>
-
-    <div class="app" id="outfitApp" style="display:none;">
-      <button class="detail-back" onclick="volverInicio()">← Volver</button>
-      <header class="hero">
-        <div class="pill">TETELESTAI · Outfit Finder</div>
-        <h1 class="hero-title">Outfits TETELESTAI</h1>
-        <p class="hero-sub">
-          Seleccioná la ocasión, el clima o una prenda.<br>Te armamos los outfits indicados.
-        </p>
-        <p class="slogan">
-          Enfocate en lo esencial, nosotros en que te veas bien.
-        </p>
-      </header>
-
-      <div class="controls">
-        <select id="tipoSelect">
-          <option value="todos">Prenda: Todas</option>
-          <option value="Remera">Remeras</option>
-          <option value="Jogger Cargo">Joggers Cargo</option>
-          <option value="Jogger Liso">Joggers Lisos</option>
-          <option value="Bermuda">Bermudas</option>
-        </select>
-
-        <select id="colorSelect">
-          <option value="todos">Color: Todos</option>
-        </select>
-
-        <select id="ocasionSelect">
-          <option value="todas">Ocasión: Todas</option>
-          <option value="dia">Día</option>
-          <option value="noche">Noche</option>
-          <option value="ciudad">Ciudad</option>
-          <option value="airelibre">Aire libre</option>
-          <option value="oficina">Oficina / Facultad</option>
-          <option value="diaynoche">Día y noche</option>
-        </select>
-
-        <select id="climaSelect">
-          <option value="todos">Clima: Todos</option>
-          <option value="Cálido">Cálido</option>
-          <option value="Templado">Templado</option>
-        </select>
-
-        <input type="text" id="searchInput" placeholder="Ej: verde, finde, cena...">
-        <button id="applyBtn" style="font-weight:600">Ver opciones</button>
-
-        <div class="footer" style="margin-top:10px; text-align:center; font-size:0.8rem; color:#555;">
-        </div>
-
-        <div style="width:100%; text-align:center; margin-top:8px; display:flex; flex-direction:column; gap:4px;">
-          <a href="https://wa.me/5491157365177" target="_blank" style="text-decoration:none; color:#000; font-size:1rem; font-weight:600">
-            <span style="font-size:1rem; margin-right:4px;">💬</span> <b><u>WhatsApp TETELESTAI</u></b>
-          </a>
-          <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank" style="text-decoration:none; color:#000; font-size:1rem; font-weight:600">
-            <span style="font-size:1rem; margin-right:4px;">📸</span> <b><u>Instagram @tetelestai.indumentaria</u></b>
-          </a>
-        </div>
-      </div>
-
-      <p class="tagline">
-        Elegí la ocasión, el clima o una prenda y su color.<br>Nosotros te armamos los outfits indicados.
-      </p>
-
-      <section id="results" class="grid"></section>
-
-      <footer class="footer">
-        Encontrá estas combinaciones y más en<br>
-        <a class="cta-link" href="https://www.tetelestai.com.ar" style="font-weight:600" target="_blank">www.tetelestai.com.ar</a>
-      </footer>
     </div>
 
     <!-- Pantalla saber mi talle de remera -->
@@ -341,27 +273,6 @@
       </div>
     </div>
 
-    <!-- Pantalla de detalle de beneficios -->
-    <div id="detailView" class="detail hidden">
-      <div class="detail-card">
-        <button id="detailBack" class="detail-back">← Volver</button>
-        <div class="detail-title" id="detailTitle"></div>
-        <p class="detail-summary" id="detailSummary"></p>
-        <div class="detail-subtitle" style="font-weight: bold; text-align: center;">Lo que te ofrece este outfit</div>
-
-        <ul class="detail-list" id="detailList"></ul>
-
-        <div style="margin-top: 16px; text-align: center;">
-          <a href="https://wa.me/c/5491157365177" target="_blank" class="btn-ver-prendas">
-            IR A CATÁLOGO WHATSAPP
-          </a>
-          <a href="https://www.tetelestai.com.ar" target="_blank" class="detail-website-link" style="margin-top: 15px;">
-            www.tetelestai.com.ar
-          </a>
-        </div>
-      </div>
-    </div>
-
     <!-- Modal para la imagen de guía de talles -->
     <div id="imageModal" class="image-modal" style="display:none;">
       <span class="image-modal-close">&times;</span>
@@ -373,8 +284,7 @@
   <!-- JavaScript -->
   <script src="js/app.js"></script>
   <script src="js/constantes.js"></script>
-  <script src="js/buscador-outfits.js"></script>
-    <script src="js/calcular-talles.js"></script>
+  <script src="js/calcular-talles.js"></script>
 
     <script>
       // Lógica del Modal de Imagen

@@ -42,15 +42,15 @@
 }
 
 .welcome-text {
-  font-size: 1rem; /* Ligeramente más grande */
+  font-size: 1.1rem;
   color: var(--color-soft-grey); /* Gris suave del nuevo tema */
-  margin-bottom: 20px; /* Más espacio */
-  line-height: 1.5;
+  margin-bottom: 24px;
+  line-height: 1.6;
 }
 
 .welcome-contact {
-  margin: 16px 0 24px; /* Más espacio */
-  font-size: 0.9rem;
+  margin: 16px 0 32px;
+  font-size: 1rem;
   color: var(--color-soft-grey);
 }
 
