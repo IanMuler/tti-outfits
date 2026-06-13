@@ -3,7 +3,7 @@
    ============================================= */
 
 .talle-screen {
-  padding: 28px 20px 48px; /* Mobile first: lateral 20px, vertical 28px-32px */
+  padding: 0 20px 48px; /* Reiniciar top para control manual por el botón */
   background: var(--bg-primary); /* Fondo principal */
   color: var(--text-body);
 }
@@ -310,46 +310,74 @@
 
 /* --- NUEVA PÁGINA REMERAS PREMIUM --- */
 
+.talle-screen-header {
+  width: 100%;
+  max-width: 720px; /* Igualar al ancho de talle-card para consistencia total */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.btn-top-volver {
+  background-color: #FFFFFF;
+  border: 1px solid #D9D4CE;
+  border-radius: 999px;
+  color: #111111;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 13px;
+  padding: 8px 14px;
+  min-height: 36px;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 16px 0 14px; /* Superior 16px, Inferior 14px */
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-top-volver:hover {
+  background-color: #F7F5F2;
+  border-color: #111111;
+}
+
 .talle-header-premium {
   background-color: #111111;
-  padding: 28px 20px; /* Mobile first: lateral 20px, vertical 28px */
+  padding: 24px 20px;
   text-align: center;
-  position: relative;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 18px;
 }
-
-.detail-back-white {
-  position: absolute;
-  left: 20px;
-  top: 28px;
-  background: transparent;
-  border: none;
-  color: #FFFFFF;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-
-.detail-back-white:hover { opacity: 1; }
 
 .talle-header-title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 28px; /* Mobile first spec */
+  font-size: 26px; /* Rango solicitado 26px-28px */
   color: #FFFFFF;
-  line-height: 1.1; /* Mobile first spec */
-  margin: 0 auto 14px;
-  max-width: 800px;
+  line-height: 1.1;
+  margin: 0 auto 12px;
+  max-width: 100%;
   text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .talle-screen { padding: 0 32px 48px; }
+  .btn-top-volver {
+    font-size: 14px;
+    margin: 20px 0 18px;
+  }
+  .talle-header-premium { padding: 32px; }
+  .talle-header-title { font-size: 34px; }
 }
 
 .talle-header-subtitle {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 16px; /* Mobile first spec */
+  font-size: 15px; /* Mobile spec min 15px */
   color: #D9D4CE;
   margin: 0;
 }
