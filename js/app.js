@@ -4,28 +4,24 @@
 
 // Namespace global
 var TTI = TTI || {};
-TTI.datos = {};
-TTI.nav = {};
-TTI.buscador = {};
-TTI.talles = {};
-TTI.utils = {};
+TTI.datos = TTI.datos || {};
+TTI.nav = TTI.nav || {};
+TTI.talles = TTI.talles || {};
+TTI.utils = TTI.utils || {};
 
 // ---- UTILIDADES ----
 TTI.utils.derivarColoresPorTipo = function(combos) {
   var resultado = {};
   combos.forEach(function(c) {
-    // Colores de remera (siempre en top cuando top_type es Remera)
     if (c.top_type === 'Remera') {
       if (!resultado['Remera']) resultado['Remera'] = {};
       resultado['Remera'][c.top_color] = true;
     }
-    // Colores de pantalón/bermuda
     if (c.bottom_type && c.bottom_type !== 'Remera') {
       if (!resultado[c.bottom_type]) resultado[c.bottom_type] = {};
       resultado[c.bottom_type][c.bottom_color] = true;
     }
   });
-  // Convertir objetos a arrays ordenados
   Object.keys(resultado).forEach(function(tipo) {
     resultado[tipo] = Object.keys(resultado[tipo]).sort();
   });
@@ -113,73 +109,38 @@ window.irATalleJogger = TTI.nav.irATalleJogger;
 window.irATalleBermuda = TTI.nav.irATalleBermuda;
 window.volverDesdeTalle = TTI.nav.volverDesdeTalle;
 
-// ---- SERVICE WORKER (DISABLED) ----
-// Se deshabilita y desregistra el Service Worker para evitar problemas de
-// caché en webviews y navegadores, que es una de las causas probables
-// de la pantalla blanca en la primera carga.
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    for (let registration of registrations) {
-      registration.unregister();
-    }
-  });
-}
+// ---- INICIALIZACIÓN ROBUSTA ----
 
-// ---- INICIALIZACIÓN ROBUSTA Y SISTEMA DE RESCATE ----
-
-// Bandera global para asegurar que la inicialización ocurra solo una vez.
 window.appInitialized = false;
-// Bandera global para que el sistema de rescate sepa si la app cargó.
 window.appLoaded = false;
 
-// Contiene la lógica central de inicialización de la app.
 function initApp() {
-  // Si ya se inicializó, no hacer nada.
-  if (window.appInitialized) {
-    return;
-  }
+  if (window.appInitialized) return;
   window.appInitialized = true;
 
-  TTI.datos.cargar(function() {
-    // Éxito en la carga de datos: inicializar componentes.
-    TTI.buscador.iniciar();
+  // Inicializar talles
+  if (TTI.talles && typeof TTI.talles.iniciar === 'function') {
     TTI.talles.iniciar();
-    TTI.nav.mostrarBienvenida(); // Punto de entrada de la app.
-    
-    // Marcar la app como completamente cargada para el sistema de rescate.
+  }
+
+  // Mostrar bienvenida
+  TTI.nav.mostrarBienvenida();
+
+  // Carga asíncrona de datos secundarios
+  TTI.datos.cargar(function() {
     window.appLoaded = true;
   }, function() {
-    // Error en la carga de datos: aún así intentamos mostrar la app.
-    TTI.nav.mostrarBienvenida();
-    window.appLoaded = true; // Marcar como cargada para evitar reload en bucle.
+    window.appLoaded = true; // No bloquear la app si falla el JSON
   });
 }
 
-// Sistema de inicialización segura (anti-pantalla blanca).
-// Intenta iniciar la app tan pronto como el DOM es interactivo,
-// sin depender exclusivamente del evento DOMContentLoaded.
 function safeInit() {
-  if (window.appInitialized) {
-    return;
-  }
-  
-  // Si el DOM ya está listo (interactive o complete), iniciar la app.
+  if (window.appInitialized) return;
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     initApp();
   } else {
-    // Si no, volver a intentar en 50ms.
-    setTimeout(safeInit, 50);
+    setTimeout(safeInit, 30);
   }
 }
 
-// Sistema de rescate automático silencioso.
-// Si después de 1500ms la app no se ha marcado como 'cargada',
-// forzamos un refresco. Esto es invisible para el usuario.
-setTimeout(function() {
-  if (!window.appLoaded) {
-    location.reload();
-  }
-}, 1500);
-
-// Iniciar el proceso de inicialización segura.
 safeInit();

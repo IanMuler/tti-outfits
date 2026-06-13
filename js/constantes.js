@@ -2,6 +2,8 @@
    CONSTANTES - Datos fijos de la aplicación
    ============================================= */
 
+var TTI = TTI || {};
+
 TTI.constantes = {
   // ---- BENEFICIOS ----
   beneficios: {
