@@ -3,7 +3,7 @@
    ============================================= */
 
 .talle-screen {
-  padding: 24px 16px 40px; /* Ajuste de padding */
+  padding: 28px 20px 48px; /* Mobile first: lateral 20px, vertical 28px-32px */
   background: var(--bg-primary); /* Fondo principal */
   color: var(--text-body);
 }
@@ -19,27 +19,32 @@
 
 .talle-title {
   text-align: center;
-  font-size: 1.4rem; /* Ligeramente más grande */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 28px; /* Mobile first */
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin: 8px 0 20px; /* Más espacio */
+  margin: 8px 0 20px;
   color: var(--text-title);
+  line-height: 1.1; /* Mobile first spec */
 }
 
 .talle-intro {
-  font-size: 1rem; /* Ligeramente más grande */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 15px; /* Mobile first */
   color: var(--text-body);
   text-align: center;
-  margin-bottom: 20px; /* Más espacio */
-  line-height: 1.5;
+  margin-bottom: 24px;
+  line-height: 1.6; /* Mobile first spec */
 }
 
 .talle-steps {
-  background: var(--color-light-grey); /* Fondo más claro */
+  background: var(--color-light-grey);
   border-radius: 12px;
-  padding: 16px; /* Más padding */
+  padding: 16px;
   font-size: 0.95rem;
-  margin-bottom: 20px; /* Más espacio */
+  margin-bottom: 20px;
   line-height: 1.5;
   color: var(--text-body);
 }
@@ -49,13 +54,13 @@
 }
 
 .talle-graphic-link {
-  display: inline-block; /* Para ajustarse al texto */
-  margin-bottom: 24px; /* Más espacio */
+  display: inline-block;
+  margin-bottom: 24px;
   text-align: center;
-  padding: 10px 20px; /* Más padding */
+  padding: 10px 20px;
   border-radius: 999px;
-  background: var(--color-black); /* Fondo negro */
-  color: var(--color-white); /* Texto blanco */
+  background: var(--color-black);
+  color: var(--color-white);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
@@ -69,25 +74,25 @@
 
 .talle-form-group,
 .talle-input-group {
-  margin-bottom: 15px; /* Más espacio */
+  margin-bottom: 15px;
 }
 
 .talle-form-group label,
 .talle-input-group label {
   display: block;
-  font-size: 0.85rem; /* Ligeramente más grande */
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 6px; /* Más espacio */
+  margin-bottom: 6px;
   color: var(--text-subtitle);
 }
 
 .talle-input {
   width: 100%;
-  padding: 10px 14px; /* Más padding */
+  padding: 10px 14px;
   border-radius: 999px;
-  border: 1px solid var(--color-soft-grey); /* Borde suave */
-  font-size: 0.95rem; /* Ligeramente más grande */
+  border: 1px solid var(--color-soft-grey);
+  font-size: 0.95rem;
   outline: none;
   color: var(--text-title);
   background-color: var(--color-white);
@@ -96,23 +101,111 @@
 
 .talle-input:focus {
   border-color: var(--color-accent-green);
-  box-shadow: 0 0 0 2px rgba(110, 122, 88, 0.3); /* Sombra sutil con acento */
+  box-shadow: 0 0 0 2px rgba(110, 122, 88, 0.3);
 }
 
 .talle-form { text-align: center; }
 
+/* --- CLARIDAD DE PASOS Y ETIQUETAS --- */
+
+.talle-step-item {
+  margin-bottom: 20px;
+}
+
+.talle-step-title {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600; /* SemiBold */
+  font-size: 16px;
+  color: #111111;
+  margin-bottom: 8px;
+}
+
+.talle-badge-mandatory {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #111111;
+  margin-left: 4px;
+}
+
+.talle-badge-optional {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 0.85em;
+  color: #777777;
+  margin-left: 4px;
+}
+
+.talle-step-description {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 15px; /* Mobile first */
+  color: #444444;
+  line-height: 1.6; /* Mobile first spec */
+  margin-bottom: 6px;
+}
+
+.talle-step-clarification {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 13px;
+  color: #666666;
+  margin-top: 4px;
+}
+
+.talle-label-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.talle-label-main {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 14px !important;
+  color: #111111 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  margin-bottom: 2px !important;
+}
+
+.talle-label-status {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.status-mandatory {
+  font-weight: 600; /* SemiBold */
+  color: #111111;
+}
+
+.status-optional {
+  font-weight: 400; /* Regular */
+  color: #777777;
+}
+
+@media (min-width: 768px) {
+  .talle-step-title { font-size: 18px; }
+  .talle-step-description { font-size: 15px; }
+  .talle-step-clarification { font-size: 14px; }
+}
+
 .talle-btn {
   display: inline-block;
   width: auto;
-  padding: 12px 24px; /* Más padding */
+  padding: 12px 24px;
   border-radius: 999px;
-  border: none; /* No borde por defecto */
+  border: none;
   background: var(--color-black);
   color: var(--color-white);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 10px; /* Más espacio */
+  margin-top: 10px;
   text-transform: uppercase;
   transition: opacity 0.2s, background-color 0.2s;
 }
@@ -152,20 +245,20 @@
 }
 
 .talle-error {
-  margin-top: 20px; /* Más espacio */
-  padding: 15px; /* Más padding */
+  margin-top: 20px;
+  padding: 15px;
   border-radius: 10px;
-  background: #f4e9e9; /* Rojo suave */
-  color: #7a0000; /* Rojo oscuro */
+  background: #f4e9e9;
+  color: #7a0000;
   font-size: 0.9rem;
   line-height: 1.5;
 }
 
 .talle-result {
-  margin-top: 24px; /* Más espacio */
-  padding: 20px; /* Más padding */
+  margin-top: 24px;
+  padding: 20px;
   border-radius: 12px;
-  background: var(--color-light-grey); /* Fondo más claro */
+  background: var(--color-light-grey);
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--text-body);
@@ -173,12 +266,12 @@
 
 .talle-result-main {
   font-weight: 600;
-  margin-bottom: 8px; /* Más espacio */
+  margin-bottom: 8px;
   color: var(--text-title);
 }
 
 .talle-recom {
-  margin-top: 12px; /* Más espacio */
+  margin-top: 12px;
   color: var(--text-subtitle);
   line-height: 1.5;
 }
@@ -186,12 +279,12 @@
 .talle-note {
   font-size: 0.85rem;
   color: var(--text-microcopy);
-  margin-top: 16px; /* Más espacio */
+  margin-top: 16px;
   line-height: 1.4;
 }
 
 .talle-cta-label {
-  margin-top: 24px; /* Más espacio */
+  margin-top: 24px;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -215,6 +308,372 @@
   box-sizing: border-box;
 }
 
+/* --- NUEVA PÁGINA REMERAS PREMIUM --- */
+
+.talle-header-premium {
+  background-color: #111111;
+  padding: 28px 20px; /* Mobile first: lateral 20px, vertical 28px */
+  text-align: center;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.detail-back-white {
+  position: absolute;
+  left: 20px;
+  top: 28px;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.detail-back-white:hover { opacity: 1; }
+
+.talle-header-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 28px; /* Mobile first spec */
+  color: #FFFFFF;
+  line-height: 1.1; /* Mobile first spec */
+  margin: 0 auto 14px;
+  max-width: 800px;
+  text-transform: uppercase;
+}
+
+.talle-header-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px; /* Mobile first spec */
+  color: #D9D4CE;
+  margin: 0;
+}
+
+.talle-main-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 28px; /* Mobile first spec */
+  color: #111111;
+  line-height: 1.1; /* Mobile first spec */
+  text-align: center;
+  margin: 32px 0 24px;
+}
+
+.talle-instructions-box {
+  background-color: #F2F0ED;
+  border-radius: 18px;
+  padding: 24px; /* Mobile first spec */
+  margin-bottom: 24px;
+}
+
+.talle-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.talle-step-item:last-child { margin-bottom: 0; }
+
+.talle-step-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #111111;
+  min-width: 20px;
+}
+
+.talle-step-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 15px; /* Mobile first spec */
+  color: #444444;
+  line-height: 1.6; /* Mobile first spec */
+  margin: 0;
+}
+
+.btn-ver-como-medir {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: 48px;
+  margin: 0 auto 32px;
+  background-color: #111111;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-ver-como-medir:hover { background-color: #222222; }
+
+.talle-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Mobile first spec */
+  margin-bottom: 32px;
+}
+
+.talle-input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.talle-input-field-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.talle-label-premium {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #111111;
+  margin-bottom: 4px;
+}
+
+.talle-help-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #777777;
+  margin-bottom: 8px;
+}
+
+.talle-input-premium {
+  width: 100%;
+  max-width: 320px;
+  height: 52px; /* Mobile first spec */
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1.5px solid #D9D4CE;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px; /* Mobile first spec */
+  color: #111111;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.talle-input-premium::placeholder { color: #999999; }
+
+.talle-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Mobile first spec */
+  width: 100%;
+  max-width: 420px; /* Mobile first spec */
+  margin: 0 auto;
+}
+
+.btn-talle-primary {
+  background-color: #111111;
+  color: #FFFFFF;
+  border: none;
+  height: 56px; /* Mobile first spec */
+  border-radius: 16px; /* Mobile first spec */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px; /* Mobile first spec */
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.btn-talle-secondary {
+  background-color: #FFFFFF;
+  color: #111111;
+  border: 1.5px solid #111111;
+  height: 56px; /* Mobile first spec */
+  border-radius: 16px; /* Mobile first spec */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px; /* Mobile first spec */
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.btn-talle-secondary:hover {
+  background-color: #111111;
+  color: #FFFFFF;
+}
+
+@media (min-width: 768px) {
+  .talle-header-title { font-size: 34px; }
+  .talle-header-subtitle { font-size: 18px; }
+  .talle-main-title { font-size: 36px; }
+  .talle-form-container { flex-direction: row; justify-content: center; gap: 40px; }
+  .talle-input-field-left { margin: 0; }
+  .talle-header-premium { padding: 32px 24px; }
+  .detail-back-white { top: 32px; }
+}
+
+/* --- RESULTADOS PREMIUM (UNIFICADOS) --- */
+
+.talle-result-premium {
+  margin-top: 32px;
+  padding: 40px 24px;
+  background: #FFFFFF;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #111111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.result-premium-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 28px; /* Mobile first spec */
+  color: #111111;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  line-height: 1.1; /* Mobile first spec */
+  text-align: center;
+}
+
+.result-premium-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.result-premium-measure {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666666;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.result-premium-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 15px; /* Mobile first spec */
+  line-height: 1.65; /* Mobile first spec */
+  color: #444444;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.result-premium-highlight {
+  font-weight: 600;
+  color: #111111;
+}
+
+.result-premium-alt-box {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.alt-premium-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #111111;
+}
+
+.alt-premium-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #444444;
+}
+
+.result-premium-cta-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px; /* Mobile first spec */
+  color: #111111;
+  margin-top: 0;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.result-premium-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 420px; /* Mobile first spec */
+  align-items: center;
+  margin: 0 auto;
+}
+
+.btn-premium-primary, .btn-premium-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px; /* Mobile first spec */
+  border-radius: 16px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px; /* Mobile first spec */
+  text-transform: uppercase;
+  transition: all 200ms ease;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 0.3px;
+}
+
+.btn-premium-primary {
+  background: #111111;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-premium-primary:hover {
+  background: #222222;
+}
+
+.btn-premium-secondary {
+  background: #ffffff;
+  color: #111111;
+  border: 1.5px solid #111111;
+}
+
+.btn-premium-secondary:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .result-premium-title { font-size: 34px; }
+  .result-premium-measure { font-size: 15px; }
+  .result-premium-text { font-size: 16px; }
+  .result-premium-cta-title { font-size: 16px; }
+}
+
 .product-brand-title {
   display: block;
   width: 100%;
@@ -222,7 +681,7 @@
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 22px;
-  font-weight: 600; /* SemiBold */
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.06em;
   color: #ffffff;
@@ -237,7 +696,7 @@
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
-  font-weight: 400; /* Regular */
+  font-weight: 400;
   line-height: 1.55;
   color: #ffffff;
   text-align: center;
@@ -245,7 +704,7 @@
 
 .product-description-text span, 
 .product-description-text strong {
-  font-weight: 600; /* SemiBold para resaltados sutiles */
+  font-weight: 600;
 }
 
 @media (min-width: 768px) {
@@ -260,121 +719,15 @@
   }
 }
 
-/* --- RESULTADOS DE PRODUCTO (UNIFICADOS) --- */
-
-.talle-result-product {
-  margin-top: 32px;
-  padding: 32px 24px;
-  border-radius: 12px;
-  background: #fcfcfc;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  color: #333;
-}
-
-.result-product-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600; /* SemiBold */
-  font-size: 1.5rem;
-  color: #111111;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-.result-product-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #444;
-  margin-bottom: 20px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.result-product-highlight {
-  font-weight: 600;
-  color: #111111;
-}
-
-.result-product-alt {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  color: #444;
-  margin-top: 24px;
-}
-
-.result-product-cta-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: #111111;
-  margin-top: 40px;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.result-product-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 320px;
-  margin: 0 auto;
-}
-
-.btn-product-primary, .btn-product-secondary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  transition: all 0.2s ease;
-}
-
-.btn-product-primary {
-  background: #111111;
-  color: #ffffff;
-  border: none;
-}
-
-.btn-product-primary:hover {
-  background: #333333;
-}
-
-.btn-product-secondary {
-  background: #ffffff;
-  color: #111111;
-  border: 1.5px solid #111111;
-}
-
-.btn-product-secondary:hover {
-  background: #f5f5f5;
-}
-
-@media (max-width: 480px) {
-  .result-product-title { font-size: 1.3rem; }
-  .result-product-text { font-size: 1rem; }
-  .result-product-actions { max-width: 100%; }
-}
-
 .talle-cta {
   display: inline-block;
   width: auto;
   text-align: center;
   padding: 10px 20px;
   border-radius: 999px;
-  border: 1px solid var(--color-soft-grey); /* Borde suave */
+  border: 1px solid var(--color-soft-grey);
   margin-top: 10px;
-  background: var(--color-black); /* Fondo negro */
+  background: var(--color-black);
   color: var(--color-white);
   text-decoration: none;
   font-size: 0.9rem;

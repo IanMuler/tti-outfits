@@ -4,88 +4,214 @@
 
 .welcome {
   min-height: 100vh;
-  background: var(--color-black); /* Fondo negro profundo */
-  color: var(--color-white); /* Texto blanco general */
+  background-color: #111111;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px; /* Ajuste de padding */
+  padding: 32px 24px; /* Mobile first: padding lateral 24px */
+  box-sizing: border-box;
 }
 
 .welcome-card {
-  max-width: 640px;
+  max-width: 800px;
   width: 100%;
-  background: #1A1A1A; /* Un negro ligeramente más suave para la tarjeta */
-  border-radius: 20px;
-  padding: 40px 24px; /* Más padding */
-  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+  background: transparent;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- LOGO SUPERIOR --- */
+.welcome-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 12px; /* Mobile first: auxiliares 12px */
+  color: #FFFFFF;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.welcome-title {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-  font-size: 2.2rem;
-  line-height: 1.1; /* Ajustado */
-  margin: 0 0 24px; /* Más espacio */
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-white); /* Asegurar color blanco */
-}
-
-.welcome-sub {
-  font-size: 1.15rem; /* Ligeramente más grande */
-  color: var(--color-light-grey); /* Gris claro del nuevo tema */
-  margin-bottom: 20px; /* Más espacio */
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-.welcome-text {
-  font-size: 1.1rem;
-  color: var(--color-soft-grey); /* Gris suave del nuevo tema */
-  margin-bottom: 24px;
-  line-height: 1.6;
-}
-
-.welcome-contact {
-  margin: 16px 0 32px;
-  font-size: 1rem;
-  color: var(--color-soft-grey);
-}
-
-.welcome-contact a {
-  color: var(--color-white);
-  text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.3);
-  transition: text-decoration-color 0.2s;
-}
-
-.welcome-contact a:hover {
-  text-decoration-color: var(--color-white);
-}
-
-.welcome-cta {
-  display: inline-block;
-  padding: 12px 24px; /* Más padding */
-  border-radius: 999px;
-  border: 1px solid var(--color-soft-grey); /* Borde más suave */
-  background: transparent; /* Fondo transparente para que el negro de la card se vea */
-  color: var(--color-white);
+/* --- TÍTULO PRINCIPAL --- */
+.welcome-main-title {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 1rem; /* Ligeramente más grande */
-  text-transform: uppercase;
+  font-size: 28px; /* Mobile first spec 28px */
+  color: #FFFFFF;
+  line-height: 1.1; /* Mobile first spec 1.1 */
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+/* --- SUBTÍTULO --- */
+.welcome-description {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px; /* Mobile first spec 16px */
+  color: #D9D4CE;
+  margin: 0 0 40px;
+  text-align: center;
+}
+
+/* --- CONTENEDOR DE ACCIONES --- */
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Mobile first spec 12px between buttons */
+  width: 100%;
+  align-items: center;
+}
+
+/* --- BOTONES PREMIUM TETELESTAI (OPTIMIZADOS MOBILE) --- */
+.welcome-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px; /* Mobile first spec 420px */
+  min-height: 56px; /* Mobile first spec 56px */
+  margin: 0 auto;
+  padding: 10px 24px;
+  border-radius: 16px; /* Mobile first spec 16px */
+  border: 1.5px solid #111111;
+  background-color: #F7F5F2;
   cursor: pointer;
-  margin-top: 12px; /* Más espacio */
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: all 200ms ease;
+  box-sizing: border-box;
 }
 
-.welcome-cta:first-of-type { margin-top: 0; }
-
-.welcome-cta:hover {
-  background-color: rgba(255,255,255,0.1); /* Hover sutil */
-  border-color: var(--color-white);
+.welcome-cta .cta-main {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px; /* Mobile first spec 15px */
+  color: #111111;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
 }
 
-.welcome-cta:active { opacity: 0.85; }
-.welcome-cta-disabled { opacity: 0.45; cursor: default; }
+.welcome-cta .cta-sub {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 12px; /* Mobile first spec 12px */
+  color: #555555;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+/* --- SECCIÓN INFERIOR --- */
+.welcome-footer {
+  width: 100%;
+  max-width: 420px;
+}
+
+.welcome-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #3A3A3A;
+  margin: 50px 0 24px;
+}
+
+.welcome-links {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #8A8A8A;
+  text-align: center;
+}
+
+.welcome-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.welcome-links a:hover {
+  color: #FFFFFF;
+}
+
+/* --- RESPONSIVE DESKTOP --- */
+@media (min-width: 768px) {
+  .welcome-logo {
+    font-size: 15px;
+  }
+
+  .welcome-main-title {
+    font-size: 46px;
+  }
+
+  .welcome-description {
+    font-size: 18px;
+  }
+
+  .welcome-cta {
+    min-height: 56px;
+  }
+
+  .welcome-cta:hover {
+    background-color: #111111;
+    border-color: #FFFFFF;
+  }
+
+  .welcome-cta:hover .cta-main {
+    color: #FFFFFF;
+  }
+
+  .welcome-cta:hover .cta-sub {
+    color: #F7F5F2;
+  }
+}
+
+.welcome-cta:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+/* --- ESTADOS DESHABILITADOS (INVIERNO) --- */
+
+.welcome-cta:disabled {
+  background-color: #E8E5E0 !important;
+  color: #9B958D !important;
+  border: 1px solid #D9D4CE !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.welcome-cta:disabled .cta-main {
+  color: #9B958D !important;
+}
+
+.welcome-cta:disabled .cta-sub {
+  color: #9B958D !important;
+}
+
+.welcome-cta-group {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.seasonal-notice {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #8A847D;
+  margin-top: 8px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.welcome-cta-disabled {
+  opacity: 0.45;
+  cursor: default;
+}

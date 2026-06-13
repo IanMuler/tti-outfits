@@ -24,186 +24,223 @@
   <div id="app-container">
     <div id="welcomeScreen" class="welcome">
       <div class="welcome-card">
-        <h1 class="welcome-title">TETELESTAI</h1>
-        <p class="welcome-sub">
-          CALCULÁ TU TALLE Y ELEGÍ SIN ERRORES
-        </p>
-        <p class="welcome-text">
-          Con TTi Uno, resolvés tu talle de una manera simple.
-        </p>
-        <div class="welcome-contact">
-          <p><strong>Contacto</strong></p>
-          <p>WhatsApp: <a href="https://wa.me/5491157365177" target="_blank">+54 9 11 5736-5177</a></p>
-          <p>Instagram: <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank">@tetelestai.indumentaria</a></p>
-          <p>Web: <a href="https://www.tetelestai.com.ar" target="_blank">www.tetelestai.com.ar</a></p>
+        <div class="welcome-logo">TETELESTAI</div>
+        <h1 class="welcome-main-title">CALCULÁ TU TALLE SIN ERRORES</h1>
+        <p class="welcome-description">En menos de un minuto.</p>
+        
+        <div class="welcome-actions">
+          <button class="welcome-cta" onclick="irATalleRemera()">
+            <span class="cta-main">REMERAS</span>
+            <span class="cta-sub">Manga corta y larga</span>
+          </button>
+          <button class="welcome-cta" type="button" onclick="irATalleJogger()">
+            <span class="cta-main">JOGGERS</span>
+            <span class="cta-sub">Lisos y cargos</span>
+          </button>
+          <div class="welcome-cta-group">
+            <button class="welcome-cta" disabled>
+              <span class="cta-main" style="font-size: 16px;">CALCULAR TALLE DE BERMUDA</span>
+            </button>
+            <p class="seasonal-notice">Disponible nuevamente en temporada primavera/verano.</p>
+          </div>
         </div>
-        <button class="welcome-cta" onclick="irATalleRemera()" style="line-height: 1.2; padding: 10px 24px;">
-          Calcular mi talle de remera<br>
-          <span style="font-size: 0.75rem; font-weight: 400; text-transform: none; display: block; margin-top: -2px;">(manga corta y larga)</span>
-        </button>
-        <button class="welcome-cta" type="button" onclick="irATalleJogger()" style="line-height: 1.2; padding: 10px 24px;">
-          Calcular mi talle de jogger<br>
-          <span style="font-size: 0.75rem; font-weight: 400; text-transform: none; display: block; margin-top: -2px;">(cargo y liso)</span>
-        </button>
-        <button class="welcome-cta" type="button" onclick="irATalleBermuda()">Calcular mi talle de bermuda</button>
+
+        <div class="welcome-footer">
+          <div class="welcome-divider"></div>
+          <div class="welcome-links">
+            <a href="https://wa.me/5491157365177" target="_blank">WhatsApp</a> · 
+            <a href="https://www.instagram.com/tetelestai.indumentaria" target="_blank">Instagram</a> · 
+            <a href="https://www.tetelestai.com.ar" target="_blank">Web</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Pantalla saber mi talle de remera -->
     <div id="talleRemeraScreen" class="talle-screen" style="display:none;">
+      
+      <!-- Bloque Superior Fondo Oscuro -->
+      <div class="talle-header-premium">
+        <button class="detail-back-white" onclick="volverDesdeTalle()">← Volver</button>
+        <div class="talle-header-content">
+          <h2 class="talle-header-title">TU REMERA TTi EMPIEZA POR EL TALLE CORRECTO</h2>
+          <p class="talle-header-subtitle">Calculá tu talle en menos de un minuto.</p>
+        </div>
+      </div>
+
       <div class="talle-card">
-        <button class="detail-back" onclick="volverDesdeTalle()">← Volver</button>
+        <h2 class="talle-main-title">CALCULÁ TU TALLE DE REMERA</h2>
 
-        <div class="product-header-container">
-          <h2 class="product-brand-title">TETELESTAI</h2>
-          <p class="product-description-text">
-            Nuestras remeras clásicas tienen un corte exclusivo. No son rectas ni slim fit. Están en un punto intermedio que brinda comodidad, estética y una presencia limpia.
-          </p>
+        <div class="talle-instructions-box">
+          <div class="talle-step-item">
+            <span class="talle-step-number">1.</span>
+            <p class="talle-step-text">Usá una remera que ya te quede bien.</p>
+          </div>
+          <div class="talle-step-item">
+            <span class="talle-step-number">2.</span>
+            <p class="talle-step-text">Medí el <strong>ancho</strong> de axila a axila.</p>
+          </div>
+          <div class="talle-step-item">
+            <span class="talle-step-number">3.</span>
+            <p class="talle-step-text">Medí el <strong>largo</strong> total de la prenda.</p>
+          </div>
+          <div class="talle-step-item">
+            <span class="talle-step-number">4.</span>
+            <p class="talle-step-text">Ingresá tus medidas y tocá <strong>"Calcular talle"</strong>.</p>
+          </div>
         </div>
-        <h2 class="talle-title">Calcular mi talle de remera</h2>
 
-        <div class="talle-steps">
-          <p><strong>1.</strong> Usá una remera que ya te quede bien.</p>
-          <p><strong>2.</strong> Medí el <strong>ancho</strong> de axila a axila.</p>
-          <p><strong>3.</strong> Medí el <strong>largo</strong> total de la prenda.</p>
-          <p><strong>4.</strong> Colocá tu ancho abajo y tocá "Calcular mi talle".</p>
-        </div>
-        <button id="openModalBtn" class="talle-graphic-link">
-          ver grafico de puntos a medir
+        <button id="openModalBtn" class="btn-ver-como-medir">
+          VER CÓMO MEDIR
         </button>
-        <div class="talle-form-group">
-          <label for="anchoInput">Ancho (cm)</label>
-          <input type="number" id="anchoInput" class="talle-input" placeholder="Ej: 54" min="40" max="80" step="0.1">
+
+        <div class="talle-form-container">
+          <div class="talle-input-field">
+            <label for="anchoInput" class="talle-label-premium">ANCHO (CM)</label>
+            <span class="talle-help-text">Medida de axila a axila.</span>
+            <input type="number" id="anchoInput" class="talle-input-premium" placeholder="Ej: 54" min="40" max="80" step="0.1">
+          </div>
+          
+          <div class="talle-input-field">
+            <label for="largoInput" class="talle-label-premium">LARGO (CM)</label>
+            <span class="talle-help-text">Medida total de la prenda.</span>
+            <input type="number" id="largoInput" class="talle-input-premium" placeholder="Ej: 74" min="50" max="100" step="0.1">
+          </div>
         </div>
-        <div class="talle-form-group">
-          <label for="largoInput">Largo (cm)</label>
-          <input type="number" id="largoInput" class="talle-input" placeholder="Ej: 74" min="50" max="100" step="0.1">
+
+        <div class="talle-action-buttons">
+          <button id="btnCalcularTalle" class="btn-talle-primary" type="button">CALCULAR TALLE</button>
+          <button id="btnLimpiarTalleRemera" class="btn-talle-secondary" type="button">BORRAR</button>
+          <button type="button" class="btn-talle-secondary" onclick="window.scrollTo({top:0, behavior:'smooth'})">VOLVER ARRIBA</button>
         </div>
-        <button id="btnCalcularTalle" class="talle-btn" type="button">Calcular mi talle de remera</button>
-        <button id="btnLimpiarTalleRemera" class="talle-btn" type="button">Borrar datos</button>
-        <button type="button" class="talle-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">Volver arriba</button>
+
         <div id="talleError" class="talle-error" style="display:none;">
           No contamos con un talle ideal para esas medidas. Escribinos y te asesoramos.
         </div>
-                <div id="talleResultado" class="talle-result-product" style="display:none;">
-                  <h3 class="result-product-title">TU TALLE RECOMENDADO ES <span id="talleSugerido"></span></h3>
+
+                <div id="talleResultado" class="talle-result-premium" style="display:none;">
+                  <h3 class="result-premium-title">TU TALLE RECOMENDADO ES <span id="talleSugerido"></span></h3>
                   
-                  <p class="result-product-text">
-                    Vas a lograr nuestro <span class="result-product-highlight">Fit Clásico Equilibrado</span>: un calce moderno que combina la comodidad del corte clásico con un sutil toque slim.
-                  </p>
+                  <div class="result-premium-content">
+                    <p class="result-premium-text">
+                      Vas a lograr nuestro <span class="result-premium-highlight">Fit Clásico Equilibrado</span>: un calce moderno que combina la comodidad del corte clásico con un sutil toque slim.
+                    </p>
+                    
+                    <p class="result-premium-text">
+                      Acompaña mejor el pecho y las mangas, y cae de forma más relajada en el cuerpo. Así conseguís una remera cómoda, prolija y con buena presencia, sin sentirla ajustada ni demasiado suelta.
+                    </p>
+                    
+                    <div id="talleAlternativoCont" class="result-premium-alt-box" style="display:none;">
+                      <span class="alt-premium-label">¿La preferís más al cuerpo?</span>
+                      <span class="alt-premium-value">Podés elegir <span id="talleSugeridoMenor"></span>.</span>
+                    </div>
+                  </div>
                   
-                  <p class="result-product-text">
-                    Acompaña mejor el pecho y las mangas, y cae de forma más relajada en el cuerpo. Así conseguís una remera cómoda, prolija y con buena presencia, sin sentirla ajustada ni demasiado suelta.
-                  </p>
+                  <h4 class="result-premium-cta-title">CONSEGUÍ TU REMERA</h4>
                   
-                  <p id="talleAlternativoCont" class="result-product-alt" style="display:none;">
-                    ¿La preferís más al cuerpo? Podés elegir <span id="talleSugeridoMenor" class="result-product-highlight"></span>.
-                  </p>
-                  
-                  <h4 class="result-product-cta-title">CONSEGUÍ TU REMERA</h4>
-                  
-                  <div class="result-product-actions">
-                    <a href="https://www.tetelestai.com.ar/productos/remeras/" target="_blank" class="btn-product-primary">Ver remeras</a>
-                    <a href="https://wa.me/5491157365177" target="_blank" class="btn-product-secondary">Consultar por WhatsApp</a>
+                  <div class="result-premium-actions">
+                    <a href="https://www.tetelestai.com.ar/remera/" target="_blank" class="btn-premium-primary">VER REMERAS</a>
+                    <a href="https://wa.me/5491157365177" target="_blank" class="btn-premium-secondary">CONSULTAR POR WHATSAPP</a>
                   </div>
                 </div>      </div>
     </div>
 
     <!-- Pantalla saber mi talle de jogger -->
     <div id="talleJoggerScreen" class="talle-screen" style="display:none;">
+      
+      <!-- Bloque Superior Fondo Oscuro -->
+      <div class="talle-header-premium">
+        <button class="detail-back-white" onclick="volverDesdeTalle()">← Volver</button>
+        <div class="talle-header-content">
+          <h2 class="talle-header-title">TU JOGGER TTi EMPIEZA POR EL TALLE CORRECTO</h2>
+          <p class="talle-header-subtitle">Calculá tu talle en menos de un minuto.</p>
+        </div>
+      </div>
+
       <div class="talle-card">
-        <button class="detail-back" onclick="volverDesdeTalle()">← Volver</button>
+        <h2 class="talle-main-title">CALCULÁ TU TALLE DE JOGGER</h2>
 
-        <div class="product-header-container">
-          <h2 class="product-brand-title">TETELESTAI</h2>
-          
-          <p class="product-description-text">
-            Nuestros joggers lisos y cargos están pensados para <span>simplificarte el día</span>.
-          </p>
-          
-          <p class="product-description-text">
-            Ofrecen un <span>calce cómodo</span>, <span>libertad de movimiento</span> y una <span>presencia prolija</span> que se adapta al trabajo, una salida o a esos días en los que estás a mil.
-          </p>
-          
-          <p class="product-description-text" style="margin-top:16px;">
-            Una prenda versátil para <span>verte bien</span> sin dejar de <span>sentirte cómodo</span>.
-          </p>
+        <div class="talle-instructions-box">
+          <div class="talle-step-item">
+            <span class="talle-step-number">1.</span>
+            <div class="talle-step-content">
+              <span class="talle-step-title">Cintura <span class="talle-badge-mandatory">(obligatorio)</span></span>
+              <span class="talle-step-description">Medí la cintura de extremo a extremo, sin estirar el elástico.</span>
+              <span class="talle-step-clarification"><span class="result-product-highlight">Solo ingresá esa medida. TTi Uno calcula automáticamente el contorno real.</span></span>
+              <span class="talle-step-clarification">¿No tenés un jogger? También podés usar un jean que te quede bien.</span>
+            </div>
+          </div>
+
+          <div class="talle-step-item">
+            <span class="talle-step-number">2.</span>
+            <div class="talle-step-content">
+              <span class="talle-step-title">Tiro <span class="talle-badge-optional">(opcional)</span></span>
+              <span class="talle-step-description">Medí desde la entrepierna hasta la cintura.</span>
+            </div>
+          </div>
+
+          <div class="talle-step-item">
+            <span class="talle-step-number">3.</span>
+            <div class="talle-step-content">
+              <span class="talle-step-title">Largo <span class="talle-badge-optional">(opcional)</span></span>
+              <span class="talle-step-description">Medí desde la cintura hasta la botamanga.</span>
+            </div>
+          </div>
         </div>
 
-        <h2 class="talle-title">Calcular mi talle de jogger</h2>
-
-        <div class="talle-steps">
-          <p><strong>1. Cintura</strong><br>
-            Apoyá el jogger sobre una mesa, bien estirado y sin arrugas.
-            Medí la cintura de un extremo al otro, sin estirar el elástico.
-            <br>
-            Solo ingresá esa medida.
-            La app calcula automáticamente el contorno real.
-            <br><br>
-            ¿No tenés un jogger?
-            Usá un jean que te quede bien y medí la cintura de la misma forma.
-          </p>
-          <p><strong>2. Tiro</strong><br>
-            Con el pantalón apoyado, medí desde la unión de las costuras de la entrepierna hasta la parte superior de la cintura.
-            Sirve para chequear que el tiro te resulte cómodo al sentarte y moverte.
-          </p>
-          <p><strong>3. Largo</strong><br>
-            Extendé el jogger completo.
-            Medí desde la parte superior de la cintura hasta la botamanga.
-            Si tiene puño, incluí el puño en la medida.
-          </p>
-        </div>
-
-        <button id="openJoggerModalBtn" class="talle-btn" type="button" style="margin-bottom:12px;">
-          ver grafico de puntos a medir
+        <button id="openJoggerModalBtn" class="btn-ver-como-medir">
+          VER CÓMO MEDIR
         </button>
 
-        <div class="talle-form">
-          <div class="talle-input-group">
-            <label for="cinturaJoggerInput">Cintura (cm en plano)</label>
-            <input type="number" id="cinturaJoggerInput" class="talle-input" placeholder="Ej: 46" min="30" max="80" step="0.1">
+        <div class="talle-form-container">
+          <div class="talle-input-field-left">
+            <label for="cinturaJoggerInput" class="talle-label-premium">CINTURA (CM EN PLANO)</label>
+            <span class="status-mandatory" style="font-size:12px; margin-bottom:8px; display:block;">Obligatorio</span>
+            <input type="number" id="cinturaJoggerInput" class="talle-input-premium" placeholder="Ej: 46" min="30" max="80" step="0.1">
           </div>
-          <div class="talle-input-group">
-            <label for="tiroJoggerInput">Tiro (cm)</label>
-            <input type="number" id="tiroJoggerInput" class="talle-input" placeholder="Ej: 29.5" min="20" max="40" step="0.1">
+          <div class="talle-input-field-left">
+            <label for="tiroJoggerInput" class="talle-label-premium">TIRO (CM)</label>
+            <span class="status-optional" style="font-size:12px; margin-bottom:8px; display:block;">Opcional</span>
+            <input type="number" id="tiroJoggerInput" class="talle-input-premium" placeholder="Ej: 29.5" min="20" max="40" step="0.1">
           </div>
-          <div class="talle-input-group">
-            <label for="largoJoggerInput">Largo (cm)</label>
-            <input type="number" id="largoJoggerInput" class="talle-input" placeholder="Ej: 102" min="80" max="120" step="0.1">
+          <div class="talle-input-field-left">
+            <label for="largoJoggerInput" class="talle-label-premium">LARGO (CM)</label>
+            <span class="status-optional" style="font-size:12px; margin-bottom:8px; display:block;">Opcional</span>
+            <input type="number" id="largoJoggerInput" class="talle-input-premium" placeholder="Ej: 102" min="80" max="120" step="0.1">
           </div>
+        </div>
 
-          <button id="btnCalcularTalleJogger" class="talle-btn" type="button" style="margin-top:8px;margin-bottom:8px;font-weight:600;">Calcular mi talle de jogger</button>
-          <button id="btnLimpiarTalleJogger" class="talle-btn" type="button" style="margin-top:8px;margin-bottom:8px;font-weight:600;">
-            Borrar datos
-          </button>
-          <button type="button" class="talle-btn" style="margin-top:8px;margin-bottom:8px;font-weight:600;"
-            onclick="window.scrollTo({top:0, behavior:'smooth'})">
-            Volver arriba
-          </button>
+        <div class="talle-action-buttons">
+          <button id="btnCalcularTalleJogger" class="btn-talle-primary" type="button">CALCULAR TALLE</button>
+          <button id="btnLimpiarTalleJogger" class="btn-talle-secondary" type="button">BORRAR</button>
+          <button type="button" class="btn-talle-secondary" onclick="window.scrollTo({top:0, behavior:'smooth'})">VOLVER ARRIBA</button>
+        </div>
 
-          <div id="talleJoggerError" class="talle-error" style="display:none;">
-            No contamos con un talle ideal para esas medidas. Escribinos y te asesoramos.
-          </div>
+        <div id="talleJoggerError" class="talle-error" style="display:none;">
+          No contamos con un talle ideal para esas medidas. Escribinos y te asesoramos.
+        </div>
 
-          <div id="talleJoggerResultado" class="talle-result-product" style="display:none;">
-            <h3 class="result-product-title">TU TALLE RECOMENDADO ES <span id="talleJoggerSugerido"></span></h3>
+        <div id="talleJoggerResultado" class="talle-result-premium" style="display:none;">
+          <h3 class="result-premium-title">TU TALLE RECOMENDADO ES <span id="talleJoggerSugerido"></span></h3>
+          
+          <div class="result-premium-content">
+            <p id="talleJoggerMedidas" class="result-premium-measure"></p>
             
-            <p id="talleJoggerMedidas" class="result-product-text"></p>
-            
-            <p class="result-product-text">
-              Con este talle vas a lograr un <span class="result-product-highlight">calce cómodo y equilibrado</span>. La <span class="result-product-highlight">cintura con elástico</span> <span class="result-product-highlight">se adapta mejor a tu cuerpo</span>, acompaña tus movimientos y te da <span class="result-product-highlight">mayor comodidad durante todo el día</span>, manteniendo un <span class="result-product-highlight">calce prolijo y con buena presencia</span>.
+            <p class="result-premium-text">
+              Con este talle vas a lograr un <span class="result-premium-highlight">calce cómodo y equilibrado</span>. La <span class="result-premium-highlight">cintura con elástico</span> <span class="result-premium-highlight">se adapta mejor a tu cuerpo</span>, acompaña tus movimientos y te da <span class="result-premium-highlight">mayor comodidad durante todo el día</span>, manteniendo un <span class="result-premium-highlight">calce prolijo y con buena presencia</span>.
             </p>
             
-            <p id="talleJoggerAlternativoCont" class="result-product-alt" style="display:none;">
-              ¿Lo preferís un poco más suelto? Podés elegir <span id="talleJoggerSugeridoMayor" class="result-product-highlight"></span>.
-            </p>
-            
-            <h4 class="result-product-cta-title">CONSEGUÍ TU JOGGER</h4>
-            
-            <div class="result-product-actions">
-              <a href="https://www.tetelestai.com.ar/productos/joggers/" target="_blank" class="btn-product-primary">Ver joggers</a>
-              <a href="https://wa.me/5491157365177" target="_blank" class="btn-product-secondary">Consultar por WhatsApp</a>
+            <div id="talleJoggerAlternativoCont" class="result-premium-alt-box" style="display:none;">
+              <span class="alt-premium-label">¿Lo preferís un poco más suelto?</span>
+              <span class="alt-premium-value">Podés elegir <span id="talleJoggerSugeridoMayor"></span>.</span>
             </div>
+          </div>
+          
+          <h4 class="result-premium-cta-title">CONSEGUÍ TU JOGGER</h4>
+          
+          <div class="result-premium-actions">
+            <a href="https://www.tetelestai.com.ar/pantalon/" target="_blank" class="btn-premium-primary">VER JOGGERS</a>
+            <a href="https://wa.me/5491157365177" target="_blank" class="btn-premium-secondary">CONSULTAR POR WHATSAPP</a>
           </div>
         </div>
       </div>
@@ -211,86 +248,104 @@
 
     <!-- Pantalla saber mi talle de bermuda -->
     <div id="talleBermudaScreen" class="talle-screen" style="display:none;">
+      
+      <!-- Bloque Superior Fondo Oscuro -->
+      <div class="talle-header-premium">
+        <button class="detail-back-white" onclick="volverDesdeTalle()">← Volver</button>
+        <div class="talle-header-content">
+          <h2 class="talle-header-title">TU BERMUDA TTi EMPIEZA POR EL TALLE CORRECTO</h2>
+          <p class="talle-header-subtitle">Calculá tu talle en menos de un minuto.</p>
+        </div>
+      </div>
+
       <div class="talle-card">
-        <button class="detail-back" onclick="volverDesdeTalle()">← Volver</button>
+        <h2 class="talle-main-title">CALCULÁ TU TALLE DE BERMUDA</h2>
 
-        <div class="product-header-container">
-          <h2 class="product-brand-title">TETELESTAI</h2>
-          <p class="product-description-text">
-            Nuestras bermudas corte chino están hechas en gabardina premium de 12 hilos, sin elástico, con pasacinto, botón y cierre. Buscamos un calce adulto, prolijo y cómodo para todos los días.
-          </p>
+        <div class="talle-instructions-box">
+          <div class="talle-step-item">
+            <span class="talle-step-number">1.</span>
+            <div class="talle-step-content">
+              <span class="talle-step-title">Cintura <span class="talle-badge-mandatory">(obligatorio)</span></span>
+              <span class="talle-step-description">Medí la cintura de extremo a extremo, sin estirar la prenda.</span>
+              <span class="talle-step-clarification"><span class="result-premium-highlight">Solo ingresá esa medida. TTi Uno calcula automáticamente el contorno real.</span></span>
+            </div>
+          </div>
+
+          <div class="talle-step-item">
+            <span class="talle-step-number">2.</span>
+            <div class="talle-step-content">
+              <span class="talle-step-title">Tiro <span class="talle-badge-optional">(opcional)</span></span>
+              <span class="talle-step-description">Medí desde la entrepierna hasta la cintura.</span>
+            </div>
+          </div>
+
+          <div class="talle-step-item">
+            <span class="talle-step-number">3.</span>
+            <div class="talle-step-content">
+              <span class="talle-step-title">Largo <span class="talle-badge-optional">(opcional)</span></span>
+              <span class="talle-step-description">Medí desde la cintura hasta el final de la bermuda.</span>
+            </div>
+          </div>
         </div>
 
-        <h2 class="talle-title">Calcular mi talle de bermuda</h2>
-
-        <div class="talle-steps">
-          <p><strong>1. Cintura</strong><br>
-            Apoyá la bermuda abotonada sobre una superficie plana.
-            Medí la cintura de un extremo al otro, solo el frente, sin estirar la tela.
-            <br><br>
-            Solo ingresá esa medida.
-            La app calcula automáticamente el contorno real.
-            <br><br>
-            Esta cintura es rígida: sin elástico, con pasacinto, botón y cierre.
-            Medí con calma, sin forzar la tela.
-          </p>
-          <p><strong>2. Tiro</strong><br>
-            Medí desde el borde superior de la cintura hasta el cruce de costuras de la entrepierna.
-            Sirve para chequear comodidad al sentarte y moverte.
-          </p>
-          <p><strong>3. Largo</strong><br>
-            Extendé el jogger completo.
-            Medí desde el borde superior de la cintura hasta el final de la botamanga.
-            Esta medida define si la preferís más arriba de la rodilla, a la altura o más abajo.
-          </p>
-          <p><strong>Tip rápido</strong><br>
-            Si querés ir directo al punto, la cintura manda.
-            Tiro y largo ayudan a ajustar el calce según cómo te gusta que quede.
-          </p>
-        </div>
-
-        <button class="talle-btn" id="guiaBtnBermuda" type="button" style="margin-bottom:12px;">
-          ver grafico de puntos a medir
+        <button id="guiaBtnBermuda" class="btn-ver-como-medir">
+          VER CÓMO MEDIR
         </button>
 
-        <div class="talle-form">
-          <div class="talle-input-group">
-            <label for="cinturaBermudaInput">Cintura (cm en plano)</label>
-            <input type="number" id="cinturaBermudaInput" class="talle-input" placeholder="Ej: 44 (referencia talle 44)" min="35" max="65" step="0.5">
+        <div class="talle-form-container">
+          <div class="talle-input-field-left">
+            <label for="cinturaBermudaInput" class="talle-label-premium">CINTURA (CM EN PLANO)</label>
+            <span class="status-mandatory" style="font-size:12px; margin-bottom:8px; display:block;">Obligatorio</span>
+            <input type="number" id="cinturaBermudaInput" class="talle-input-premium" placeholder="Ej: 44" min="35" max="65" step="0.1">
           </div>
-          <div class="talle-input-group">
-            <label for="tiroBermudaInput">Tiro (cm)</label>
-            <input type="number" id="tiroBermudaInput" class="talle-input" placeholder="Ej: 28 (tiro clásico adulto)" min="20" max="40" step="0.5">
+          <div class="talle-input-field-left">
+            <label for="tiroBermudaInput" class="talle-label-premium">TIRO (CM)</label>
+            <span class="status-optional" style="font-size:12px; margin-bottom:8px; display:block;">Opcional</span>
+            <input type="number" id="tiroBermudaInput" class="talle-input-premium" placeholder="Ej: 28" min="20" max="40" step="0.1">
           </div>
-          <div class="talle-input-group">
-            <label for="largoBermudaInput">Largo (cm)</label>
-            <input type="number" id="largoBermudaInput" class="talle-input" placeholder="Ej: 47 (largo estándar TETELESTAI)" min="35" max="70" step="0.5">
-          </div>
-
-          <button id="btnCalcularTalleBermuda" class="talle-btn" type="button" style="margin-top:12px;font-weight:600;">Calcular mi talle de bermuda</button>
-          <button id="btnLimpiarTalleBermuda" class="talle-btn" type="button" style="margin-top:8px;font-weight:600;">
-            Borrar datos
-          </button>
-          <button type="button" class="talle-btn" style="margin-top:8px;font-weight:600;"
-            onclick="window.scrollTo({top:0, behavior:'smooth'})">
-            Volver arriba
-          </button>
-
-          <div id="talleBermudaError" class="talle-error" style="display:none;"></div>
-
-          <div class="talle-result" style="margin-top:14px;">
-            <p class="talle-result-main" id="talleBermudaResultado">Esperando tus medidas</p>
-            <p id="talleBermudaMensaje">
-              Calculamos tu talle en función de la cintura y del calce real de nuestras bermudas.
-            </p>
-            <p class="talle-note" id="talleBermudaDetalle">
-              Nuestras bermudas corte chino están pensadas para un calce limpio y cómodo, sin quedar ni demasiado sueltas ni apretadas.
-            </p>
-            <p class="talle-cta-label">Conseguí tu bermuda en:</p>
-            <a class="talle-cta" href="https://www.tetelestai.com.ar" style="font-weight:600;" target="_blank">www.tetelestai.com.ar</a>
-            <a class="talle-cta" href="https://wa.me/5491157365177" style="font-weight:600;" target="_blank">WhatsApp TETELESTAI</a>
+          <div class="talle-input-field-left">
+            <label for="largoBermudaInput" class="talle-label-premium">LARGO (CM)</label>
+            <span class="status-optional" style="font-size:12px; margin-bottom:8px; display:block;">Opcional</span>
+            <input type="number" id="largoBermudaInput" class="talle-input-premium" placeholder="Ej: 47" min="35" max="70" step="0.1">
           </div>
         </div>
+
+        <div class="talle-action-buttons">
+          <button id="btnCalcularTalleBermuda" class="btn-talle-primary" type="button">CALCULAR TALLE</button>
+          <button id="btnLimpiarTalleBermuda" class="btn-talle-secondary" type="button">BORRAR</button>
+          <button type="button" class="btn-talle-secondary" onclick="window.scrollTo({top:0, behavior:'smooth'})">VOLVER ARRIBA</button>
+        </div>
+
+        <div id="talleBermudaError" class="talle-error" style="display:none;"></div>
+
+        <div id="talleBermudaResultadoPremium" class="talle-result-premium" style="display:none;">
+          <h3 class="result-premium-title">TU TALLE RECOMENDADO ES <span id="talleBermudaSugerido"></span></h3>
+          
+          <div class="result-premium-content">
+            <p id="talleBermudaInfoMedida" class="result-premium-measure"></p>
+            
+            <p class="result-premium-text">
+              Con este talle vas a lograr un <span class="result-premium-highlight">calce cómodo y equilibrado</span>.
+            </p>
+            <p class="result-premium-text">
+              Nuestras bermudas TTi están confeccionadas en <span class="result-premium-highlight">gabardina premium de 12 hilos</span>, buscando una <span class="result-premium-highlight">caída prolija</span>, <span class="result-premium-highlight">cómoda y versátil</span> para el día a día.
+            </p>
+            
+            <div id="talleBermudaAlternativoCont" class="result-premium-alt-box" style="display:none;">
+              <span class="alt-premium-label">¿La preferís un poco más suelta?</span>
+              <span class="alt-premium-value">Podés elegir <span id="talleBermudaSugeridoMayor"></span>.</span>
+            </div>
+          </div>
+          
+          <h4 class="result-premium-cta-title">CONSEGUÍ TU BERMUDA</h4>
+          
+          <div class="result-premium-actions">
+            <a href="https://www.tetelestai.com.ar/bermuda/" target="_blank" class="btn-premium-primary">VER BERMUDAS</a>
+            <a href="https://wa.me/5491157365177" target="_blank" class="btn-premium-secondary">CONSULTAR POR WHATSAPP</a>
+          </div>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
 

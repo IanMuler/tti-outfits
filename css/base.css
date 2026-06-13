@@ -4,10 +4,10 @@
 
 :root {
   /* Paleta de Colores Tetelestai */
-  --color-off-white: #F7F7F7; /* Blanco roto / Fondo principal */
-  --color-light-grey: #F4F4F4; /* Gris muy claro */
-  --color-white: #FFFFFF;    /* Blanco puro para tarjetas */
-  --color-black: #111111;    /* Negro profundo para títulos */
+  --color-off-white: #F7F5F2; /* Nuevo fondo principal */
+  --color-light-grey: #EDEDED; /* Ajuste sutil */
+  --color-white: #FFFFFF;    /* Blanco puro */
+  --color-black: #111111;    /* Negro profundo */
   --color-dark-grey: #4A4A4A; /* Gris oscuro para subtítulos */
   --color-medium-grey: #6A6A6A; /* Gris medio para texto de cuerpo */
   --color-soft-grey: #7A7A7A; /* Gris claro para microcopy */
@@ -27,16 +27,18 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "SF Pro Text", Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: var(--bg-primary);
   color: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Layout */
 .app {
   max-width: 960px;
   margin: 0 auto;
-  padding: 24px 16px 40px; /* Ajuste de padding */
+  padding: 28px 20px 48px; /* Mobile first: lateral 20px, vertical 28px-32px */
 }
 
 .grid {

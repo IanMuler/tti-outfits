@@ -135,7 +135,7 @@ TTI.talles.jogger = {
 
       document.getElementById("talleJoggerSugerido").textContent = talleBase.talle;
       document.getElementById("talleJoggerMedidas").innerHTML = 
-        "La medida que ingresaste es de <span class='result-product-highlight'>" + formatearNum(cPlano) + " cm</span> de cintura en plano, equivalente aproximadamente a <span class='result-product-highlight'>" + formatearNum(cinturaTotal) + " cm</span> de contorno.";
+        "La medida que ingresaste es de <span class='result-premium-highlight'>" + formatearNum(cPlano) + " cm</span> de cintura en plano, equivalente aproximadamente a <span class='result-premium-highlight'>" + formatearNum(cinturaTotal) + " cm</span> de contorno.";
       
       var altCont = document.getElementById("talleJoggerAlternativoCont");
       var altVal = document.getElementById("talleJoggerSugeridoMayor");
@@ -179,7 +179,7 @@ TTI.talles.bermuda = {
       var tabla = TTI.constantes.talles.bermuda;
       var cPlano = TTI.talles.validarInput(document.getElementById("cinturaBermudaInput").value);
       var errorBox = document.getElementById("talleBermudaError");
-      var resBox = document.querySelector("#talleBermudaScreen .talle-result") || document.getElementById("talleBermudaResultado").parentNode;
+      var resBox = document.getElementById("talleBermudaResultadoPremium");
 
       if (cPlano === null) {
         alert("Necesitamos la medida de cintura.");
@@ -199,20 +199,34 @@ TTI.talles.bermuda = {
 
       errorBox.style.display = "none";
       var mejor = tabla[0];
+      var idx = 0;
       var mejorDiff = Math.abs(cinturaTotal - mejor.cintura);
       for (var i = 0; i < tabla.length; i++) {
         var diff = Math.abs(cinturaTotal - tabla[i].cintura);
         if (diff < mejorDiff) {
           mejor = tabla[i];
           mejorDiff = diff;
+          idx = i;
         }
       }
 
-      document.getElementById("talleBermudaResultado").textContent = "Talle " + mejor.talle;
-      document.getElementById("talleBermudaMensaje").textContent = 
-        "Sugerido para cintura en plano de " + cPlano.toFixed(1) + " cm.";
-      document.getElementById("talleBermudaDetalle").textContent = 
-        "Referencia: cintura " + mejor.cintura + "cm, tiro " + mejor.tiro + "cm, largo " + mejor.largo + "cm.";
+      var formatearNum = function(n) {
+        return Number.isInteger(n) ? n.toString() : n.toFixed(1).replace(".0", "");
+      };
+
+      document.getElementById("talleBermudaSugerido").textContent = mejor.talle;
+      document.getElementById("talleBermudaInfoMedida").textContent = 
+        "La medida que ingresaste corresponde aproximadamente a una cintura de " + formatearNum(cinturaTotal) + " cm de contorno.";
+
+      var altCont = document.getElementById("talleBermudaAlternativoCont");
+      var altVal = document.getElementById("talleBermudaSugeridoMayor");
+      
+      if (idx < tabla.length - 1) {
+        altVal.textContent = "talle " + tabla[idx + 1].talle;
+        altCont.style.display = "block";
+      } else {
+        altCont.style.display = "none";
+      }
 
       resBox.style.display = "block";
       resBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -226,8 +240,7 @@ TTI.talles.bermuda = {
         document.getElementById("tiroBermudaInput").value = "";
         document.getElementById("largoBermudaInput").value = "";
         document.getElementById("talleBermudaError").style.display = "none";
-        var resBox = document.querySelector("#talleBermudaScreen .talle-result") || document.getElementById("talleBermudaResultado").parentNode;
-        if (resBox) resBox.style.display = "none";
+        document.getElementById("talleBermudaResultadoPremium").style.display = "none";
       });
     }
   }
